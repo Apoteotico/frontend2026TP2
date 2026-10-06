@@ -1,0 +1,515 @@
+/* ==========================================================================
+   pITzza y birrAPI — TP2 React Design System
+   Identidad: Función de gala (cine, pizza, birra artesanal y código)
+   ========================================================================== */
+
+:root {
+  /* Paleta cromática */
+  --tinta: #12100e;
+  --tinta-2: #1c1815;
+  --tinta-3: #2a2320;
+  --mozzarella: #f6f1e7;
+  --crema: #fdf8f0;
+  --papel: #ffffff;
+  --tomate: #c8452c;
+  --tomate-oscuro: #9b3320;
+  --birra: #e8a72b;
+  --birra-oscura: #c98818;
+  --albahaca: #3f7d5c;
+  --codigo: #2b6f8f;
+  --texto: #241c17;
+  --suave: #6f6255;
+  --linea: #e9dfcd;
+  --linea-oscura: rgba(232, 167, 43, 0.25);
+
+  /* Medidas y diseño */
+  --sidebar-w: 270px;
+  --radio: 1rem;
+  --radio-sm: 0.55rem;
+  --sombra: 0 14px 35px -20px rgba(18, 16, 14, 0.4);
+  --sombra-alta: 0 25px 50px -25px rgba(18, 16, 14, 0.55);
+
+  /* Tipografías */
+  --fuente-titulo: "Fraunces", Georgia, serif;
+  --fuente-texto: "Outfit", system-ui, -apple-system, sans-serif;
+  --fuente-codigo: ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--crema);
+  color: var(--texto);
+  font-family: var(--fuente-texto);
+  line-height: 1.6;
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-image: 
+    radial-gradient(circle at 12% -8%, rgba(232, 167, 43, 0.14), transparent 45%),
+    radial-gradient(circle at 88% 5%, rgba(200, 69, 44, 0.1), transparent 42%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--fuente-titulo);
+  font-weight: 650;
+  line-height: 1.15;
+  color: var(--tinta);
+}
+
+a {
+  color: var(--tomate-oscuro);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+a:hover {
+  color: var(--tomate);
+}
+
+code {
+  font-family: var(--fuente-codigo);
+  background: rgba(43, 111, 143, 0.1);
+  color: var(--codigo);
+  padding: 0.15em 0.4em;
+  border-radius: 0.35rem;
+  font-size: 0.88em;
+}
+
+/* --------------------------------------------------------------------------
+   LAYOUT GENERAL (Sidebar + Contenido)
+   -------------------------------------------------------------------------- */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+}
+
+/* Sidebar para Escritorio */
+.sidebar {
+  width: var(--sidebar-w);
+  background: linear-gradient(180deg, var(--tinta) 0%, var(--tinta-2) 100%);
+  color: var(--mozzarella);
+  border-right: 1px solid var(--linea-oscura);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 100;
+  flex-shrink: 0;
+  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar-header {
+  padding: 1.5rem 1.25rem 1.25rem;
+  border-bottom: 1px solid rgba(246, 241, 231, 0.1);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.sidebar-brand img {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 6px rgba(232, 167, 43, 0.4));
+}
+
+.sidebar-brand-title {
+  font-family: var(--fuente-titulo);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--mozzarella);
+  line-height: 1.1;
+}
+
+.sidebar-brand-title span {
+  color: var(--birra);
+}
+
+.sidebar-tag {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: rgba(246, 241, 231, 0.65);
+  text-transform: uppercase;
+  font-family: var(--fuente-codigo);
+  margin-top: 0.2rem;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 1.25rem 0.9rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sidebar-label {
+  font-family: var(--fuente-codigo);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(232, 167, 43, 0.75);
+  padding: 0.75rem 0.8rem 0.35rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  color: rgba(246, 241, 231, 0.85);
+  border-radius: var(--radio-sm);
+  font-size: 0.93rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  border-left: 3px solid transparent;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-item.active {
+  color: var(--mozzarella);
+  background: rgba(232, 167, 43, 0.14);
+  border-left-color: var(--birra);
+  font-weight: 600;
+}
+
+.nav-icon {
+  font-size: 1.15rem;
+  width: 1.5rem;
+  text-align: center;
+}
+
+.sidebar-footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid rgba(246, 241, 231, 0.1);
+  font-size: 0.78rem;
+  color: rgba(246, 241, 231, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sidebar-footer a {
+  color: var(--birra);
+}
+
+/* Área de contenido principal */
+.app-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.page-content {
+  flex: 1;
+  padding: 2.25rem 2.5rem 4rem;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header Móvil (Hamburguesa) */
+.mobile-header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: var(--tinta);
+  color: var(--mozzarella);
+  border-bottom: 1px solid var(--linea-oscura);
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.mobile-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--mozzarella);
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.mobile-brand img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.mobile-brand span {
+  color: var(--birra);
+}
+
+.btn-toggle-menu {
+  background: transparent;
+  border: 1px solid rgba(232, 167, 43, 0.4);
+  color: var(--birra);
+  font-size: 1.4rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radio-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-toggle-menu:hover,
+.btn-toggle-menu:focus-visible {
+  background: rgba(232, 167, 43, 0.15);
+  border-color: var(--birra);
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   BOTONES Y COMPONENTES
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: var(--tomate);
+  color: #ffffff;
+  box-shadow: var(--sombra);
+  transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.btn:hover {
+  background: var(--tomate-oscuro);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-alta);
+}
+
+.btn-birra {
+  background: var(--birra);
+  color: var(--tinta);
+  font-weight: 700;
+}
+
+.btn-birra:hover {
+  background: var(--birra-oscura);
+  color: var(--tinta);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--linea);
+  color: var(--texto);
+  box-shadow: none;
+}
+
+.btn-ghost:hover {
+  background: rgba(200, 69, 44, 0.08);
+  border-color: var(--tomate);
+  color: var(--tomate);
+}
+
+.btn-prev {
+  background: rgba(43, 111, 143, 0.09);
+  border: 1px solid rgba(43, 111, 143, 0.45);
+  color: var(--codigo);
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.btn-prev:hover {
+  background: var(--codigo);
+  border-color: var(--codigo);
+  color: #ffffff;
+}
+
+.btn-next {
+  background: var(--birra);
+  border: 1px solid var(--birra);
+  color: var(--tinta);
+  font-weight: 700;
+}
+
+.btn-next:hover {
+  background: var(--birra-oscura);
+  color: var(--tinta);
+}
+
+.btn-sm {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+/* Tarjetas */
+.card {
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: 1.5rem;
+  box-shadow: var(--sombra);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(232, 167, 43, 0.5);
+  box-shadow: var(--sombra-alta);
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--mozzarella);
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.82rem;
+  color: var(--tinta-2);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.4rem;
+  font-family: var(--fuente-codigo);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.badge-tomate { background: #fee2de; color: var(--tomate-oscuro); }
+.badge-birra { background: #fef3c7; color: #92400e; }
+.badge-codigo { background: #e0f2fe; color: #0369a1; }
+.badge-albahaca { background: #dcfce7; color: #166534; }
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE / MEDIA QUERIES
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 16, 14, 0.65);
+    backdrop-filter: blur(2px);
+    z-index: 95;
+  }
+
+  .mobile-header {
+    display: flex;
+  }
+
+  .page-content {
+    padding: 1.5rem 1.25rem 3.5rem;
+  }
+}
+
+/* En 400px o menos, una columna estricta en todas las grillas */
+@media (max-width: 400px) {
+  .page-content {
+    padding: 1.25rem 0.9rem 3rem;
+  }
+  
+  .card-grid,
+  .catalogo-grid,
+  .breweries-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   ANIMACIONES DE EMOJIS (Guillermo)
+   -------------------------------------------------------------------------- */
+.lluvia-emoji {
+  position: fixed;
+  top: -2.5rem;
+  z-index: 9999;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  pointer-events: none;
+  user-select: none;
+  animation: lluvia-caida 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes lluvia-caida {
+  0% { transform: translateY(0) rotate(0deg) scale(0.85); opacity: 1; }
+  75% { opacity: 1; }
+  100% { transform: translateY(105dvh) rotate(45deg) scale(1.1); opacity: 0; }
+}
+
+.emoji-pop {
+  position: fixed;
+  z-index: 9999;
+  font-size: clamp(2rem, 6vw, 3rem);
+  pointer-events: none;
+  user-select: none;
+  animation: emoji-burst 1.2s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes emoji-burst {
+  0% { transform: translate(-50%, -50%) scale(0.4); opacity: 1; }
+  50% { transform: translate(calc(-50% + var(--pop-x, 0px)), calc(-50% + var(--pop-y, -60px))) scale(1.25) rotate(var(--pop-rot, 15deg)); opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--pop-x, 0px)), calc(-50% + var(--pop-y, -60px) + 35px)) scale(0.9) rotate(var(--pop-rot, 30deg)); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lluvia-emoji, .emoji-pop {
+    display: none !important;
+  }
+}

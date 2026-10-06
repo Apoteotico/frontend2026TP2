@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-label="Captura de disco en reproduccion en el perfil de Esteban">
+  <rect width="720" height="220" fill="#fff8ee"/>
+  <text x="32" y="48" font-family="Georgia, serif" font-size="24" fill="#1c1410">Esteban · en reproducción</text>
+  <rect x="32" y="72" width="656" height="64" rx="12" fill="#f7f0e4"/>
+  <text x="52" y="110" font-family="Arial, sans-serif" font-size="16" fill="#1c1410">Rolling Stones  Exile on Main St. (1972)</text>
+  <rect x="32" y="148" width="656" height="48" rx="12" fill="#ffe7c2" stroke="#e0a106" stroke-width="3"/>
+  <text x="52" y="178" font-family="Arial, sans-serif" font-size="16" fill="#1c1410">Los Fabulosos Cadillacs  Vasos Vacíos (1993)</text>
+</svg>
