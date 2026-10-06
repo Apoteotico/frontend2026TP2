@@ -19,18 +19,8 @@ export default function Home() {
   return (
     <div className="home-page">
       {/* SECCIÓN HERO / MARQUESINA */}
-      <section style={{
-        background: 'linear-gradient(135deg, var(--tinta) 0%, var(--tinta-3) 100%)',
-        color: 'var(--mozzarella)',
-        borderRadius: 'var(--radio)',
-        padding: 'clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem)',
-        boxShadow: 'var(--sombra-alta)',
-        border: '1px solid rgba(232, 167, 43, 0.3)',
-        marginBottom: '3rem',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <div style={{ maxWidth: '820px' }}>
+      <section className="home-hero-marquee">
+        <div style={{ maxWidth: '820px', position: 'relative', zIndex: 1 }}>
           <span style={{
             fontFamily: 'var(--fuente-codigo)',
             color: 'var(--birra)',
