@@ -89,9 +89,12 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 * **Modal de detalle:** Cada registro permite abrir una vista modal para consultar la sinopsis maridada y la receta completa.
 
 ### 4. Consumo Asíncrono de API Pública (`/api`)
-* Conexión en vivo con **[Apple iTunes Search API](https://performance-partners.apple.com/search-api)** (API pública gratuita sin claves privadas y con CORS habilitado).
-* Selector de colecciones curadas del equipo (*Bandas Sonoras de Películas*, *Selección Guillermo*, *Selección Florencia*, *Selección Sonia*, *Selección Eitel* y *Selección Esteban*) más buscador libre en tiempo real para cualquier artista, álbum o película.
-* Reproductor integrado con `useRef` para escuchar fragmentos de 30 segundos y visualizar portadas en alta resolución (`300x300`).
+* Conexión en vivo con **[Apple iTunes Search & Lookup API](https://performance-partners.apple.com/search-api)** (API pública gratuita sin claves privadas y con CORS habilitado).
+* **Selectores en cascada cerrados al equipo:**
+  1. **Integrante del equipo** (Florencia, Sonia, Eitel, Esteban o Guillermo).
+  2. **Discos del integrante** (*Todos sus discos (3)* o cualquiera de sus 3 álbumes favoritos para ver y escuchar su lista de temas).
+  3. **Películas del integrante (Soundtrack)** (cualquiera de sus 3 películas favoritas para escuchar su banda sonora original).
+* Reproductor integrado con `useRef` para escuchar fragmentos de 30 segundos y visualizar portadas auténticas en alta resolución (`300x300`).
 * **Manejo de estados asíncronos:**
   - `cargando`: Spinner visual con mensaje amigable.
   - `error`: Cartel de error ante caídas de red o fallas HTTP.
@@ -133,8 +136,8 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
         │     │     ├── <FiltrosBar />
         │     │     ├── <CardMaridaje /> (x20 · PropTypes)
         │     │     └── <DetalleModal /> (PropTypes)
-        │     ├── <ApiConsumo /> (Apple iTunes Search API)
-        │     │     ├── <ApiControlPanel />
+        │     ├── <ApiConsumo /> (Apple iTunes API)
+        │     │     ├── <CascadingSelectors /> (Integrante -> Discos / Películas)
         │     │     ├── <LoadingSpinner />
         │     │     ├── <ErrorAlert />
         │     │     └── <MediaTrackCard /> (x12 · Audio 30s)

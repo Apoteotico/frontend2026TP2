@@ -47,11 +47,11 @@ export const bitacoraEntries = [
   {
     id: 6,
     fecha: "2026-10-05",
-    titulo: "Consumo de API pública (Apple iTunes Search API) y estados asíncronos",
+    titulo: "Consumo de API pública (Apple iTunes API) con selectores en cascada",
     categoria: "api",
-    decision: "Conectar la aplicación a la API pública 'Apple iTunes Search' para consultar en tiempo real los discos favoritos del equipo, bandas sonoras de películas y cualquier artista, obteniendo portadas oficiales y preescuchas de 30 segundos sin requerir claves privadas.",
-    dificultad: "Controlar adecuadamente el ciclo de vida asíncrono con `useEffect` y la reproducción de audio, evitando pistas superpuestas y manejando errores de red.",
-    resolucion: "Se implementó un buscador y selector de colecciones con estados explícitos de `cargando`, `error` y `tracks`, botón para forzar reintento de conexión y un reproductor `<audio ref={audioRef}>` centralizado."
+    decision: "Conectar la aplicación a la API pública 'Apple iTunes Search & Lookup' mediante menús desplegables en cascada cerrados al equipo (Integrante -> Sus Discos / Sus Películas) para consultar las canciones originales y bandas sonoras sin traer resultados ajenos.",
+    dificultad: "Evitar que un buscador de texto libre devolviera películas o álbumes que no pertenecen al grupo y controlar adecuadamente la reproducción de audio sin pistas superpuestas.",
+    resolucion: "Se implementaron tres selectores sincronizados en cascada con estados explícitos de `cargando`, `error` y `tracks`, consulta exacta por `collectionId` y un reproductor `<audio ref={audioRef}>` centralizado."
   },
   {
     id: 7,

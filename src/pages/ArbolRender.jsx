@@ -185,16 +185,16 @@ const initialTreeData = {
               id: 'page-api',
               nombre: '<ApiConsumo /> (Ruta: /api)',
               tipo: 'Página Asíncrona',
-              descripcion: 'Consumo de la API pública Apple iTunes Search para discos, canciones y bandas sonoras con reproducción de audio de 30s.',
+              descripcion: 'Explorador de discos y bandas sonoras del equipo mediante selectores en cascada conectados a iTunes API con reproductor de 30s.',
               props: 'Ninguna',
-              estado: 'tracks (array), cargando (boolean), error (string|null), terminoBusqueda (string), playingTrackId, audioRef (useRef)',
+              estado: 'tracks (array), cargando (boolean), error (string|null), slugSeleccionado, discoSeleccionado, peliculaSeleccionada, playingTrackId, audioRef (useRef)',
               hijos: [
                 {
                   id: 'api-controls',
-                  nombre: '<ApiControlPanel />',
+                  nombre: '<CascadingSelectors />',
                   tipo: 'Componente de Control',
-                  descripcion: 'Selector de colecciones de discos/películas del equipo, buscador libre y botones de refresco / simulación de error.',
-                  props: 'coleccionActiva, inputBusqueda, onSelectColeccion, onSubmitBusqueda, onSimulateError',
+                  descripcion: 'Tres menús desplegables en cascada: 1. Integrante del equipo, 2. Discos de ese integrante y 3. Películas de ese integrante (Soundtrack).',
+                  props: 'slugSeleccionado, discoSeleccionado, peliculaSeleccionada, onChangeIntegrante, onChangeDisco, onChangePelicula',
                   estado: 'Ninguno',
                   hijos: []
                 },
@@ -400,15 +400,14 @@ export default function ArbolRender() {
           textTransform: 'uppercase',
           letterSpacing: '0.1em'
         }}>
-          Arquitectura de Componentes · React
+          Estructura de la Aplicación
         </span>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', margin: '0.2rem 0 0.8rem' }}>
-          Árbol de Renderizado de la Aplicación
+          Árbol de Componentes
         </h1>
         <p style={{ color: 'var(--suave)', fontSize: '1.05rem', maxWidth: '780px' }}>
-          Representación interactiva de la jerarquía real de componentes en React.
-          Muestra cómo fluyen las <strong>props</strong> y dónde reside el <strong>estado</strong> manteniendo
-          una arquitectura modular de baja profundidad (máximo 3 a 4 niveles).
+          Diagrama interactivo de la jerarquía de pantallas y componentes del sitio,
+          con el detalle de las propiedades y estados de cada bloque.
         </p>
       </div>
 

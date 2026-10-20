@@ -64,11 +64,11 @@ export default function Sidebar({ isOpen, onClose }) {
   };
 
   const secciones = [
-    { to: '/', label: 'Portada del equipo', badge: 'Home', icon: <ClapperIcon />, end: true },
-    { to: '/catalogo', label: 'Catálogo de Maridajes', badge: '20 ítems', icon: <PizzaIcon /> },
-    { to: '/api', label: 'API Discos y Cine', badge: 'iTunes API', icon: <BeerIcon /> },
-    { to: '/arbol', label: 'Árbol de Componentes', badge: 'React', icon: <TreeIcon /> },
-    { to: '/bitacora', label: 'Bitácora de Rodaje', badge: '10 hitos', icon: <LogIcon /> }
+    { to: '/', label: 'Portada del equipo', badge: 'Inicio', icon: <ClapperIcon />, end: true },
+    { to: '/catalogo', label: 'Catálogo de Maridajes', badge: '20', icon: <PizzaIcon /> },
+    { to: '/api', label: 'Discos y Cine', badge: 'Audio', icon: <BeerIcon /> },
+    { to: '/arbol', label: 'Árbol de Componentes', badge: '', icon: <TreeIcon /> },
+    { to: '/bitacora', label: 'Bitácora de Rodaje', badge: '', icon: <LogIcon /> }
   ];
 
   return (
@@ -152,7 +152,7 @@ export default function Sidebar({ isOpen, onClose }) {
         <div className="sidebar-footer-card">
           <div className="system-status">
             <span className="status-indicator-dot" />
-            <span className="status-indicator-text">TP2 React · En Producción</span>
+            <span className="status-indicator-text">Grupo 21 · Cartelera Activa</span>
           </div>
           <div className="footer-meta-row">
             <span>IFTS 29 · 2C 2026</span>

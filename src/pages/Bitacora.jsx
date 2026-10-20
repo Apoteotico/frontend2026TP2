@@ -50,14 +50,14 @@ export default function Bitacora() {
           textTransform: 'uppercase',
           letterSpacing: '0.1em'
         }}>
-          Registro de Ingeniería · Changelog
+          Historial del Proyecto
         </span>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', margin: '0.2rem 0 0.8rem' }}>
           Bitácora de Rodaje del Equipo
         </h1>
         <p style={{ color: 'var(--suave)', fontSize: '1.05rem', maxWidth: '780px' }}>
-          Registro cronológico e interactivo de las decisiones técnicas, dificultades encontradas
-          y resoluciones adoptadas durante la transición de TP1 (HTML/CSS/JS) a TP2 (React + Vite).
+          Registro cronológico de las decisiones técnicas, dificultades encontradas
+          y soluciones implementadas durante el desarrollo del proyecto.
         </p>
       </div>
 

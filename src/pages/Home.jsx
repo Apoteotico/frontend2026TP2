@@ -30,7 +30,7 @@ export default function Home() {
             display: 'inline-block',
             marginBottom: '0.5rem'
           }}>
-            &lt;TP2 React · Grupo 21&gt;
+            Grupo 21 · Cine, Música, Pizza y Código
           </span>
           <h1 style={{
             fontSize: 'clamp(2.3rem, 5.5vw, 3.8rem)',
@@ -46,8 +46,8 @@ export default function Home() {
             marginBottom: '1.75rem',
             maxWidth: '680px'
           }}>
-            Cinco personas, una productora: cocinamos código en React, servimos birra artesanal
-            y maridamos películas de culto con desafíos de desarrollo para la semana.
+            Cinco personas, una productora: cocinamos código, servimos birra artesanal
+            y maridamos nuestras películas y discos favoritos con desafíos de desarrollo.
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: '2.5rem' }}>
@@ -55,10 +55,10 @@ export default function Home() {
               Ver afiches del equipo
             </a>
             <Link to="/catalogo" className="btn btn-birra">
-              Explorar Catálogo (20 Maridajes)
+              Explorar Catálogo
             </Link>
             <Link to="/api" className="btn btn-ghost" style={{ color: 'var(--mozzarella)', borderColor: 'rgba(246, 241, 231, 0.3)' }}>
-              API Discos y Cine
+              Discos y Bandas Sonoras
             </Link>
           </div>
 
@@ -83,7 +83,7 @@ export default function Home() {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
               <img src="/img/icono-codigo.svg" alt="" width="26" height="26" />
-              <span style={{ fontSize: '0.9rem', color: 'rgba(246, 241, 231, 0.8)' }}>Código React</span>
+              <span style={{ fontSize: '0.9rem', color: 'rgba(246, 241, 231, 0.8)' }}>Proyectos de Código</span>
             </div>
           </div>
         </div>
@@ -189,7 +189,7 @@ export default function Home() {
           </span>
           <h2>Los cinco afiches del equipo</h2>
           <p style={{ color: 'var(--suave)', fontSize: '0.95rem', marginTop: '0.2rem' }}>
-            Cada tarjeta abre el perfil individual dentro de React, con sus datos, gustos e interacción interactiva.
+            Conocé el perfil de cada integrante, sus películas, sus discos y su espacio interactivo.
           </p>
         </div>
 
@@ -268,7 +268,7 @@ export default function Home() {
                   alignItems: 'center',
                   gap: '0.3rem'
                 }}>
-                  Ver perfil en React →
+                  Ver perfil →
                 </span>
               </div>
             </Link>
@@ -283,9 +283,9 @@ export default function Home() {
         padding: '2rem',
         boxShadow: 'var(--sombra)'
       }}>
-        <h2>Estructura y módulos de la aplicación</h2>
+        <h2>Recorrido del sitio</h2>
         <p style={{ color: 'var(--suave)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
-          Accedé directamente a los módulos principales del proyecto:
+          Accedé directamente a las secciones principales:
         </p>
 
         <div style={{
@@ -295,17 +295,17 @@ export default function Home() {
         }}>
           <Link to="/catalogo" className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
             <span style={{ fontSize: '1.6rem' }}>🍕</span>
-            <h3 style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Catálogo Local (20 Ítems)</h3>
+            <h3 style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Catálogo de Maridajes</h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--suave)', marginTop: '0.3rem' }}>
-              Nuestras películas, discos, pizzas y birras del TP1 combinadas en JSON local con búsqueda y filtros.
+              Las películas, discos, pizzas y birras del equipo combinadas con filtros por integrante y estilo.
             </p>
           </Link>
 
           <Link to="/api" className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
             <span style={{ fontSize: '1.6rem' }}>💿</span>
-            <h3 style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>API Discos y Bandas Sonoras</h3>
+            <h3 style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Discos y Bandas Sonoras</h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--suave)', marginTop: '0.3rem' }}>
-              Consumo asíncrono de Apple iTunes Search API con reproductor de 30s, estados de carga y manejo de errores.
+              Seleccioná un integrante para explorar y escuchar sus discos o los soundtracks de sus películas.
             </p>
           </Link>
 
@@ -313,15 +313,15 @@ export default function Home() {
             <span style={{ fontSize: '1.6rem' }}>🌳</span>
             <h3 style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Árbol de Componentes</h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--suave)', marginTop: '0.3rem' }}>
-              Diagrama interactivo de la jerarquía de renderizado de React con nodos expandibles y colapsables.
+              Diagrama interactivo de la estructura de pantallas y componentes con nodos desplegables.
             </p>
           </Link>
 
           <Link to="/bitacora" className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
             <span style={{ fontSize: '1.6rem' }}>📜</span>
-            <h3 style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Bitácora de Desarrollo</h3>
+            <h3 style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Bitácora de Rodaje</h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--suave)', marginTop: '0.3rem' }}>
-              Registro de decisiones, dificultades y soluciones arquitectónicas con filtro por categoría.
+              Registro de las etapas del proyecto, decisiones de diseño y soluciones implementadas.
             </p>
           </Link>
         </div>

@@ -10,14 +10,14 @@ export default function Footer() {
             pIT<span>zza</span> y birrAPI
           </p>
           <p className="footer-tagline">
-            Trabajo Práctico Grupal 2 · React + React Router · Frontend sin dependencias pesadas.
+            Grupo 21 · Cine, música, pizza artesanal, birra y proyectos de código.
           </p>
         </div>
 
         <nav aria-label="Enlaces del pie" className="footer-nav">
           <Link to="/">Portada</Link>
           <Link to="/catalogo">Catálogo</Link>
-          <Link to="/api">API Discos y Cine</Link>
+          <Link to="/api">Discos y Cine</Link>
           <Link to="/arbol">Árbol</Link>
           <Link to="/bitacora">Bitácora</Link>
         </nav>

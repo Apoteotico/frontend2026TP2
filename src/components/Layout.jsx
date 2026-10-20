@@ -5,11 +5,11 @@ import Footer from './Footer';
 
 // Títulos de ruta mostrados en el breadcrumb superior
 const ROUTE_TITLES = {
-  '/': 'Portada del equipo · Función de gala',
-  '/catalogo': 'Catálogo de Maridajes · 20 Funciones del Equipo',
-  '/api': 'API Pública · Discos y Bandas Sonoras en Vivo (Apple iTunes API)',
-  '/arbol': 'Árbol de Componentes · Jerarquía de React',
-  '/bitacora': 'Bitácora de Rodaje · 10 Decisiones de Arquitectura'
+  '/': 'Portada del equipo',
+  '/catalogo': 'Catálogo de Maridajes',
+  '/api': 'Discos y Bandas Sonoras',
+  '/arbol': 'Árbol de Componentes',
+  '/bitacora': 'Bitácora de Rodaje'
 };
 
 /**
@@ -130,7 +130,6 @@ export default function Layout() {
                   🌙 Noche
                 </button>
               </div>
-              <span className="topbar-pill">⚡ Vite + React</span>
               <span className="topbar-pill">🎬 5 Integrantes</span>
               <a
                 href="https://github.com/Apoteotico/TP1-FrontEnd-Grupo21"

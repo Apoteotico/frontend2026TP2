@@ -99,15 +99,13 @@ export default function Catalogo() {
           textTransform: 'uppercase',
           letterSpacing: '0.1em'
         }}>
-          Datos Locales JSON · 20 Funciones del Equipo · TP1 + TP2
+          Cartelera de la Casa
         </span>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', margin: '0.2rem 0 0.8rem' }}>
           Cartelera de Maridajes del Equipo
         </h1>
         <p style={{ color: 'var(--suave)', fontSize: '1.05rem', maxWidth: '780px' }}>
-          Catálogo armado exclusivamente con las <strong>15 películas</strong> y los <strong>15 discos</strong> de
-          los cinco integrantes del grupo, combinados con las <strong>5 pizzas</strong>, las <strong>5 birras</strong> y
-          los <strong>proyectos de código</strong> que definimos en el TP1.
+          Combinaciones de película, disco, pizza, birra artesanal y proyecto de código elegidas por cada integrante del grupo.
         </p>
       </div>
 
@@ -178,7 +176,7 @@ export default function Catalogo() {
 
           <div>
             <label htmlFor="filtro-birra" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--tinta-2)' }}>
-              🍺 Birra de la Casa (TP1):
+              🍺 Birra de la Casa:
             </label>
             <select
               id="filtro-birra"

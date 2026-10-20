@@ -236,7 +236,7 @@ export const integrantes = [
         artista: "Charly García",
         anio: 1983,
         cancion: "Nos Siguen Pegando Abajo",
-        portada: "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/59/09/cc/5909ccf4-019b-7e30-cae6-a0711a2e10b9/00602498487730.rgb.jpg/300x300bb.jpg",
+        portada: "https://upload.wikimedia.org/wikipedia/en/7/73/Clics_modernos.jpg",
         previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ec/12/f9/ec12f98d-e7bd-6e85-bfe6-06244a4e6414/mzaf_5619965905438394947.plus.aac.p.m4a"
       },
       {
@@ -290,17 +290,17 @@ export const integrantes = [
         titulo: "The Doors in Concert",
         artista: "The Doors",
         anio: 1970,
-        cancion: "Light My Fire",
-        portada: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/43/f6/14/43f61467-931b-21af-6b22-13717edc8ed9/603497870295.jpg/300x300bb.jpg",
-        previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ad/82/ea/ad82ea83-8048-3a06-6004-4f4dc7a710dc/mzaf_483167435383327667.plus.aac.p.m4a"
+        cancion: "Light My Fire (Live)",
+        portada: "https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/b9/b9/0c/b9b90ccd-3b42-5e44-0ca9-b1c2ef042ab5/dj.psjfzukp.jpg/300x300bb.jpg",
+        previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c0/72/2b/c0722b65-c8b7-da8a-e296-0649d4a3a5a1/mzaf_7945908393666011279.plus.aac.p.m4a"
       },
       {
         titulo: "The Rolling Stones Rock and Roll Circus",
         artista: "The Rolling Stones",
         anio: 1968,
-        cancion: "Sympathy For The Devil",
-        portada: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a3/d1/78/a3d178a8-f1c2-c1c3-1c5d-d78ab3af9768/20UMGIM13726.rgb.jpg/300x300bb.jpg",
-        previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/1b/f7/73/1bf77304-235f-3f02-c126-fac9a5aa9917/mzaf_4625747673195165829.plus.aac.p.m4a"
+        cancion: "Sympathy for the Devil (Live)",
+        portada: "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/0a/9a/06/0a9a06a1-0f94-1a9d-bfd7-a21c504a60ab/19UMGIM23787.rgb.jpg/300x300bb.jpg",
+        previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/75/9a/0c/759a0c24-b35b-615e-f5cf-bbcecb29f508/mzaf_10150649733419970849.plus.aac.p.m4a"
       },
       {
         titulo: "Abbey Road",

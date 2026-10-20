@@ -181,7 +181,7 @@ export default function Perfil() {
               textTransform: 'uppercase',
               letterSpacing: '0.1em'
             }}>
-              Perfil del equipo · React
+              Perfil del equipo
             </span>
             <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', margin: '0.3rem 0 1rem', color: 'var(--tinta)' }}>
               {miembro.nombre}
@@ -329,6 +329,7 @@ export default function Perfil() {
                             alt={`Portada de ${disco.titulo}`}
                             className="album-cover-img"
                             loading="lazy"
+                            referrerPolicy="no-referrer"
                           />
                         </div>
                       )}
@@ -472,7 +473,7 @@ export default function Perfil() {
       <aside className="card" style={{ padding: '1.5rem', background: 'var(--papel)' }}>
         <h3 style={{ fontSize: '1.1rem', marginBottom: '0.3rem' }}>Recorrido del equipo</h3>
         <p style={{ fontSize: '0.88rem', color: 'var(--suave)', marginBottom: '1rem' }}>
-          Cinco perfiles navegables con controles internos directos sin usar el botón Atrás del navegador.
+          Seguí conociendo a los demás integrantes del grupo.
         </p>
 
         <nav aria-label="Navegación entre integrantes" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
