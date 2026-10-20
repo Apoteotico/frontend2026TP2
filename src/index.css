@@ -614,6 +614,70 @@ code {
   color: #ffffff;
 }
 
+/* Selector de Tema (Semana M9 - PFA 9 A2) */
+.topbar-theme-btn {
+  background: var(--mozzarella);
+  border: 1px solid var(--linea);
+  color: var(--texto);
+  font-family: var(--fuente-codigo);
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
+}
+
+.topbar-theme-btn:hover {
+  background: var(--papel);
+  border-color: var(--birra);
+  color: var(--birra-oscura);
+  transform: translateY(-1px);
+}
+
+/* Modo Función de Gala / Oscuro (Semana M9) */
+.app-layout.theme-oscuro {
+  background-color: #110e0c;
+  color: #f6f1e7;
+}
+
+.app-layout.theme-oscuro .app-main {
+  background: #15110f;
+  background-image: 
+    radial-gradient(circle at 10% 0%, rgba(232, 167, 43, 0.08), transparent 45%),
+    radial-gradient(circle at 90% 10%, rgba(200, 69, 44, 0.06), transparent 40%);
+}
+
+.app-layout.theme-oscuro .desktop-topbar {
+  background: rgba(21, 17, 15, 0.92);
+  border-bottom-color: rgba(232, 167, 43, 0.2);
+}
+
+.app-layout.theme-oscuro .topbar-current-page {
+  color: #ffffff;
+}
+
+.app-layout.theme-oscuro .card {
+  background: #1c1715;
+  border-color: rgba(232, 167, 43, 0.2);
+  color: #f6f1e7;
+}
+
+.app-layout.theme-oscuro .card h1,
+.app-layout.theme-oscuro .card h2,
+.app-layout.theme-oscuro .card h3 {
+  color: #ffffff;
+}
+
+.app-layout.theme-oscuro .topbar-theme-btn {
+  background: #251e1b;
+  border-color: rgba(232, 167, 43, 0.35);
+  color: var(--birra);
+}
+
 .page-content {
   flex: 1;
   padding: 2.25rem 2.5rem 4rem;

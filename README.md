@@ -80,8 +80,8 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 
 ### 3. Catálogo con 24 Datos Locales JSON (`/catalogo`)
 * Archivo [`src/data/catalogo.json`](src/data/catalogo.json) con **24 registros completos** (superando el requisito de 20).
-* **Buscador en tiempo real:** Filtra por texto en título, película, director, pizza, birra o proyecto.
-* **Filtros por propiedad:** Filtro por estilo de cerveza (IPA, Stout, Red Ale, Golden, APA, Honey) y por dificultad técnica (Principiante, Intermedio, Avanzado).
+* **Buscador y filtros sincronizados con la URL (`useSearchParams` - Semana M9):** La búsqueda por texto, estilo de birra y nivel de código se reflejan en tiempo real en los query params (`/catalogo?q=...&birra=...&dificultad=...`), permitiendo compartir o recargar enlaces con los filtros aplicados.
+* **Componentes modulares con PropTypes:** Implementación de `<CardMaridaje />` y `<DetalleModal />` validados exhaustivamente mediante `prop-types` (`PropTypes.shape`, `PropTypes.string`, `PropTypes.number`, etc.) según lo requerido en la Semana M9.
 * Estado de "sin resultados" con botón para restablecer.
 * **Modal de detalle:** Cada registro permite abrir una vista modal para consultar la sinopsis maridada y la receta completa.
 
@@ -100,7 +100,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 * **Interactividad (Nivel Propone):** Permite **expandir y contraer nodos** de forma individual o masiva ("Expandir todo" / "Contraer todo"), detallando las `props` recibidas y el `estado` administrado por cada componente.
 
 ### 6. Bitácora de Rodaje (`/bitacora`)
-* **8 entradas detalladas** que registran el proceso de trabajo del equipo desde el inicio hasta el TP2, incluyendo las decisiones de arquitectura, modularización en React y el rediseño e integración estética del layout y DesktopTopBar.
+* **9 entradas detalladas** que registran el proceso de trabajo del equipo desde el inicio hasta el TP2, incluyendo las decisiones de arquitectura, modularización en React, integración estética del layout y las técnicas avanzadas de React Router y PropTypes (Semana M9).
 * Filtro en tiempo real por categoría (*arquitectura, react, componentes, api, responsive, ux*).
 * Acordeones interactivos para desplegar y contraer la decisión, dificultad y resolución de cada hito.
 
@@ -112,22 +112,22 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 <App /> (BrowserRouter + Routes)
   └── <Layout /> (Sidebar + MobileHeader + DesktopTopBar + Footer)
         ├── <Sidebar /> (Identidad + NavLinks + Cast Integrantes)
-        ├── <MobileHeader /> (Logo + Botón Hamburguesa móvil)
-        ├── <DesktopTopBar /> (Breadcrumb dinámico + Status badges)
+        ├── <MobileHeader /> (Logo + Botón Hamburguesa móvil + Tema)
+        ├── <DesktopTopBar /> (Breadcrumb dinámico + ThemeToggle + Status badges)
         ├── <Outlet />
         │     ├── <Home />
         │     │     ├── <HeroMarquesina />
-        │     │     ├── <SorteadorNoche />
+        │     │     ├── <SorteadorNoche /> (con useNavigate a catálogo)
         │     │     └── <MemberCard /> (x5)
         │     ├── <Perfil />
         │     │     ├── <ProfileHead />
         │     │     ├── <FavoritosBoard />
         │     │     ├── <InteraccionIndividual />
         │     │     └── <PagerNavigation />
-        │     ├── <Catalogo />
+        │     ├── <Catalogo /> (con useSearchParams)
         │     │     ├── <FiltrosBar />
-        │     │     ├── <CatalogoCard /> (x24)
-        │     │     └── <DetalleModal />
+        │     │     ├── <CardMaridaje /> (x24 · PropTypes)
+        │     │     └── <DetalleModal /> (PropTypes)
         │     ├── <ApiConsumo />
         │     │     ├── <ApiControlPanel />
         │     │     ├── <LoadingSpinner />
@@ -137,16 +137,18 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
         │     │     └── <TreeNode /> (recursivo y colapsable)
         │     └── <Bitacora />
         │           ├── <CategoryFilter />
-        │           └── <LogCard /> (acordeón x8)
+        │           └── <LogCard /> (acordeón x9)
         └── <Footer />
 ```
 
 ---
 
 ## 🎨 Tecnologías y Decisiones de Diseño
-* **React 18 / 19** con functional components y hooks.
+* **React 18 / 19** con functional components y hooks (`useState`, `useEffect`, `useMemo`, `useCallback`).
+* **PropTypes (`prop-types`)** para la validación estricta de contratos de props en componentes reutilizables (Semana M9).
 * **Vite** como empaquetador ultrarrápido y herramienta recomendada oficialmente.
-* **React Router v6** para el manejo de rutas del lado del cliente.
+* **React Router v6 / v7** para navegación del lado del cliente, rutas anidadas, `useNavigate()` y sincronización de query strings con `useSearchParams()`.
+* **Selector de Iluminación / Tema:** Conmutador de *Modo Gala* (oscuro) y *Modo Día* (claro) con persistencia en `localStorage` (Semana M9 PFA 9).
 * **Google Fonts:** *Fraunces* (títulos de corte cinematográfico) y *Outfit* (texto legible y moderno).
 * **Paleta cromática:** Tomate (`#c8452c`), Dorado Birra (`#e8a72b`), Albahaca (`#3f7d5c`), Azul Código (`#2b6f8f`), Tinta (`#12100e`) y Papel Crema (`#fdf8f0`).
 * **Diseño adaptativo:** Breakpoints testeados en 400 px (una sola columna estricta sin desbordes), 900 px y 1200 px.

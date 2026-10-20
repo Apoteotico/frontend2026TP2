@@ -13,9 +13,9 @@ const initialTreeData = {
       id: 'layout',
       nombre: '<Layout />',
       tipo: 'Layout Maestro',
-      descripcion: 'Envoltorio compartido que aloja la Sidebar y el contenedor del Outlet.',
+      descripcion: 'Envoltorio compartido que aloja la Sidebar, DesktopTopBar y el contenedor del Outlet.',
       props: 'children / Outlet',
-      estado: 'isSidebarOpen (boolean), location (pathname)',
+      estado: 'isSidebarOpen (boolean), tema (claro|oscuro - PFA 9), location (pathname)',
       hijos: [
         {
           id: 'sidebar',
@@ -141,33 +141,33 @@ const initialTreeData = {
               tipo: 'Página',
               descripcion: 'Catálogo de 24 datos locales JSON con búsqueda y filtros.',
               props: 'Ninguna',
-              estado: 'busqueda (string), filtroBirra (string), filtroDificultad (string), modalItem (objeto)',
+              estado: 'useSearchParams (q, birra, dificultad), modalItem (objeto|null)',
               hijos: [
                 {
                   id: 'catalogo-filtros',
                   nombre: '<FiltrosBar />',
                   tipo: 'Componente de Control',
-                  descripcion: 'Input de texto en vivo, select de estilo de birra y select de dificultad.',
-                  props: 'filtros, onUpdate, onReset',
-                  estado: 'Ninguno',
+                  descripcion: 'Input de texto y selectores sincronizados bidireccionalmente con useSearchParams (Semana M9).',
+                  props: 'searchParams, setSearchParams',
+                  estado: 'Sincronizado con URL',
                   hijos: []
                 },
                 {
                   id: 'catalogo-cards',
-                  nombre: '<CatalogoCard /> (x24)',
-                  tipo: 'Componente Reutilizable',
-                  descripcion: 'Tarjetas dinámicas con película, pizza, birra y desafío de código.',
-                  props: 'item (objeto), onSelectDetail',
-                  estado: 'Ninguno',
+                  nombre: '<CardMaridaje /> (x24 · PropTypes)',
+                  tipo: 'Componente Modular Validado',
+                  descripcion: 'Tarjetas con película, pizza, birra y reto técnico. Validadas con PropTypes.shape (Semana M9).',
+                  props: 'item (shape 12 campos), onVerDetalle (func)',
+                  estado: 'Ninguno (presentacional)',
                   hijos: []
                 },
                 {
                   id: 'catalogo-modal',
-                  nombre: '<DetalleModal />',
-                  tipo: 'Componente Flotante',
-                  descripcion: 'Modal accesible con la sinopsis maridada completa y recetas.',
-                  props: 'item (objeto), onClose',
-                  estado: 'Ninguno (condicional)',
+                  nombre: '<DetalleModal /> (PropTypes)',
+                  tipo: 'Modal Accesible Validado',
+                  descripcion: 'Modal con sinopsis de maridaje y reto. Validado formalmente con PropTypes (Semana M9).',
+                  props: 'item (shape|null), onClose (func)',
+                  estado: 'Ninguno (controlado)',
                   hijos: []
                 }
               ]

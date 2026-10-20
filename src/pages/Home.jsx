@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { integrantes } from '../data/integrantes';
 import catalogo from '../data/catalogo.json';
 
 export default function Home() {
   const [nocheSorteada, setNocheSorteada] = useState(null);
   const [animandoSorteo, setAnimandoSorteo] = useState(false);
+  const navigate = useNavigate();
 
   const sortearNoche = () => {
     setAnimandoSorteo(true);
@@ -144,6 +145,28 @@ export default function Home() {
               <span style={{ fontSize: '0.78rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--albahaca)', textTransform: 'uppercase' }}>💻 Reto de Código</span>
               <p style={{ fontWeight: 600, color: 'var(--tinta)' }}>{nocheSorteada.proyectoCodigo}</p>
               <span className="badge badge-albahaca" style={{ marginTop: '0.3rem' }}>{nocheSorteada.dificultad} · {nocheSorteada.tiempoEstimado}</span>
+            </div>
+            <div style={{
+              gridColumn: '1 / -1',
+              marginTop: '0.5rem',
+              paddingTop: '0.85rem',
+              borderTop: '1px dashed rgba(232, 167, 43, 0.4)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '0.75rem'
+            }}>
+              <span style={{ fontSize: '0.82rem', color: 'var(--suave)', fontFamily: 'var(--fuente-codigo)' }}>
+                ⚡ Sorteo reactivo vinculado a React Router y Catálogo
+              </span>
+              <button
+                type="button"
+                className="btn btn-birra btn-sm"
+                onClick={() => navigate(`/catalogo?q=${encodeURIComponent(nocheSorteada.pelicula)}`)}
+              >
+                Ver en Catálogo con filtro directo →
+              </button>
             </div>
           </div>
         ) : (

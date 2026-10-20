@@ -9,11 +9,18 @@ const ROUTE_TITLES = {
   '/catalogo': 'Catálogo de Maridajes · 24 Registros JSON',
   '/api': 'API Pública · Cervecerías en Vivo (Open Brewery DB)',
   '/arbol': 'Árbol de Componentes · Jerarquía de React',
-  '/bitacora': 'Bitácora de Rodaje · 8 Decisiones de Arquitectura'
+  '/bitacora': 'Bitácora de Rodaje · 9 Decisiones de Arquitectura'
 };
 
 export default function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [tema, setTema] = useState(() => {
+    try {
+      return localStorage.getItem('pITzza_tema') || 'claro';
+    } catch {
+      return 'claro';
+    }
+  });
   const location = useLocation();
 
   useEffect(() => {
@@ -29,6 +36,14 @@ export default function Layout() {
     setIsSidebarOpen(false);
   };
 
+  const toggleTema = () => {
+    const nuevo = tema === 'claro' ? 'oscuro' : 'claro';
+    setTema(nuevo);
+    try {
+      localStorage.setItem('pITzza_tema', nuevo);
+    } catch {}
+  };
+
   // Obtener el título dinámico según la ruta
   let currentTitle = ROUTE_TITLES[location.pathname];
   if (!currentTitle && location.pathname.startsWith('/perfil/')) {
@@ -38,7 +53,7 @@ export default function Layout() {
   }
 
   return (
-    <div className="app-layout">
+    <div className={`app-layout ${tema === 'oscuro' ? 'theme-oscuro' : 'theme-claro'}`}>
       {/* Backdrop para cerrar en móvil */}
       {isSidebarOpen && (
         <div
@@ -59,15 +74,26 @@ export default function Layout() {
             <img src="/img/icono-pizza.svg" alt="" width="32" height="32" />
             <span>pIT<strong>zza</strong> y birrAPI</span>
           </Link>
-          <button
-            type="button"
-            className="btn-toggle-menu"
-            onClick={toggleSidebar}
-            aria-label={isSidebarOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
-            aria-expanded={isSidebarOpen}
-          >
-            {isSidebarOpen ? "✕" : "☰"}
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <button
+              type="button"
+              onClick={toggleTema}
+              className="topbar-theme-btn"
+              style={{ fontSize: '0.8rem', padding: '0.2rem 0.5rem' }}
+              aria-label="Alternar tema claro y oscuro"
+            >
+              {tema === 'oscuro' ? '🌙' : '☀️'}
+            </button>
+            <button
+              type="button"
+              className="btn-toggle-menu"
+              onClick={toggleSidebar}
+              aria-label={isSidebarOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
+              aria-expanded={isSidebarOpen}
+            >
+              {isSidebarOpen ? "✕" : "☰"}
+            </button>
+          </div>
         </header>
 
         {/* Barra superior de integración para escritorio (conecta la sidebar con el contenido) */}
@@ -80,6 +106,15 @@ export default function Layout() {
             </div>
 
             <div className="topbar-actions">
+              <button
+                type="button"
+                onClick={toggleTema}
+                className="topbar-theme-btn"
+                title="Cambiar iluminación (Semana M9 - PFA 9)"
+                aria-label={`Cambiar a ${tema === 'oscuro' ? 'Modo Día' : 'Modo Gala'}`}
+              >
+                {tema === 'oscuro' ? '🌙 Modo Gala' : '☀️ Modo Día'}
+              </button>
               <span className="topbar-pill">⚡ Vite + React</span>
               <span className="topbar-pill">🎬 5 Integrantes</span>
               <a

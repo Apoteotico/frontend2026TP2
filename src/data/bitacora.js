@@ -70,5 +70,14 @@ export const bitacoraEntries = [
     decision: "Rediseñar integralmente la Sidebar y el Layout maestro, incorporando una barra superior de escritorio (DesktopTopBar) con efecto vidrio (backdrop-filter: blur) y breadcrumb dinámico en tiempo real.",
     dificultad: "La barra lateral oscura flotaba desconectada frente al lienzo claro, con un scrollbar nativo gris antiestético, salto de línea en el logo y los integrantes inferiores cortados en pantallas estándar de laptop (768px-900px).",
     resolucion: "Se calibró el ancho a 290px, se ajustaron espaciados verticales para alojar los 5 integrantes sin desbordes, se estilizó un scrollbar ultra-fino de 4px en tonos ámbar, y se creó la clase .home-hero-marquee para dialogar armónicamente con la barra lateral."
+  },
+  {
+    id: 9,
+    fecha: "2026-10-12",
+    titulo: "Rutas avanzadas (useSearchParams, useNavigate), PropTypes y Selector de Iluminación",
+    categoria: "react",
+    decision: "Incorporar las técnicas troncales de la Semana M9: sincronización bidireccional de búsqueda y filtros con la URL vía useSearchParams en el catálogo, navegación programática con useNavigate desde el sorteador de la portada, conmutador de tema Gala/Día (PFA 9 A2), y modularización de tarjetas y modales con validación formal de PropTypes.",
+    dificultad: "Evitar desincronizaciones entre el estado de los inputs y los parámetros de consulta al compartir enlaces o recargar, asegurando que las props cumplan estrictamente los contratos esperados.",
+    resolucion: "Se unificó el manejo de URLSearchParams con replace: true en tiempo real y se definieron esquemas estrictos de PropTypes.shape en CardMaridaje y DetalleModal para detectar discrepancias en desarrollo."
   }
 ];

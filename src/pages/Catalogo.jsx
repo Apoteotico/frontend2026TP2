@@ -1,17 +1,52 @@
 import React, { useState, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import catalogoData from '../data/catalogo.json';
+import CardMaridaje from '../components/CardMaridaje';
+import DetalleModal from '../components/DetalleModal';
 
 export default function Catalogo() {
-  const [busqueda, setBusqueda] = useState('');
-  const [filtroTipoBirra, setFiltroTipoBirra] = useState('todos');
-  const [filtroDificultad, setFiltroDificultad] = useState('todas');
+  const [searchParams, setSearchParams] = useSearchParams();
   const [modalItem, setModalItem] = useState(null);
+
+  // Sincronización directa con los parámetros de la URL (Semana M9 - Cap 28: useSearchParams)
+  const busqueda = searchParams.get('q') || '';
+  const filtroTipoBirra = searchParams.get('birra') || 'todos';
+  const filtroDificultad = searchParams.get('dificultad') || 'todas';
 
   // Obtener estilos únicos de birra para el selector
   const tiposBirra = useMemo(() => {
     const tipos = new Set(catalogoData.map(item => item.tipoBirra));
     return ['todos', ...Array.from(tipos)];
   }, []);
+
+  // Actualizador centralizado de URL searchParams
+  const actualizarParams = (nuevosValores) => {
+    const params = new URLSearchParams(searchParams);
+    Object.entries(nuevosValores).forEach(([clave, valor]) => {
+      if (!valor || valor === 'todos' || valor === 'todas') {
+        params.delete(clave);
+      } else {
+        params.set(clave, valor);
+      }
+    });
+    setSearchParams(params, { replace: true });
+  };
+
+  const handleBusqueda = (e) => {
+    actualizarParams({ q: e.target.value });
+  };
+
+  const handleTipoBirra = (e) => {
+    actualizarParams({ birra: e.target.value });
+  };
+
+  const handleDificultad = (e) => {
+    actualizarParams({ dificultad: e.target.value });
+  };
+
+  const restablecerFiltros = () => {
+    setSearchParams({}, { replace: true });
+  };
 
   // Filtrado reactivo en tiempo real
   const itemsFiltrados = useMemo(() => {
@@ -34,12 +69,6 @@ export default function Catalogo() {
     });
   }, [busqueda, filtroTipoBirra, filtroDificultad]);
 
-  const restablecerFiltros = () => {
-    setBusqueda('');
-    setFiltroTipoBirra('todos');
-    setFiltroDificultad('todas');
-  };
-
   return (
     <div className="catalogo-page">
       {/* CABECERA */}
@@ -51,7 +80,7 @@ export default function Catalogo() {
           textTransform: 'uppercase',
           letterSpacing: '0.1em'
         }}>
-          Datos Locales JSON · 24 Registros
+          Datos Locales JSON · 24 Registros · React Router useSearchParams
         </span>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', margin: '0.2rem 0 0.8rem' }}>
           Cartelera de Maridajes y Proyectos
@@ -89,7 +118,7 @@ export default function Catalogo() {
               id="input-busqueda"
               type="text"
               value={busqueda}
-              onChange={(e) => setBusqueda(e.target.value)}
+              onChange={handleBusqueda}
               placeholder="Ej: Tarantino, Fugazzeta, IPA, Canvas..."
               style={{
                 width: '100%',
@@ -98,22 +127,20 @@ export default function Catalogo() {
                 border: '1px solid var(--linea)',
                 background: 'var(--crema)',
                 fontFamily: 'var(--fuente-texto)',
-                fontSize: '0.95rem',
-                outline: 'none',
-                color: 'var(--texto)'
+                fontSize: '0.95rem'
               }}
             />
           </div>
 
-          {/* Filtro por Estilo de Birra */}
+          {/* Filtro por tipo de birra */}
           <div>
-            <label htmlFor="select-birra" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--tinta-2)' }}>
+            <label htmlFor="filtro-birra" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--tinta-2)' }}>
               🍺 Estilo de Cerveza:
             </label>
             <select
-              id="select-birra"
+              id="filtro-birra"
               value={filtroTipoBirra}
-              onChange={(e) => setFiltroTipoBirra(e.target.value)}
+              onChange={handleTipoBirra}
               style={{
                 width: '100%',
                 padding: '0.7rem 1rem',
@@ -121,9 +148,7 @@ export default function Catalogo() {
                 border: '1px solid var(--linea)',
                 background: 'var(--crema)',
                 fontFamily: 'var(--fuente-texto)',
-                fontSize: '0.95rem',
-                outline: 'none',
-                color: 'var(--texto)'
+                fontSize: '0.95rem'
               }}
             >
               {tiposBirra.map((tipo) => (
@@ -134,15 +159,15 @@ export default function Catalogo() {
             </select>
           </div>
 
-          {/* Filtro por Dificultad de Código */}
+          {/* Filtro por dificultad técnica */}
           <div>
-            <label htmlFor="select-dificultad" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--tinta-2)' }}>
-              💻 Dificultad del Proyecto:
+            <label htmlFor="filtro-dificultad" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--tinta-2)' }}>
+              💻 Nivel del Reto de Código:
             </label>
             <select
-              id="select-dificultad"
+              id="filtro-dificultad"
               value={filtroDificultad}
-              onChange={(e) => setFiltroDificultad(e.target.value)}
+              onChange={handleDificultad}
               style={{
                 width: '100%',
                 padding: '0.7rem 1rem',
@@ -150,9 +175,7 @@ export default function Catalogo() {
                 border: '1px solid var(--linea)',
                 background: 'var(--crema)',
                 fontFamily: 'var(--fuente-texto)',
-                fontSize: '0.95rem',
-                outline: 'none',
-                color: 'var(--texto)'
+                fontSize: '0.95rem'
               }}
             >
               <option value="todas">Todas las dificultades</option>
@@ -175,6 +198,11 @@ export default function Catalogo() {
         }}>
           <span style={{ fontSize: '0.9rem', color: 'var(--suave)' }}>
             Mostrando <strong>{itemsFiltrados.length}</strong> de <strong>{catalogoData.length}</strong> registros
+            {(busqueda || filtroTipoBirra !== 'todos' || filtroDificultad !== 'todas') && (
+              <span style={{ marginLeft: '0.5rem', fontFamily: 'var(--fuente-codigo)', fontSize: '0.8rem', color: 'var(--codigo)' }}>
+                (Filtros activos en URL query)
+              </span>
+            )}
           </span>
 
           {(busqueda || filtroTipoBirra !== 'todos' || filtroDificultad !== 'todas') && (
@@ -190,7 +218,7 @@ export default function Catalogo() {
         </div>
       </section>
 
-      {/* GRILLA DE TARJETAS */}
+      {/* GRILLA DE TARJETAS MODULARIZADAS CON PROPTYPES */}
       {itemsFiltrados.length > 0 ? (
         <div className="catalogo-grid" style={{
           display: 'grid',
@@ -198,65 +226,11 @@ export default function Catalogo() {
           gap: '1.5rem'
         }}>
           {itemsFiltrados.map((item) => (
-            <article
+            <CardMaridaje
               key={item.id}
-              className="card"
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                padding: '1.5rem',
-                background: 'var(--papel)'
-              }}
-            >
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-                  <span className="badge badge-codigo">{item.genero}</span>
-                  <span className="badge badge-birra">{item.tipoBirra}</span>
-                </div>
-
-                <h3 style={{ fontSize: '1.25rem', color: 'var(--tinta)', marginBottom: '0.4rem' }}>
-                  {item.titulo}
-                </h3>
-
-                <div style={{ fontSize: '0.9rem', color: 'var(--suave)', marginBottom: '1rem' }}>
-                  🎬 <strong>{item.pelicula}</strong> ({item.anio}) · {item.director}
-                </div>
-
-                <div style={{
-                  background: 'var(--crema)',
-                  borderRadius: 'var(--radio-sm)',
-                  padding: '0.85rem',
-                  fontSize: '0.88rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.4rem',
-                  marginBottom: '1rem'
-                }}>
-                  <p>🍕 <strong style={{ color: 'var(--tinta)' }}>Pizza:</strong> {item.pizza}</p>
-                  <p>🍺 <strong style={{ color: 'var(--tinta)' }}>Birra:</strong> {item.birra}</p>
-                </div>
-              </div>
-
-              <div>
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  paddingTop: '0.75rem',
-                  borderTop: '1px dashed var(--linea)'
-                }}>
-                  <span className="badge badge-albahaca">{item.dificultad}</span>
-                  <button
-                    type="button"
-                    className="btn btn-birra btn-sm"
-                    onClick={() => setModalItem(item)}
-                  >
-                    Ver maridaje completo 🔍
-                  </button>
-                </div>
-              </div>
-            </article>
+              item={item}
+              onVerDetalle={setModalItem}
+            />
           ))}
         </div>
       ) : (
@@ -282,120 +256,11 @@ export default function Catalogo() {
         </div>
       )}
 
-      {/* MODAL DETALLADO CON INFORMACIÓN ADICIONAL */}
-      {modalItem && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modal-titulo"
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(18, 16, 14, 0.75)',
-            backdropFilter: 'blur(3px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1.25rem',
-            zIndex: 1000
-          }}
-          onClick={() => setModalItem(null)}
-        >
-          <div
-            style={{
-              background: 'var(--papel)',
-              borderRadius: 'var(--radio)',
-              maxWidth: '620px',
-              width: '100%',
-              padding: '2rem',
-              boxShadow: 'var(--sombra-alta)',
-              position: 'relative',
-              maxHeight: '90vh',
-              overflowY: 'auto'
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setModalItem(null)}
-              style={{
-                position: 'absolute',
-                top: '1rem',
-                right: '1rem',
-                background: 'transparent',
-                border: 'none',
-                fontSize: '1.4rem',
-                color: 'var(--suave)',
-                cursor: 'pointer'
-              }}
-              aria-label="Cerrar modal"
-            >
-              ✕
-            </button>
-
-            <span className="badge badge-tomate" style={{ marginBottom: '0.5rem' }}>
-              {modalItem.genero} · {modalItem.tipoBirra}
-            </span>
-            <h2 id="modal-titulo" style={{ fontSize: '1.65rem', marginBottom: '0.3rem' }}>
-              {modalItem.titulo}
-            </h2>
-            <p style={{ color: 'var(--suave)', fontSize: '0.95rem', marginBottom: '1.25rem' }}>
-              Película: <strong>{modalItem.pelicula}</strong> ({modalItem.anio}) · Dirección: {modalItem.director}
-            </p>
-
-            <div style={{
-              background: 'var(--crema)',
-              border: '1px solid var(--linea)',
-              borderRadius: 'var(--radio-sm)',
-              padding: '1.25rem',
-              marginBottom: '1.25rem'
-            }}>
-              <h4 style={{ fontSize: '0.9rem', textTransform: 'uppercase', color: 'var(--tomate-oscuro)', marginBottom: '0.4rem', fontFamily: 'var(--fuente-codigo)' }}>
-                📖 Sinopsis del Maridaje:
-              </h4>
-              <p style={{ fontStyle: 'italic', fontSize: '0.95rem', color: 'var(--tinta-2)', lineHeight: 1.5 }}>
-                "{modalItem.sinopsisMaridaje}"
-              </p>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
-              <div>
-                <span style={{ fontSize: '0.8rem', color: 'var(--suave)', textTransform: 'uppercase', fontFamily: 'var(--fuente-codigo)' }}>🍕 Receta Pizza</span>
-                <p style={{ fontWeight: 600, color: 'var(--tinta)', marginTop: '0.2rem' }}>{modalItem.pizza}</p>
-              </div>
-              <div>
-                <span style={{ fontSize: '0.8rem', color: 'var(--suave)', textTransform: 'uppercase', fontFamily: 'var(--fuente-codigo)' }}>🍺 Cerveza sugerida</span>
-                <p style={{ fontWeight: 600, color: 'var(--tinta)', marginTop: '0.2rem' }}>{modalItem.birra}</p>
-              </div>
-            </div>
-
-            <div style={{
-              borderTop: '1px solid var(--linea)',
-              paddingTop: '1rem',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-              gap: '0.5rem'
-            }}>
-              <div>
-                <span style={{ fontSize: '0.78rem', color: 'var(--codigo)', fontFamily: 'var(--fuente-codigo)' }}>💻 DESAFÍO TÉCNICO:</span>
-                <p style={{ fontWeight: 600, fontSize: '0.95rem' }}>{modalItem.proyectoCodigo}</p>
-              </div>
-              <span className="badge badge-albahaca">{modalItem.dificultad} · {modalItem.tiempoEstimado}</span>
-            </div>
-
-            <button
-              type="button"
-              className="btn btn-ghost"
-              onClick={() => setModalItem(null)}
-              style={{ width: '100%', marginTop: '1.5rem' }}
-            >
-              Cerrar detalle
-            </button>
-          </div>
-        </div>
-      )}
+      {/* MODAL DETALLADO CON PROPTYPES */}
+      <DetalleModal
+        item={modalItem}
+        onClose={() => setModalItem(null)}
+      />
     </div>
   );
 }
