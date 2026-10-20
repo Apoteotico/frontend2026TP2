@@ -204,7 +204,7 @@ export default function Perfil() {
           marginBottom: '2.5rem'
         }}>
           <div>
-            <h2 style={{ fontSize: '1.35rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <h2 style={{ fontSize: '1.35rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--tinta)' }}>
               <span>🎬</span> Películas favoritas
             </h2>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
@@ -215,14 +215,14 @@ export default function Perfil() {
                     key={index}
                     style={{
                       padding: '0.8rem 1rem',
-                      background: isHighlighted ? '#fff3d6' : 'var(--crema)',
+                      background: isHighlighted ? 'rgba(232, 167, 43, 0.25)' : 'var(--crema)',
                       border: isHighlighted ? '2px solid var(--birra)' : '1px solid var(--linea)',
                       borderRadius: 'var(--radio-sm)',
                       boxShadow: isHighlighted ? '0 0 12px rgba(232, 167, 43, 0.4)' : 'none',
                       transition: 'all 0.25s ease'
                     }}
                   >
-                    <strong>0{index + 1}. {peli.titulo}</strong>
+                    <strong style={{ display: 'block', color: 'var(--tinta)', fontSize: '0.98rem' }}>0{index + 1}. {peli.titulo}</strong>
                     <div style={{ fontSize: '0.85rem', color: 'var(--suave)', marginTop: '0.15rem' }}>
                       Dir. {peli.director} ({peli.anio})
                     </div>
@@ -233,7 +233,7 @@ export default function Perfil() {
           </div>
 
           <div>
-            <h2 style={{ fontSize: '1.35rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <h2 style={{ fontSize: '1.35rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--tinta)' }}>
               <span>🎵</span> Discos favoritos
             </h2>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
@@ -244,13 +244,13 @@ export default function Perfil() {
                     key={index}
                     style={{
                       padding: '0.8rem 1rem',
-                      background: isOpen ? '#f0f9ff' : 'var(--crema)',
+                      background: isOpen ? 'rgba(43, 111, 143, 0.22)' : 'var(--crema)',
                       border: isOpen ? '1px solid var(--codigo)' : '1px solid var(--linea)',
                       borderRadius: 'var(--radio-sm)',
                       transition: 'all 0.25s ease'
                     }}
                   >
-                    <strong>0{index + 1}. {disco.titulo}</strong>
+                    <strong style={{ display: 'block', color: 'var(--tinta)', fontSize: '0.98rem' }}>0{index + 1}. {disco.titulo}</strong>
                     <div style={{ fontSize: '0.85rem', color: 'var(--suave)', marginTop: '0.15rem' }}>
                       {disco.artista} ({disco.anio})
                     </div>
@@ -258,7 +258,7 @@ export default function Perfil() {
                       <div style={{
                         marginTop: '0.5rem',
                         paddingTop: '0.5rem',
-                        borderTop: '1px dashed rgba(43, 111, 143, 0.3)',
+                        borderTop: '1px dashed rgba(43, 111, 143, 0.4)',
                         fontSize: '0.84rem',
                         color: 'var(--codigo)'
                       }}>

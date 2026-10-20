@@ -640,19 +640,28 @@ code {
 
 /* Modo Función de Gala / Oscuro (Semana M9) */
 .app-layout.theme-oscuro {
+  --crema: #1a1614;
+  --papel: #211c19;
+  --mozzarella: #29231f;
+  --texto: #f6f1e7;
+  --tinta: #ffffff;
+  --tinta-2: #f3ede4;
+  --tinta-3: #ded2c3;
+  --suave: #baa997;
+  --linea: rgba(232, 167, 43, 0.22);
   background-color: #110e0c;
   color: #f6f1e7;
 }
 
 .app-layout.theme-oscuro .app-main {
-  background: #15110f;
+  background: #14110f;
   background-image: 
     radial-gradient(circle at 10% 0%, rgba(232, 167, 43, 0.08), transparent 45%),
     radial-gradient(circle at 90% 10%, rgba(200, 69, 44, 0.06), transparent 40%);
 }
 
 .app-layout.theme-oscuro .desktop-topbar {
-  background: rgba(21, 17, 15, 0.92);
+  background: rgba(20, 16, 14, 0.92);
   border-bottom-color: rgba(232, 167, 43, 0.2);
 }
 
@@ -662,14 +671,33 @@ code {
 
 .app-layout.theme-oscuro .card {
   background: #1c1715;
-  border-color: rgba(232, 167, 43, 0.2);
+  border-color: rgba(232, 167, 43, 0.22);
   color: #f6f1e7;
 }
 
 .app-layout.theme-oscuro .card h1,
 .app-layout.theme-oscuro .card h2,
-.app-layout.theme-oscuro .card h3 {
+.app-layout.theme-oscuro .card h3,
+.app-layout.theme-oscuro .card h4 {
   color: #ffffff;
+}
+
+.app-layout.theme-oscuro .card strong {
+  color: #ffffff;
+}
+
+.app-layout.theme-oscuro .chip {
+  background: #2b2420;
+  border-color: rgba(232, 167, 43, 0.25);
+  color: #f6f1e7;
+}
+
+.app-layout.theme-oscuro input,
+.app-layout.theme-oscuro select,
+.app-layout.theme-oscuro textarea {
+  background-color: #1a1614 !important;
+  color: #ffffff !important;
+  border-color: rgba(232, 167, 43, 0.3) !important;
 }
 
 .app-layout.theme-oscuro .topbar-theme-btn {
