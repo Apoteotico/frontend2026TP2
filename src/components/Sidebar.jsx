@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { integrantes } from '../data/integrantes';
 
-// Iconos vectoriales limpios y consistentes (reemplazan los emojis del SO)
+// Iconos SVG inline para mantener consistencia visual entre sistemas operativos
 const ClapperIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="4" width="20" height="16" rx="2"/>
@@ -73,7 +73,6 @@ export default function Sidebar({ isOpen, onClose }) {
 
   return (
     <aside className={`sidebar ${isOpen ? 'is-open' : ''}`} aria-label="Navegación principal">
-      {/* CABECERA CON MARQUESINA */}
       <div className="sidebar-header">
         <NavLink to="/" className="sidebar-brand" onClick={handleNavClick}>
           <div className="sidebar-logo-badge">
@@ -84,11 +83,9 @@ export default function Sidebar({ isOpen, onClose }) {
             <span className="sidebar-brand-sub">Cine · Pizza · Birra · Dev</span>
           </div>
         </NavLink>
-        {/* Riel decorativo con la paleta oficial (estilo película de cine) */}
         <div className="sidebar-film-rail" aria-hidden="true" />
       </div>
 
-      {/* NAVEGACIÓN PRINCIPAL */}
       <nav className="sidebar-nav">
         <div className="sidebar-group">
           <span className="sidebar-group-title">
@@ -115,7 +112,6 @@ export default function Sidebar({ isOpen, onClose }) {
           </div>
         </div>
 
-        {/* SECCIÓN DEL ELENCO (INTEGRANTES) */}
         <div className="sidebar-group" style={{ marginTop: '0.75rem' }}>
           <span className="sidebar-group-title">
             <span>Elenco · Integrantes</span>
@@ -152,7 +148,6 @@ export default function Sidebar({ isOpen, onClose }) {
         </div>
       </nav>
 
-      {/* PIE DE LA BARRA LATERAL */}
       <div className="sidebar-footer">
         <div className="sidebar-footer-card">
           <div className="system-status">

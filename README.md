@@ -70,9 +70,9 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 
 ### 2. Perfiles Individuales en React (`/perfil/:slug`)
 * Ruta parametrizada por `slug` que renderiza la identidad, ficha técnica (ciudad, edad, GitHub, PFO1), cuatro habilidades, tres películas y tres discos favoritos.
-* **Cartelera Multimedia Interactiva (Hito 10):**
+* **Cartelera Multimedia Interactiva:**
   - **Películas con Póster y Tráiler en Modal (`<TrailerModal />`):** Cada una de las 15 películas favoritas exhibe su póster oficial en miniatura armónica; al hacer clic en el póster o en el botón *"🎬 Ver Tráiler Oficial"*, se abre una ventana modal de cine (16:9) que reproduce el tráiler oficial embebido.
-  - **Discos con Portada y Reproductor de Audio (`useRef` - Semana M10 Cap. 8):** Cada uno de los 15 álbumes muestra su portada oficial y permite reproducir/pausar un fragmento real de 30 segundos de su canción más icónica (vía Apple iTunes API CDN), controlado imperativamente con `useRef()` sobre un elemento `<audio>` nativo y deteniéndose automáticamente al abrir un tráiler o cambiar de perfil.
+  - **Discos con Portada y Reproductor de Audio (`useRef`):** Cada uno de los 15 álbumes muestra su portada oficial y permite reproducir/pausar un fragmento real de 30 segundos de su canción más icónica (vía Apple iTunes API CDN), controlado imperativamente con `useRef()` sobre un elemento `<audio>` nativo y deteniéndose automáticamente al abrir un tráiler o cambiar de perfil.
 * **Interacción funcional por integrante con hooks:**
   - **Guillermo:** Contador interactivo de rondas servidas (`useState`), mensajes rotativos, partículas de emojis que brotan desde el botón (`getBoundingClientRect`) y lluvia animada en `dvh`.
   - **Florencia:** Sorteo y resaltado dinámico de películas con marco dorado.
@@ -83,8 +83,8 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 
 ### 3. Catálogo con 24 Datos Locales JSON (`/catalogo`)
 * Archivo [`src/data/catalogo.json`](src/data/catalogo.json) con **24 registros completos** (superando el requisito de 20).
-* **Buscador y filtros sincronizados con la URL (`useSearchParams` - Semana M9):** La búsqueda por texto, estilo de birra y nivel de código se reflejan en tiempo real en los query params (`/catalogo?q=...&birra=...&dificultad=...`), permitiendo compartir o recargar enlaces con los filtros aplicados.
-* **Componentes modulares con PropTypes:** Implementación de `<CardMaridaje />` y `<DetalleModal />` validados exhaustivamente mediante `prop-types` (`PropTypes.shape`, `PropTypes.string`, `PropTypes.number`, etc.) según lo requerido en la Semana M9.
+* **Buscador y filtros sincronizados con la URL (`useSearchParams`):** La búsqueda por texto, estilo de birra y nivel de código se reflejan en tiempo real en los query params (`/catalogo?q=...&birra=...&dificultad=...`), permitiendo compartir o recargar enlaces con los filtros aplicados.
+* **Componentes modulares con PropTypes:** Implementación de `<CardMaridaje />` y `<DetalleModal />` validados exhaustivamente mediante `prop-types` (`PropTypes.shape`, `PropTypes.string`, `PropTypes.number`, etc.).
 * Estado de "sin resultados" con botón para restablecer.
 * **Modal de detalle:** Cada registro permite abrir una vista modal para consultar la sinopsis maridada y la receta completa.
 
@@ -99,11 +99,11 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 
 ### 5. Árbol de Renderizado Interactivo (`/arbol`)
 * Representación gráfica y jerárquica de la arquitectura de componentes de la aplicación.
-* Cumple la recomendación pedagógica del docente de mantener una jerarquía limpia (máximo 3-4 niveles de profundidad).
-* **Interactividad (Nivel Propone):** Permite **expandir y contraer nodos** de forma individual o masiva ("Expandir todo" / "Contraer todo"), detallando las `props` recibidas y el `estado` administrado por cada componente.
+* Mantiene una jerarquía modular limpia (máximo 3 a 4 niveles de profundidad).
+* **Interactividad:** Permite **expandir y contraer nodos** de forma individual o masiva ("Expandir todo" / "Contraer todo"), detallando las `props` recibidas y el `estado` administrado por cada componente.
 
 ### 6. Bitácora de Rodaje (`/bitacora`)
-* **10 entradas detalladas** que registran el proceso de trabajo del equipo desde el inicio hasta el TP2, incluyendo las decisiones de arquitectura, modularización en React, integración estética del layout, técnicas avanzadas de React Router y PropTypes (Semana M9), y la cartelera multimedia con tráilers en modal y reproductor de audio controlado con `useRef` (Semana M10).
+* **10 entradas detalladas** que registran el proceso de trabajo del equipo desde el inicio hasta el TP2, incluyendo las decisiones de arquitectura, modularización en React, integración estética del layout, manejo avanzado de rutas y PropTypes, y la cartelera multimedia con tráilers en modal y reproductor de audio controlado con `useRef`.
 * Filtro en tiempo real por categoría (*arquitectura, react, componentes, api, responsive, ux*).
 * Acordeones interactivos para desplegar y contraer la decisión, dificultad y resolución de cada hito.
 
@@ -149,10 +149,10 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 
 ## 🎨 Tecnologías y Decisiones de Diseño
 * **React 18 / 19** con functional components y hooks (`useState`, `useEffect`, `useMemo`, `useCallback`, `useRef`).
-* **PropTypes (`prop-types`)** para la validación estricta de contratos de props en componentes reutilizables (Semana M9).
+* **PropTypes (`prop-types`)** para la validación estricta de contratos de props en componentes reutilizables.
 * **Vite** como empaquetador ultrarrápido y herramienta recomendada oficialmente.
 * **React Router v6 / v7** para navegación del lado del cliente, rutas anidadas, `useNavigate()` y sincronización de query strings con `useSearchParams()`.
-* **Selector de Iluminación / Tema:** Conmutador de *Modo Gala* (oscuro) y *Modo Día* (claro) con persistencia en `localStorage` (Semana M9 PFA 9).
+* **Selector de Iluminación / Tema:** Conmutador de *Modo Noche* (oscuro) y *Modo Día* (claro) con persistencia en `localStorage`.
 * **Google Fonts:** *Fraunces* (títulos de corte cinematográfico) y *Outfit* (texto legible y moderno).
 * **Paleta cromática:** Tomate (`#c8452c`), Dorado Birra (`#e8a72b`), Albahaca (`#3f7d5c`), Azul Código (`#2b6f8f`), Tinta (`#12100e`) y Papel Crema (`#fdf8f0`).
 * **Diseño adaptativo:** Breakpoints testeados en 400 px (una sola columna estricta sin desbordes), 900 px y 1200 px.
@@ -167,7 +167,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 | **Florencia Guzmán** | ChatGPT (Plan gratuito) | GPT-4o mini | Generación y redacción de la lista de películas favoritas y sugerencias de contraste accesible en CSS. | Se descartaron propuestas visuales genéricas para mantener la paleta institucional de *pITzza y birrAPI*. |
 | **Sonia Andrada** | v0 by Vercel | Claude 3.5 Sonnet | Exploración inicial de layouts tipo sidebar y tarjetas con filtros. | El código generado fue refactorizado a componentes limpios sin dependencias de Tailwind para usar CSS puro. |
 | **Eitel Belinzoni** | GitHub Copilot | GPT-4o | Autocompletado de tipos de birra y sinopsis del catálogo JSON local. | Se corrigieron las descripciones y se verificó que cada entrada tuviera relación directa con la propuesta del equipo. |
-| **Esteban Acosta** | Perplexity AI | Sonar Medium | Búsqueda de APIs públicas abiertas sin claves y documentación del endpoint de Open Brewery DB. | Se implementó el control de errores propio y la simulación para cumplir con el criterio 12 de la rúbrica. |
+| **Esteban Acosta** | Perplexity AI | Sonar Medium | Búsqueda de APIs públicas abiertas sin claves y documentación del endpoint de Open Brewery DB. | Se implementó el control de errores propio y la simulación para garantizar tolerancia a fallos de red. |
 
 ---
 

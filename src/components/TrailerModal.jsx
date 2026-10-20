@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * TrailerModal — Sala de Proyección Flotante para reproducir el tráiler oficial de una película.
- * Valida sus contratos de props mediante PropTypes (Semana M9).
+ * Modal de reproducción de video en formato 16:9 para tráilers de películas.
+ * Soporta cierre mediante tecla Escape o clic en el backdrop exterior.
  */
 export default function TrailerModal({ pelicula, onClose }) {
   useEffect(() => {
@@ -49,7 +49,6 @@ export default function TrailerModal({ pelicula, onClose }) {
           position: 'relative'
         }}
       >
-        {/* Cabecera de sala de proyección */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
@@ -100,7 +99,6 @@ export default function TrailerModal({ pelicula, onClose }) {
           </button>
         </div>
 
-        {/* Contenedor 16:9 del reproductor */}
         <div style={{
           position: 'relative',
           width: '100%',
@@ -122,7 +120,6 @@ export default function TrailerModal({ pelicula, onClose }) {
           />
         </div>
 
-        {/* Pie del modal */}
         <div style={{
           padding: '0.85rem 1.35rem',
           background: '#110e0c',

@@ -19,7 +19,6 @@ export default function ApiConsumo() {
     setCargando(true);
     setError(null);
     try {
-      // Simular un pequeño retardo intencional (350ms) para que el estado de carga sea claramente visible
       const url = `https://api.openbrewerydb.org/v1/breweries?by_city=${ciudadSeleccionada}&per_page=12`;
       const response = await fetch(url);
 
@@ -40,18 +39,17 @@ export default function ApiConsumo() {
     fetchBreweries();
   }, [fetchBreweries]);
 
-  // Forzar error para probar el estado ante los evaluadores si se desea
+  // Permite simular una caída de red para verificar la interfaz de contingencia y reintento
   const forzarErrorPrueba = () => {
     setCargando(true);
     setTimeout(() => {
-      setError("Error simulado de red (HTTP 503 Service Unavailable) para probar el estado de error y el botón de reintento.");
+      setError("Error simulado de red (HTTP 503 Service Unavailable) para verificar el estado de error y la recuperación.");
       setCargando(false);
     }, 400);
   };
 
   return (
     <div className="api-page">
-      {/* CABECERA EXPLICATIVA DE LA API */}
       <div style={{ marginBottom: '2.5rem' }}>
         <span style={{
           fontFamily: 'var(--fuente-codigo)',
@@ -60,7 +58,7 @@ export default function ApiConsumo() {
           textTransform: 'uppercase',
           letterSpacing: '0.1em'
         }}>
-          API Pública Externa · Criterio 12
+          API Pública Externa · REST JSON
         </span>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', margin: '0.2rem 0 0.8rem' }}>
           Conexión en Vivo: Open Brewery DB
@@ -139,14 +137,13 @@ export default function ApiConsumo() {
             className="btn btn-ghost btn-sm"
             onClick={forzarErrorPrueba}
             disabled={cargando}
-            title="Prueba de la rúbrica para comprobar el renderizado del estado de error"
+            title="Simular fallo de red para comprobar el renderizado del estado de error"
           >
             ⚠️ Simular Error
           </button>
         </div>
       </div>
 
-      {/* ESTADO DE CARGA (LOADING) */}
       {cargando && (
         <div style={{
           textAlign: 'center',
@@ -179,7 +176,6 @@ export default function ApiConsumo() {
         </div>
       )}
 
-      {/* ESTADO DE ERROR */}
       {!cargando && error && (
         <div style={{
           background: '#fef2f2',
@@ -206,7 +202,6 @@ export default function ApiConsumo() {
         </div>
       )}
 
-      {/* ESTADO EXITOSO: LISTA DE CERVECERÍAS */}
       {!cargando && !error && (
         <>
           <p style={{ fontSize: '0.9rem', color: 'var(--suave)', marginBottom: '1rem' }}>

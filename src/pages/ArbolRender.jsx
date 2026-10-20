@@ -15,7 +15,7 @@ const initialTreeData = {
       tipo: 'Layout Maestro',
       descripcion: 'Envoltorio compartido que aloja la Sidebar, DesktopTopBar y el contenedor del Outlet.',
       props: 'children / Outlet',
-      estado: 'isSidebarOpen (boolean), tema (claro|oscuro - PFA 9), location (pathname)',
+      estado: 'isSidebarOpen (boolean), tema (claro|oscuro), location (pathname)',
       hijos: [
         {
           id: 'sidebar',
@@ -156,7 +156,7 @@ const initialTreeData = {
                   id: 'catalogo-filtros',
                   nombre: '<FiltrosBar />',
                   tipo: 'Componente de Control',
-                  descripcion: 'Input de texto y selectores sincronizados bidireccionalmente con useSearchParams (Semana M9).',
+                  descripcion: 'Input de texto y selectores sincronizados bidireccionalmente con useSearchParams.',
                   props: 'searchParams, setSearchParams',
                   estado: 'Sincronizado con URL',
                   hijos: []
@@ -165,7 +165,7 @@ const initialTreeData = {
                   id: 'catalogo-cards',
                   nombre: '<CardMaridaje /> (x24 · PropTypes)',
                   tipo: 'Componente Modular Validado',
-                  descripcion: 'Tarjetas con película, pizza, birra y reto técnico. Validadas con PropTypes.shape (Semana M9).',
+                  descripcion: 'Tarjetas con película, pizza, birra y reto técnico validadas con PropTypes.shape.',
                   props: 'item (shape 12 campos), onVerDetalle (func)',
                   estado: 'Ninguno (presentacional)',
                   hijos: []
@@ -174,7 +174,7 @@ const initialTreeData = {
                   id: 'catalogo-modal',
                   nombre: '<DetalleModal /> (PropTypes)',
                   tipo: 'Modal Accesible Validado',
-                  descripcion: 'Modal con sinopsis de maridaje y reto. Validado formalmente con PropTypes (Semana M9).',
+                  descripcion: 'Modal con sinopsis de maridaje y reto validado formalmente con PropTypes.',
                   props: 'item (shape|null), onClose (func)',
                   estado: 'Ninguno (controlado)',
                   hijos: []
@@ -392,7 +392,6 @@ export default function ArbolRender() {
 
   return (
     <div className="arbol-page">
-      {/* CABECERA */}
       <div style={{ marginBottom: '2.5rem' }}>
         <span style={{
           fontFamily: 'var(--fuente-codigo)',
@@ -401,19 +400,18 @@ export default function ArbolRender() {
           textTransform: 'uppercase',
           letterSpacing: '0.1em'
         }}>
-          Jerarquía de Componentes · Criterio 13
+          Arquitectura de Componentes · React
         </span>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', margin: '0.2rem 0 0.8rem' }}>
           Árbol de Renderizado de la Aplicación
         </h1>
         <p style={{ color: 'var(--suave)', fontSize: '1.05rem', maxWidth: '780px' }}>
-          Representación interactiva de la jerarquía real de componentes en React (no una simple lista de carpetas).
-          Muestra cómo viajan las <strong>props</strong> y dónde reside el <strong>estado</strong> respetando la regla
-          de diseño modular enseñada por el docente (máximo 3-4 niveles de profundidad).
+          Representación interactiva de la jerarquía real de componentes en React.
+          Muestra cómo fluyen las <strong>props</strong> y dónde reside el <strong>estado</strong> manteniendo
+          una arquitectura modular de baja profundidad (máximo 3 a 4 niveles).
         </p>
       </div>
 
-      {/* CONTROLES */}
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',

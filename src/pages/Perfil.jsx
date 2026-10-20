@@ -7,12 +7,12 @@ export default function Perfil() {
   const { slug } = useParams();
   const currentIndex = integrantes.findIndex((m) => m.slug === slug);
 
-  // Estados y referencia para Cartelera Multimedia (Tráiler Modal + Reproductor Audio useRef)
   const [trailerPelicula, setTrailerPelicula] = useState(null);
   const [playingAlbumIdx, setPlayingAlbumIdx] = useState(null);
+  // Se utiliza una única referencia de <audio> para evitar múltiples pistas superpuestas
   const audioRef = useRef(null);
 
-  // Al cambiar de integrante, cerramos tráiler y frenamos cualquier audio activo
+  // Limpia modales abiertos y detiene la reproducción activa al navegar a otro perfil
   useEffect(() => {
     setTrailerPelicula(null);
     setPlayingAlbumIdx(null);
@@ -30,7 +30,6 @@ export default function Perfil() {
   const prevMiembro = integrantes[(currentIndex - 1 + integrantes.length) % integrantes.length];
   const nextMiembro = integrantes[(currentIndex + 1) % integrantes.length];
 
-  // Controlador de tráiler de película (pausa música si estaba sonando)
   const handleOpenTrailer = (peli) => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -39,7 +38,6 @@ export default function Perfil() {
     setTrailerPelicula(peli);
   };
 
-  // Controlador de preview musical de 30s mediante useRef (Semana M10 - Cap. 8)
   const handleToggleAudio = (index, previewUrl) => {
     if (!audioRef.current || !previewUrl) return;
 
@@ -56,11 +54,7 @@ export default function Perfil() {
     }
   };
 
-  // =========================================================================
-  // ESTADOS PARA INTERACCIONES ESPECÍFICAS DE CADA INTEGRANTE
-  // =========================================================================
-
-  // Guillermo: Contador de invitaciones, mensaje rotativo y emojis
+  // Estados de interacción propios de cada perfil
   const [guilleRondas, setGuilleRondas] = useState(0);
   const [guilleMensaje, setGuilleMensaje] = useState("Llená la pantalla de pizza y birra.");
   const [guillePopEmojis, setGuillePopEmojis] = useState([]);
@@ -78,12 +72,11 @@ export default function Perfil() {
     setGuilleRondas(prev => prev + 1);
     setGuilleMensaje(frasesGuillermo[Math.floor(Math.random() * frasesGuillermo.length)]);
 
-    // Vibración háptica en móviles si está disponible
     if (typeof navigator !== "undefined" && navigator.vibrate) {
       navigator.vibrate(40);
     }
 
-    // Emojis emergentes desde el botón
+    // Calcula el centro exacto del botón en el viewport para emitir partículas desde su origen
     const rect = e.currentTarget.getBoundingClientRect();
     const centroX = rect.left + rect.width / 2;
     const centroY = rect.top + rect.height / 2;
@@ -104,7 +97,6 @@ export default function Perfil() {
     setGuillePopEmojis(nuevosPops);
     setTimeout(() => setGuillePopEmojis([]), 1300);
 
-    // Lluvia por la pantalla
     const nuevaLluvia = [];
     for (let j = 0; j < 16; j++) {
       nuevaLluvia.push({
@@ -118,14 +110,12 @@ export default function Perfil() {
     setTimeout(() => setGuilleLluviaEmojis([]), 2500);
   };
 
-  // Florencia: Resalta película al azar
   const [florenciaSelectedMovie, setFlorenciaSelectedMovie] = useState(null);
   const triggerFlorenciaAction = () => {
     const randomIndex = Math.floor(Math.random() * miembro.peliculas.length);
     setFlorenciaSelectedMovie(randomIndex);
   };
 
-  // Sonia: Abre o cierra nota curiosa de disco
   const [soniaActiveAlbum, setSoniaActiveAlbum] = useState(null);
   const notasDiscosSonia = {
     0: "Grabado en Abbey Road con un prisma legendario. La transición entre 'Time' y 'The Great Gig in the Sky' es pura alquimia sonora.",
@@ -136,7 +126,6 @@ export default function Perfil() {
     setSoniaActiveAlbum(prev => (prev === null ? 0 : (prev + 1) % 3));
   };
 
-  // Eitel: Rota frases inspiradoras de equipo
   const frasesEitel = [
     "El equipo avanza cuando nadie se queda solo con el problema.",
     "Probar, equivocarse y documentar también es trabajo en equipo.",
@@ -154,7 +143,6 @@ export default function Perfil() {
     });
   };
 
-  // Esteban: Contador de birras donadas
   const [estebanBirras, setEstebanBirras] = useState(0);
   const triggerEstebanAction = () => {
     setEstebanBirras(prev => prev + 1);
@@ -162,7 +150,6 @@ export default function Perfil() {
 
   return (
     <div className="perfil-page" style={{ maxWidth: '960px', margin: '0 auto' }}>
-      {/* TARJETA PRINCIPAL DEL PERFIL */}
       <article className="card" style={{ padding: 'clamp(1.5rem, 4vw, 2.75rem)', marginBottom: '2rem' }}>
         <div style={{
           display: 'grid',
@@ -171,7 +158,6 @@ export default function Perfil() {
           alignItems: 'start',
           marginBottom: '2.5rem'
         }}>
-          {/* FOTO AFICHE */}
           <div style={{
             aspectRatio: '4 / 5',
             borderRadius: 'var(--radio)',
@@ -187,7 +173,6 @@ export default function Perfil() {
             />
           </div>
 
-          {/* DATOS DE IDENTIDAD */}
           <div>
             <span style={{
               fontFamily: 'var(--fuente-codigo)',
@@ -236,7 +221,6 @@ export default function Perfil() {
           </div>
         </div>
 
-        {/* TABLERO MULTIMEDIA: PELÍCULAS (Póster + Tráiler) Y DISCOS (Portada + Audio 30s con useRef) */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(295px, 1fr))',
@@ -315,7 +299,7 @@ export default function Perfil() {
                 <span>🎵</span> Discos favoritos
               </h2>
               <span style={{ fontSize: '0.73rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--suave)' }}>
-                Preview 30s · useRef()
+                Preview de audio (30s)
               </span>
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -387,7 +371,6 @@ export default function Perfil() {
           </div>
         </div>
 
-        {/* SECCIÓN INTERACTIVA ESPECÍFICA DE CADA PERFIL */}
         <div style={{
           background: 'var(--crema)',
           border: '1px solid var(--linea)',
@@ -395,7 +378,6 @@ export default function Perfil() {
           padding: '1.5rem',
           textAlign: 'center'
         }}>
-          {/* GUILLERMO */}
           {miembro.slug === 'guillermo-chacon' && (
             <div>
               <p style={{ fontWeight: 600, color: 'var(--tomate-oscuro)', marginBottom: '0.5rem' }}>
@@ -422,7 +404,6 @@ export default function Perfil() {
             </div>
           )}
 
-          {/* FLORENCIA */}
           {miembro.slug === 'florencia-guzman' && (
             <div>
               <button type="button" className="btn" onClick={triggerFlorenciaAction}>
@@ -434,7 +415,6 @@ export default function Perfil() {
             </div>
           )}
 
-          {/* SONIA */}
           {miembro.slug === 'sonia-andrada' && (
             <div>
               <button type="button" className="btn btn-birra" onClick={triggerSoniaAction}>
@@ -446,7 +426,6 @@ export default function Perfil() {
             </div>
           )}
 
-          {/* EITEL */}
           {miembro.slug === 'eitel-belinzoni' && (
             <div>
               <blockquote style={{
@@ -467,7 +446,6 @@ export default function Perfil() {
             </div>
           )}
 
-          {/* ESTEBAN */}
           {miembro.slug === 'esteban-acosta' && (
             <div>
               <p style={{ fontWeight: 600, color: 'var(--tomate-oscuro)', marginBottom: '0.5rem' }}>
@@ -491,7 +469,6 @@ export default function Perfil() {
         </div>
       </article>
 
-      {/* BOTONERA CIRCULAR DE NAVEGACIÓN ENTRE PERFILES */}
       <aside className="card" style={{ padding: '1.5rem', background: 'var(--papel)' }}>
         <h3 style={{ fontSize: '1.1rem', marginBottom: '0.3rem' }}>Recorrido del equipo</h3>
         <p style={{ fontSize: '0.88rem', color: 'var(--suave)', marginBottom: '1rem' }}>
@@ -517,7 +494,6 @@ export default function Perfil() {
         </nav>
       </aside>
 
-      {/* PARTICULAS DE EMOJIS (GUILLERMO) */}
       {guillePopEmojis.map((pop) => (
         <span
           key={pop.id}
@@ -549,14 +525,12 @@ export default function Perfil() {
         </span>
       ))}
 
-      {/* ELEMENTO AUDIO NATIVO CONTROLADO CON useRef (Semana M10 - Cap. 8) */}
       <audio
         ref={audioRef}
         onEnded={() => setPlayingAlbumIdx(null)}
         style={{ display: 'none' }}
       />
 
-      {/* MODAL CINEMATOGRÁFICO DE TRÁILER OFICIAL */}
       <TrailerModal
         pelicula={trailerPelicula}
         onClose={() => setTrailerPelicula(null)}

@@ -614,7 +614,7 @@ code {
   color: #ffffff;
 }
 
-/* Toggle de Tema Segmentado [ ☀️ Día | 🌙 Noche ] (Semana M9 - PFA 9 A2) */
+/* Selector de tema segmentado (Día / Noche) */
 .theme-toggle-pill {
   display: inline-flex;
   align-items: center;
@@ -667,7 +667,7 @@ code {
   color: var(--birra-oscura);
 }
 
-/* Modo Función de Gala / Noche (Semana M9) */
+/* Variables y overrides para el tema oscuro (Modo Noche) */
 .app-layout.theme-oscuro {
   --crema: #1a1614;
   --papel: #211c19;

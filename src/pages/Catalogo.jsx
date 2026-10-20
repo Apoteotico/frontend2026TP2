@@ -8,18 +8,17 @@ export default function Catalogo() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [modalItem, setModalItem] = useState(null);
 
-  // Sincronización directa con los parámetros de la URL (Semana M9 - Cap 28: useSearchParams)
+  // Sincroniza el estado de búsqueda y filtros con la query string de la URL
   const busqueda = searchParams.get('q') || '';
   const filtroTipoBirra = searchParams.get('birra') || 'todos';
   const filtroDificultad = searchParams.get('dificultad') || 'todas';
 
-  // Obtener estilos únicos de birra para el selector
   const tiposBirra = useMemo(() => {
     const tipos = new Set(catalogoData.map(item => item.tipoBirra));
     return ['todos', ...Array.from(tipos)];
   }, []);
 
-  // Actualizador centralizado de URL searchParams
+  // Actualiza los parámetros de URL omitiendo valores por defecto para mantener enlaces limpios
   const actualizarParams = (nuevosValores) => {
     const params = new URLSearchParams(searchParams);
     Object.entries(nuevosValores).forEach(([clave, valor]) => {
@@ -48,7 +47,6 @@ export default function Catalogo() {
     setSearchParams({}, { replace: true });
   };
 
-  // Filtrado reactivo en tiempo real
   const itemsFiltrados = useMemo(() => {
     return catalogoData.filter((item) => {
       const matchTexto =
@@ -71,7 +69,6 @@ export default function Catalogo() {
 
   return (
     <div className="catalogo-page">
-      {/* CABECERA */}
       <div style={{ marginBottom: '2.5rem' }}>
         <span style={{
           fontFamily: 'var(--fuente-codigo)',
@@ -80,7 +77,7 @@ export default function Catalogo() {
           textTransform: 'uppercase',
           letterSpacing: '0.1em'
         }}>
-          Datos Locales JSON · 24 Registros · React Router useSearchParams
+          Datos Locales JSON · 24 Registros · React Router
         </span>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', margin: '0.2rem 0 0.8rem' }}>
           Cartelera de Maridajes y Proyectos
@@ -91,7 +88,6 @@ export default function Catalogo() {
         </p>
       </div>
 
-      {/* BARRA DE BÚSQUEDA Y FILTROS */}
       <section style={{
         background: 'var(--papel)',
         border: '1px solid var(--linea)',
@@ -109,7 +105,6 @@ export default function Catalogo() {
           gap: '1rem',
           alignItems: 'end'
         }}>
-          {/* Input de búsqueda */}
           <div>
             <label htmlFor="input-busqueda" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--tinta-2)' }}>
               🔍 Buscar por título, película, pizza o reto:
@@ -132,7 +127,6 @@ export default function Catalogo() {
             />
           </div>
 
-          {/* Filtro por tipo de birra */}
           <div>
             <label htmlFor="filtro-birra" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--tinta-2)' }}>
               🍺 Estilo de Cerveza:
@@ -159,7 +153,6 @@ export default function Catalogo() {
             </select>
           </div>
 
-          {/* Filtro por dificultad técnica */}
           <div>
             <label htmlFor="filtro-dificultad" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--tinta-2)' }}>
               💻 Nivel del Reto de Código:
@@ -186,7 +179,6 @@ export default function Catalogo() {
           </div>
         </div>
 
-        {/* Resumen de resultados y reset */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
@@ -200,7 +192,7 @@ export default function Catalogo() {
             Mostrando <strong>{itemsFiltrados.length}</strong> de <strong>{catalogoData.length}</strong> registros
             {(busqueda || filtroTipoBirra !== 'todos' || filtroDificultad !== 'todas') && (
               <span style={{ marginLeft: '0.5rem', fontFamily: 'var(--fuente-codigo)', fontSize: '0.8rem', color: 'var(--codigo)' }}>
-                (Filtros activos en URL query)
+                (Filtros activos en URL)
               </span>
             )}
           </span>
@@ -218,7 +210,6 @@ export default function Catalogo() {
         </div>
       </section>
 
-      {/* GRILLA DE TARJETAS MODULARIZADAS CON PROPTYPES */}
       {itemsFiltrados.length > 0 ? (
         <div className="catalogo-grid" style={{
           display: 'grid',
@@ -234,7 +225,6 @@ export default function Catalogo() {
           ))}
         </div>
       ) : (
-        /* MENSAJE CUANDO NO HAY RESULTADOS */
         <div style={{
           background: 'var(--papel)',
           border: '2px dashed var(--linea)',
@@ -256,7 +246,6 @@ export default function Catalogo() {
         </div>
       )}
 
-      {/* MODAL DETALLADO CON PROPTYPES */}
       <DetalleModal
         item={modalItem}
         onClose={() => setModalItem(null)}

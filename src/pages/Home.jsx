@@ -19,7 +19,6 @@ export default function Home() {
 
   return (
     <div className="home-page">
-      {/* SECCIÓN HERO / MARQUESINA */}
       <section className="home-hero-marquee">
         <div style={{ maxWidth: '820px', position: 'relative', zIndex: 1 }}>
           <span style={{
@@ -90,7 +89,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓN INTERACTIVA: SORTEADOR DE LA NOCHE */}
       <section style={{
         background: 'var(--papel)',
         border: '1px solid var(--linea)',
@@ -183,7 +181,6 @@ export default function Home() {
         )}
       </section>
 
-      {/* SECCIÓN INTEGRANTES (AFICHES) */}
       <section id="integrantes-section" style={{ marginBottom: '3.5rem' }}>
         <div style={{ marginBottom: '1.5rem' }}>
           <span style={{ fontFamily: 'var(--fuente-codigo)', fontSize: '0.78rem', color: 'var(--tomate)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
@@ -278,7 +275,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓN MÓDULOS DEL PROYECTO */}
       <section style={{
         background: 'var(--crema)',
         border: '1px solid var(--linea)',
@@ -286,9 +282,9 @@ export default function Home() {
         padding: '2rem',
         boxShadow: 'var(--sombra)'
       }}>
-        <h2>Estructura y módulos de TP2</h2>
+        <h2>Estructura y módulos de la aplicación</h2>
         <p style={{ color: 'var(--suave)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
-          La aplicación da cumplimiento a los 15 criterios de la rúbrica oficial mediante módulos modulares conectados:
+          Accedé directamente a los módulos principales del proyecto:
         </p>
 
         <div style={{

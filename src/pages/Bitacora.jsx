@@ -42,7 +42,6 @@ export default function Bitacora() {
 
   return (
     <div className="bitacora-page">
-      {/* CABECERA */}
       <div style={{ marginBottom: '2.5rem' }}>
         <span style={{
           fontFamily: 'var(--fuente-codigo)',
@@ -51,7 +50,7 @@ export default function Bitacora() {
           textTransform: 'uppercase',
           letterSpacing: '0.1em'
         }}>
-          Proceso de Trabajo · Criterio 14
+          Registro de Ingeniería · Changelog
         </span>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', margin: '0.2rem 0 0.8rem' }}>
           Bitácora de Rodaje del Equipo

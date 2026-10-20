@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * DetalleModal — Modal interactivo para visualizar la sinopsis y receta.
- * Valida sus contratos de datos mediante PropTypes (Semana M9).
+ * Diálogo modal accesible para consultar la sinopsis, receta y desafío técnico de un maridaje.
  */
 export default function DetalleModal({ item, onClose }) {
   if (!item) return null;

@@ -32,7 +32,7 @@ export const bitacoraEntries = [
     titulo: "Transición a React: Diseño de arquitectura en componentes",
     categoria: "react",
     decision: "Migrar la aplicación completa a React con Vite y React Router, adoptando una Sidebar compartida como layout maestro.",
-    dificultad: "Pasar de páginas HTML estáticas a un árbol de componentes modulares sin superar los 4 niveles de anidamiento sugeridos en clase.",
+    dificultad: "Pasar de páginas HTML estáticas a un árbol de componentes modulares manteniendo una jerarquía limpia de hasta 4 niveles de anidamiento.",
     resolucion: "Se diseñó un `<Layout />` que aloja la `<Sidebar />` y renderiza el contenido mediante `<Outlet />` de React Router."
   },
   {
@@ -76,7 +76,7 @@ export const bitacoraEntries = [
     fecha: "2026-10-12",
     titulo: "Rutas avanzadas (useSearchParams, useNavigate), PropTypes y Selector de Iluminación",
     categoria: "react",
-    decision: "Incorporar las técnicas troncales de la Semana M9: sincronización bidireccional de búsqueda y filtros con la URL vía useSearchParams en el catálogo, navegación programática con useNavigate desde el sorteador de la portada, conmutador de tema Gala/Día (PFA 9 A2), y modularización de tarjetas y modales con validación formal de PropTypes.",
+    decision: "Incorporar sincronización bidireccional de búsqueda y filtros con la URL vía useSearchParams en el catálogo, navegación programática con useNavigate desde el sorteador de la portada, conmutador de tema Día/Noche con persistencia en localStorage, y modularización de tarjetas y modales con validación formal de PropTypes.",
     dificultad: "Evitar desincronizaciones entre el estado de los inputs y los parámetros de consulta al compartir enlaces o recargar, asegurando que las props cumplan estrictamente los contratos esperados.",
     resolucion: "Se unificó el manejo de URLSearchParams con replace: true en tiempo real y se definieron esquemas estrictos de PropTypes.shape en CardMaridaje y DetalleModal para detectar discrepancias en desarrollo."
   },
@@ -85,7 +85,7 @@ export const bitacoraEntries = [
     fecha: "2026-10-15",
     titulo: "Cartelera Multimedia Interactiva: Tráilers en Modal y Audio Previews con useRef()",
     categoria: "react",
-    decision: "Enriquecer las 15 películas y 15 discos favoritos de los integrantes con recursos multimedia reales de uso libre: pósters oficiales con apertura de tráiler en ventana modal (<TrailerModal />) y portadas de álbumes con reproducción de fragmentos musicales de 30 segundos controlados mediante el hook useRef() (Semana M10 - Cap. 8).",
+    decision: "Enriquecer las 15 películas y 15 discos favoritos de los integrantes con recursos multimedia de uso libre: pósters oficiales con apertura de tráiler en ventana modal (<TrailerModal />) y portadas de álbumes con reproducción de fragmentos musicales de 30 segundos controlados mediante el hook useRef().",
     dificultad: "Garantizar que la reproducción de un disco o la apertura de un tráiler detenga automáticamente cualquier pista previa sin provocar fugas de audio al navegar entre perfiles.",
     resolucion: "Se centralizó una única etiqueta <audio ref={audioRef}> imperativa en Perfil.jsx sincronizada con un efecto de limpieza al cambiar el parámetro :slug y al abrir el modal de video."
   }

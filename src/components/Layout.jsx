@@ -3,7 +3,7 @@ import { Outlet, useLocation, Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 
-// Mapeo amigable de rutas para la barra superior
+// Títulos de ruta mostrados en el breadcrumb superior
 const ROUTE_TITLES = {
   '/': 'Portada del equipo · Función de gala',
   '/catalogo': 'Catálogo de Maridajes · 24 Registros JSON',
@@ -12,6 +12,10 @@ const ROUTE_TITLES = {
   '/bitacora': 'Bitácora de Rodaje · 10 Decisiones de Arquitectura'
 };
 
+/**
+ * Layout principal de la aplicación.
+ * Gestiona el estado del menú lateral responsivo y la persistencia del tema visual en localStorage.
+ */
 export default function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [tema, setTema] = useState(() => {
@@ -23,6 +27,7 @@ export default function Layout() {
   });
   const location = useLocation();
 
+  // Restablece el scroll y cierra el drawer móvil en cada cambio de ruta
   useEffect(() => {
     window.scrollTo(0, 0);
     setIsSidebarOpen(false);
@@ -36,14 +41,6 @@ export default function Layout() {
     setIsSidebarOpen(false);
   };
 
-  const toggleTema = () => {
-    const nuevo = tema === 'claro' ? 'oscuro' : 'claro';
-    setTema(nuevo);
-    try {
-      localStorage.setItem('pITzza_tema', nuevo);
-    } catch {}
-  };
-
   const cambiarTema = (nuevoTema) => {
     setTema(nuevoTema);
     try {
@@ -51,7 +48,11 @@ export default function Layout() {
     } catch {}
   };
 
-  // Obtener el título dinámico según la ruta
+  const toggleTema = () => {
+    cambiarTema(tema === 'claro' ? 'oscuro' : 'claro');
+  };
+
+  // Resolución dinámica del título para rutas parametrizadas (/perfil/:slug)
   let currentTitle = ROUTE_TITLES[location.pathname];
   if (!currentTitle && location.pathname.startsWith('/perfil/')) {
     const slug = location.pathname.replace('/perfil/', '');
@@ -61,7 +62,6 @@ export default function Layout() {
 
   return (
     <div className={`app-layout ${tema === 'oscuro' ? 'theme-oscuro' : 'theme-claro'}`}>
-      {/* Backdrop para cerrar en móvil */}
       {isSidebarOpen && (
         <div
           className="sidebar-backdrop"
@@ -70,12 +70,9 @@ export default function Layout() {
         />
       )}
 
-      {/* Menú lateral compartido */}
       <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
 
-      {/* Contenedor central */}
       <div className="app-main">
-        {/* Cabecera superior para móvil (< 900px) */}
         <header className="mobile-header">
           <Link to="/" className="mobile-brand">
             <img src="/img/icono-pizza.svg" alt="" width="32" height="32" />
@@ -104,7 +101,6 @@ export default function Layout() {
           </div>
         </header>
 
-        {/* Barra superior de integración para escritorio (conecta la sidebar con el contenido) */}
         <div className="desktop-topbar" aria-label="Información de sección">
           <div className="topbar-inner">
             <div className="topbar-breadcrumb">
@@ -148,7 +144,6 @@ export default function Layout() {
           </div>
         </div>
 
-        {/* Contenido de la página actual */}
         <main className="page-content" id="contenido-principal">
           <Outlet />
         </main>

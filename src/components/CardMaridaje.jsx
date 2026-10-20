@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * CardMaridaje — Componente de presentación para cada tarjeta del catálogo.
- * Valida sus contratos de datos mediante PropTypes (Semana M9).
+ * Tarjeta de presentación de un maridaje del catálogo.
+ * Delega la apertura del modal de detalle al componente contenedor mediante `onVerDetalle`.
  */
 export default function CardMaridaje({ item, onVerDetalle }) {
   return (
