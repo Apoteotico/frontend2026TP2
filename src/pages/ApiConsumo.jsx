@@ -249,15 +249,6 @@ export default function ApiConsumo() {
     }
   };
 
-  const forzarErrorPrueba = () => {
-    detenerAudio();
-    setCargando(true);
-    setTimeout(() => {
-      setError('Error simulado de conexión (HTTP 503) para comprobar el estado de error y el botón de reintento.');
-      setCargando(false);
-    }, 400);
-  };
-
   const resumenSeleccion = peliculaSeleccionada
     ? `Banda sonora de "${peliculaSeleccionada}" · Perfil de ${miembroActual.nombre}`
     : discoSeleccionado === 'todos'
@@ -409,15 +400,6 @@ export default function ApiConsumo() {
               disabled={cargando}
             >
               {cargando ? 'Cargando...' : '🔄 Actualizar'}
-            </button>
-
-            <button
-              type="button"
-              className="btn btn-ghost btn-sm"
-              onClick={forzarErrorPrueba}
-              disabled={cargando}
-            >
-              ⚠️ Probar estado de error
             </button>
           </div>
         </div>
