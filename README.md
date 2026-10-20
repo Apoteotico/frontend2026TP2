@@ -53,8 +53,9 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 
 ---
 
-## 🧭 Estructura de Navegación y Sidebar
-* **Sidebar compartida (`<Sidebar />`):** Menú lateral presente en toda la experiencia con la marca visual del equipo y enlaces con estado activo (`NavLink`).
+## 🧭 Estructura de Navegación y Layout Integrado
+* **Sidebar compartida (`<Sidebar />`):** Menú lateral persistente con la marca visual del equipo, riel cromático de película, iconos vectoriales limpios, enlaces con estado activo (`NavLink`), badges técnicos y avatares de los 5 integrantes con indicador de perfil activo. Ancho calibrado a 290 px para evitar saltos de línea y scrollbars ultra-finos personalizados (4 px en tonos ámbar).
+* **Barra superior de escritorio (`<DesktopTopBar />`):** Encabezado fijo en escritorio con efecto vidrio (`backdrop-filter: blur(12px)`) que conecta la barra lateral con el contenido principal mediante un *breadcrumb* dinámico en tiempo real y badges de estado técnico.
 * **Adaptabilidad a móvil:** En pantallas menores a 900 px, la sidebar se convierte en un panel desplegable (*off-canvas drawer*) controlado mediante un botón hamburguesa en la barra superior móvil (`<MobileHeader />`).
 * **Navegación sin depender de 'Atrás':** Cada pantalla cuenta con controles internos, enlaces contextuales y paginación circular para navegar libremente por la app sin recurrir a los controles del navegador.
 
@@ -99,7 +100,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 * **Interactividad (Nivel Propone):** Permite **expandir y contraer nodos** de forma individual o masiva ("Expandir todo" / "Contraer todo"), detallando las `props` recibidas y el `estado` administrado por cada componente.
 
 ### 6. Bitácora de Rodaje (`/bitacora`)
-* 7 entradas detalladas que registran el proceso de trabajo del equipo desde el inicio hasta el TP2.
+* **8 entradas detalladas** que registran el proceso de trabajo del equipo desde el inicio hasta el TP2, incluyendo las decisiones de arquitectura, modularización en React y el rediseño e integración estética del layout y DesktopTopBar.
 * Filtro en tiempo real por categoría (*arquitectura, react, componentes, api, responsive, ux*).
 * Acordeones interactivos para desplegar y contraer la decisión, dificultad y resolución de cada hito.
 
@@ -109,9 +110,10 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 
 ```text
 <App /> (BrowserRouter + Routes)
-  └── <Layout /> (Sidebar + MobileHeader + Footer)
-        ├── <Sidebar /> (Identidad + NavLinks + Integrantes)
-        ├── <MobileHeader /> (Logo + Botón Hamburguesa)
+  └── <Layout /> (Sidebar + MobileHeader + DesktopTopBar + Footer)
+        ├── <Sidebar /> (Identidad + NavLinks + Cast Integrantes)
+        ├── <MobileHeader /> (Logo + Botón Hamburguesa móvil)
+        ├── <DesktopTopBar /> (Breadcrumb dinámico + Status badges)
         ├── <Outlet />
         │     ├── <Home />
         │     │     ├── <HeroMarquesina />
@@ -135,7 +137,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
         │     │     └── <TreeNode /> (recursivo y colapsable)
         │     └── <Bitacora />
         │           ├── <CategoryFilter />
-        │           └── <LogCard /> (acordeón x7)
+        │           └── <LogCard /> (acordeón x8)
         └── <Footer />
 ```
 

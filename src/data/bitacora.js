@@ -61,5 +61,14 @@ export const bitacoraEntries = [
     decision: "Diseñar un componente interactivo que represente la jerarquía real de componentes de la aplicación con opción de expandir y contraer nodos.",
     dificultad: "Construir una visualización clara que no fuera una simple lista de archivos sino el árbol de render de React (App -> Layout -> Pages).",
     resolucion: "Se creó un componente recursivo con estado local de apertura/cierre de ramas y etiquetas visuales de props y estado."
+  },
+  {
+    id: 8,
+    fecha: "2026-10-06",
+    titulo: "Integración estética del Layout, DesktopTopBar y scrollbar de gala",
+    categoria: "ux",
+    decision: "Rediseñar integralmente la Sidebar y el Layout maestro, incorporando una barra superior de escritorio (DesktopTopBar) con efecto vidrio (backdrop-filter: blur) y breadcrumb dinámico en tiempo real.",
+    dificultad: "La barra lateral oscura flotaba desconectada frente al lienzo claro, con un scrollbar nativo gris antiestético, salto de línea en el logo y los integrantes inferiores cortados en pantallas estándar de laptop (768px-900px).",
+    resolucion: "Se calibró el ancho a 290px, se ajustaron espaciados verticales para alojar los 5 integrantes sin desbordes, se estilizó un scrollbar ultra-fino de 4px en tonos ámbar, y se creó la clase .home-hero-marquee para dialogar armónicamente con la barra lateral."
   }
 ];

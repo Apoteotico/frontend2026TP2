@@ -36,6 +36,15 @@ const initialTreeData = {
           hijos: []
         },
         {
+          id: 'desktop-topbar',
+          nombre: '<DesktopTopBar />',
+          tipo: 'Componente UI de Integración',
+          descripcion: 'Barra superior fija de escritorio con efecto vidrio (backdrop-filter: blur), breadcrumb de navegación y badges de estado.',
+          props: 'currentTitle (string), location (object)',
+          estado: 'Derivado de ruta activa',
+          hijos: []
+        },
+        {
           id: 'outlet',
           nombre: '<Outlet /> (React Router)',
           tipo: 'Contenedor Dinámico',
