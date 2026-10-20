@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { integrantes } from '../data/integrantes';
+import TrailerModal from '../components/TrailerModal';
 
 export default function Perfil() {
   const { slug } = useParams();
   const currentIndex = integrantes.findIndex((m) => m.slug === slug);
+
+  // Estados y referencia para Cartelera Multimedia (Tráiler Modal + Reproductor Audio useRef)
+  const [trailerPelicula, setTrailerPelicula] = useState(null);
+  const [playingAlbumIdx, setPlayingAlbumIdx] = useState(null);
+  const audioRef = useRef(null);
+
+  // Al cambiar de integrante, cerramos tráiler y frenamos cualquier audio activo
+  useEffect(() => {
+    setTrailerPelicula(null);
+    setPlayingAlbumIdx(null);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  }, [slug]);
 
   if (currentIndex === -1) {
     return <Navigate to="/" replace />;
@@ -13,6 +29,32 @@ export default function Perfil() {
   const miembro = integrantes[currentIndex];
   const prevMiembro = integrantes[(currentIndex - 1 + integrantes.length) % integrantes.length];
   const nextMiembro = integrantes[(currentIndex + 1) % integrantes.length];
+
+  // Controlador de tráiler de película (pausa música si estaba sonando)
+  const handleOpenTrailer = (peli) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setPlayingAlbumIdx(null);
+    }
+    setTrailerPelicula(peli);
+  };
+
+  // Controlador de preview musical de 30s mediante useRef (Semana M10 - Cap. 8)
+  const handleToggleAudio = (index, previewUrl) => {
+    if (!audioRef.current || !previewUrl) return;
+
+    if (playingAlbumIdx === index) {
+      audioRef.current.pause();
+      setPlayingAlbumIdx(null);
+    } else {
+      audioRef.current.src = previewUrl;
+      audioRef.current.volume = 0.75;
+      audioRef.current.play().catch(() => {
+        setPlayingAlbumIdx(null);
+      });
+      setPlayingAlbumIdx(index);
+    }
+  };
 
   // =========================================================================
   // ESTADOS PARA INTERACCIONES ESPECÍFICAS DE CADA INTEGRANTE
@@ -194,37 +236,72 @@ export default function Perfil() {
           </div>
         </div>
 
-        {/* TABLERO: PELÍCULAS Y DISCOS */}
+        {/* TABLERO MULTIMEDIA: PELÍCULAS (Póster + Tráiler) Y DISCOS (Portada + Audio 30s con useRef) */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(295px, 1fr))',
           gap: '2rem',
           borderTop: '1px solid var(--linea)',
           paddingTop: '2rem',
           marginBottom: '2.5rem'
         }}>
           <div>
-            <h2 style={{ fontSize: '1.35rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--tinta)' }}>
-              <span>🎬</span> Películas favoritas
-            </h2>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '1rem', gap: '0.5rem' }}>
+              <h2 style={{ fontSize: '1.35rem', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--tinta)' }}>
+                <span>🎬</span> Películas favoritas
+              </h2>
+              <span style={{ fontSize: '0.73rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--suave)' }}>
+                Clic en póster para tráiler
+              </span>
+            </div>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {miembro.peliculas.map((peli, index) => {
                 const isHighlighted = miembro.slug === 'florencia-guzman' && florenciaSelectedMovie === index;
                 return (
                   <li
                     key={index}
+                    className="media-item-card"
                     style={{
-                      padding: '0.8rem 1rem',
                       background: isHighlighted ? 'rgba(232, 167, 43, 0.25)' : 'var(--crema)',
                       border: isHighlighted ? '2px solid var(--birra)' : '1px solid var(--linea)',
-                      borderRadius: 'var(--radio-sm)',
-                      boxShadow: isHighlighted ? '0 0 12px rgba(232, 167, 43, 0.4)' : 'none',
-                      transition: 'all 0.25s ease'
+                      boxShadow: isHighlighted ? '0 0 12px rgba(232, 167, 43, 0.4)' : undefined
                     }}
                   >
-                    <strong style={{ display: 'block', color: 'var(--tinta)', fontSize: '0.98rem' }}>0{index + 1}. {peli.titulo}</strong>
-                    <div style={{ fontSize: '0.85rem', color: 'var(--suave)', marginTop: '0.15rem' }}>
-                      Dir. {peli.director} ({peli.anio})
+                    {peli.poster && (
+                      <button
+                        type="button"
+                        className="poster-thumb-btn"
+                        onClick={() => handleOpenTrailer(peli)}
+                        title={`Ver tráiler oficial de ${peli.titulo}`}
+                        aria-label={`Ver tráiler oficial de ${peli.titulo}`}
+                      >
+                        <img
+                          src={peli.poster}
+                          alt={`Póster de ${peli.titulo}`}
+                          className="poster-thumb-img"
+                          loading="lazy"
+                          referrerPolicy="no-referrer"
+                        />
+                        <span className="poster-play-overlay" aria-hidden="true">▶</span>
+                      </button>
+                    )}
+
+                    <div className="media-item-body">
+                      <strong style={{ display: 'block', color: 'var(--tinta)', fontSize: '0.96rem', lineHeight: 1.25 }}>
+                        0{index + 1}. {peli.titulo}
+                      </strong>
+                      <div style={{ fontSize: '0.83rem', color: 'var(--suave)', marginTop: '0.15rem' }}>
+                        Dir. {peli.director} ({peli.anio})
+                      </div>
+                      {peli.youtubeId && (
+                        <button
+                          type="button"
+                          className="media-action-btn"
+                          onClick={() => handleOpenTrailer(peli)}
+                        >
+                          <span>🎬</span> Ver Tráiler Oficial
+                        </button>
+                      )}
                     </div>
                   </li>
                 );
@@ -233,27 +310,65 @@ export default function Perfil() {
           </div>
 
           <div>
-            <h2 style={{ fontSize: '1.35rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--tinta)' }}>
-              <span>🎵</span> Discos favoritos
-            </h2>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '1rem', gap: '0.5rem' }}>
+              <h2 style={{ fontSize: '1.35rem', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--tinta)' }}>
+                <span>🎵</span> Discos favoritos
+              </h2>
+              <span style={{ fontSize: '0.73rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--suave)' }}>
+                Preview 30s · useRef()
+              </span>
+            </div>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {miembro.discos.map((disco, index) => {
                 const isOpen = miembro.slug === 'sonia-andrada' && soniaActiveAlbum === index;
+                const isPlaying = playingAlbumIdx === index;
                 return (
                   <li
                     key={index}
+                    className="media-item-card"
                     style={{
-                      padding: '0.8rem 1rem',
+                      flexDirection: 'column',
+                      alignItems: 'stretch',
                       background: isOpen ? 'rgba(43, 111, 143, 0.22)' : 'var(--crema)',
-                      border: isOpen ? '1px solid var(--codigo)' : '1px solid var(--linea)',
-                      borderRadius: 'var(--radio-sm)',
-                      transition: 'all 0.25s ease'
+                      border: isOpen
+                        ? '1px solid var(--codigo)'
+                        : isPlaying
+                          ? '1px solid var(--birra)'
+                          : '1px solid var(--linea)'
                     }}
                   >
-                    <strong style={{ display: 'block', color: 'var(--tinta)', fontSize: '0.98rem' }}>0{index + 1}. {disco.titulo}</strong>
-                    <div style={{ fontSize: '0.85rem', color: 'var(--suave)', marginTop: '0.15rem' }}>
-                      {disco.artista} ({disco.anio})
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
+                      {disco.portada && (
+                        <div className={`album-cover-wrap ${isPlaying ? 'is-playing' : ''}`}>
+                          <img
+                            src={disco.portada}
+                            alt={`Portada de ${disco.titulo}`}
+                            className="album-cover-img"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
+
+                      <div className="media-item-body">
+                        <strong style={{ display: 'block', color: 'var(--tinta)', fontSize: '0.96rem', lineHeight: 1.25 }}>
+                          0{index + 1}. {disco.titulo}
+                        </strong>
+                        <div style={{ fontSize: '0.83rem', color: 'var(--suave)', marginTop: '0.15rem' }}>
+                          {disco.artista} ({disco.anio})
+                        </div>
+                        {disco.previewUrl && (
+                          <button
+                            type="button"
+                            className={`media-action-btn ${isPlaying ? 'is-playing' : ''}`}
+                            onClick={() => handleToggleAudio(index, disco.previewUrl)}
+                          >
+                            <span>{isPlaying ? '⏸' : '▶'}</span>
+                            <span>{isPlaying ? `Pausar "${disco.cancion}"` : `Escuchar "${disco.cancion}" (30s)`}</span>
+                          </button>
+                        )}
+                      </div>
                     </div>
+
                     {isOpen && (
                       <div style={{
                         marginTop: '0.5rem',
@@ -433,6 +548,19 @@ export default function Perfil() {
           {copo.emoji}
         </span>
       ))}
+
+      {/* ELEMENTO AUDIO NATIVO CONTROLADO CON useRef (Semana M10 - Cap. 8) */}
+      <audio
+        ref={audioRef}
+        onEnded={() => setPlayingAlbumIdx(null)}
+        style={{ display: 'none' }}
+      />
+
+      {/* MODAL CINEMATOGRÁFICO DE TRÁILER OFICIAL */}
+      <TrailerModal
+        pelicula={trailerPelicula}
+        onClose={() => setTrailerPelicula(null)}
+      />
     </div>
   );
 }

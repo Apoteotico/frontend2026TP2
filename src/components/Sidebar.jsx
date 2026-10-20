@@ -68,7 +68,7 @@ export default function Sidebar({ isOpen, onClose }) {
     { to: '/catalogo', label: 'Catálogo de Maridajes', badge: '24 ítems', icon: <PizzaIcon /> },
     { to: '/api', label: 'API Cervecerías en Vivo', badge: 'Open DB', icon: <BeerIcon /> },
     { to: '/arbol', label: 'Árbol de Componentes', badge: 'React', icon: <TreeIcon /> },
-    { to: '/bitacora', label: 'Bitácora de Rodaje', badge: '9 hitos', icon: <LogIcon /> }
+    { to: '/bitacora', label: 'Bitácora de Rodaje', badge: '10 hitos', icon: <LogIcon /> }
   ];
 
   return (

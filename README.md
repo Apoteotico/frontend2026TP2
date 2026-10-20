@@ -70,6 +70,9 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 
 ### 2. Perfiles Individuales en React (`/perfil/:slug`)
 * Ruta parametrizada por `slug` que renderiza la identidad, ficha técnica (ciudad, edad, GitHub, PFO1), cuatro habilidades, tres películas y tres discos favoritos.
+* **Cartelera Multimedia Interactiva (Hito 10):**
+  - **Películas con Póster y Tráiler en Modal (`<TrailerModal />`):** Cada una de las 15 películas favoritas exhibe su póster oficial en miniatura armónica; al hacer clic en el póster o en el botón *"🎬 Ver Tráiler Oficial"*, se abre una ventana modal de cine (16:9) que reproduce el tráiler oficial embebido.
+  - **Discos con Portada y Reproductor de Audio (`useRef` - Semana M10 Cap. 8):** Cada uno de los 15 álbumes muestra su portada oficial y permite reproducir/pausar un fragmento real de 30 segundos de su canción más icónica (vía Apple iTunes API CDN), controlado imperativamente con `useRef()` sobre un elemento `<audio>` nativo y deteniéndose automáticamente al abrir un tráiler o cambiar de perfil.
 * **Interacción funcional por integrante con hooks:**
   - **Guillermo:** Contador interactivo de rondas servidas (`useState`), mensajes rotativos, partículas de emojis que brotan desde el botón (`getBoundingClientRect`) y lluvia animada en `dvh`.
   - **Florencia:** Sorteo y resaltado dinámico de películas con marco dorado.
@@ -100,7 +103,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 * **Interactividad (Nivel Propone):** Permite **expandir y contraer nodos** de forma individual o masiva ("Expandir todo" / "Contraer todo"), detallando las `props` recibidas y el `estado` administrado por cada componente.
 
 ### 6. Bitácora de Rodaje (`/bitacora`)
-* **9 entradas detalladas** que registran el proceso de trabajo del equipo desde el inicio hasta el TP2, incluyendo las decisiones de arquitectura, modularización en React, integración estética del layout y las técnicas avanzadas de React Router y PropTypes (Semana M9).
+* **10 entradas detalladas** que registran el proceso de trabajo del equipo desde el inicio hasta el TP2, incluyendo las decisiones de arquitectura, modularización en React, integración estética del layout, técnicas avanzadas de React Router y PropTypes (Semana M9), y la cartelera multimedia con tráilers en modal y reproductor de audio controlado con `useRef` (Semana M10).
 * Filtro en tiempo real por categoría (*arquitectura, react, componentes, api, responsive, ux*).
 * Acordeones interactivos para desplegar y contraer la decisión, dificultad y resolución de cada hito.
 
@@ -119,9 +122,10 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
         │     │     ├── <HeroMarquesina />
         │     │     ├── <SorteadorNoche /> (con useNavigate a catálogo)
         │     │     └── <MemberCard /> (x5)
-        │     ├── <Perfil />
+        │     ├── <Perfil /> (con useRef para audio de 30s)
         │     │     ├── <ProfileHead />
-        │     │     ├── <FavoritosBoard />
+        │     │     ├── <FavoritosBoard /> (Pósters + Portadas + Audio)
+        │     │     ├── <TrailerModal /> (PropTypes · Tráiler 16:9)
         │     │     ├── <InteraccionIndividual />
         │     │     └── <PagerNavigation />
         │     ├── <Catalogo /> (con useSearchParams)
@@ -137,14 +141,14 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
         │     │     └── <TreeNode /> (recursivo y colapsable)
         │     └── <Bitacora />
         │           ├── <CategoryFilter />
-        │           └── <LogCard /> (acordeón x9)
+        │           └── <LogCard /> (acordeón x10)
         └── <Footer />
 ```
 
 ---
 
 ## 🎨 Tecnologías y Decisiones de Diseño
-* **React 18 / 19** con functional components y hooks (`useState`, `useEffect`, `useMemo`, `useCallback`).
+* **React 18 / 19** con functional components y hooks (`useState`, `useEffect`, `useMemo`, `useCallback`, `useRef`).
 * **PropTypes (`prop-types`)** para la validación estricta de contratos de props en componentes reutilizables (Semana M9).
 * **Vite** como empaquetador ultrarrápido y herramienta recomendada oficialmente.
 * **React Router v6 / v7** para navegación del lado del cliente, rutas anidadas, `useNavigate()` y sincronización de query strings con `useSearchParams()`.

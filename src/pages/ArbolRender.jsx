@@ -93,9 +93,9 @@ const initialTreeData = {
               id: 'page-perfil',
               nombre: '<Perfil /> (Ruta: /perfil/:slug)',
               tipo: 'Página',
-              descripcion: 'Vista individual del integrante con datos, gustos e interacción interactiva.',
+              descripcion: 'Vista individual del integrante con cartelera multimedia (pósters con tráiler en modal y discos con reproductor de audio useRef).',
               props: 'slug (extraído con useParams)',
-              estado: 'Específico por integrante (rondas, selectedMovie, activeAlbum, frase, birras)',
+              estado: 'trailerPelicula, playingAlbumIdx, audioRef (useRef), e interacciones por integrante',
               hijos: [
                 {
                   id: 'perfil-head',
@@ -109,10 +109,19 @@ const initialTreeData = {
                 {
                   id: 'perfil-boards',
                   nombre: '<FavoritosBoard />',
-                  tipo: 'Componente UI',
-                  descripcion: 'Grilla de 3 películas y 3 discos favoritos.',
-                  props: 'peliculas, discos, activeState',
-                  estado: 'isHighlighted / isOpen',
+                  tipo: 'Componente Multimedia',
+                  descripcion: 'Grilla de 3 películas (con pósters oficiales y botón de tráiler) y 3 discos (con portadas y reproductor de 30s controlado por useRef).',
+                  props: 'peliculas, discos, playingAlbumIdx, onOpenTrailer, onToggleAudio',
+                  estado: 'isHighlighted / isOpen / isPlaying',
+                  hijos: []
+                },
+                {
+                  id: 'perfil-trailer-modal',
+                  nombre: '<TrailerModal /> (PropTypes)',
+                  tipo: 'Componente Modal de Cine',
+                  descripcion: 'Ventana flotante 16:9 que reproduce el tráiler oficial de cada película validada con PropTypes.shape.',
+                  props: 'pelicula (PropTypes.shape), onClose (PropTypes.func)',
+                  estado: 'Condicional (pelicula !== null) + listener Escape',
                   hijos: []
                 },
                 {

@@ -9,7 +9,7 @@ const ROUTE_TITLES = {
   '/catalogo': 'Catálogo de Maridajes · 24 Registros JSON',
   '/api': 'API Pública · Cervecerías en Vivo (Open Brewery DB)',
   '/arbol': 'Árbol de Componentes · Jerarquía de React',
-  '/bitacora': 'Bitácora de Rodaje · 9 Decisiones de Arquitectura'
+  '/bitacora': 'Bitácora de Rodaje · 10 Decisiones de Arquitectura'
 };
 
 export default function Layout() {
