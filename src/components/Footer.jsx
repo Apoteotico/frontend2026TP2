@@ -17,7 +17,7 @@ export default function Footer() {
         <nav aria-label="Enlaces del pie" className="footer-nav">
           <Link to="/">Portada</Link>
           <Link to="/catalogo">Catálogo</Link>
-          <Link to="/api">API Cervecerías</Link>
+          <Link to="/api">API Discos y Cine</Link>
           <Link to="/arbol">Árbol</Link>
           <Link to="/bitacora">Bitácora</Link>
         </nav>

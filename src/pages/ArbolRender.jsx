@@ -185,16 +185,16 @@ const initialTreeData = {
               id: 'page-api',
               nombre: '<ApiConsumo /> (Ruta: /api)',
               tipo: 'Página Asíncrona',
-              descripcion: 'Consumo de la API pública Open Brewery DB con useEffect y fetch.',
+              descripcion: 'Consumo de la API pública Apple iTunes Search para discos, canciones y bandas sonoras con reproducción de audio de 30s.',
               props: 'Ninguna',
-              estado: 'cervecerias (array), cargando (boolean), error (string|null), ciudad (string)',
+              estado: 'tracks (array), cargando (boolean), error (string|null), terminoBusqueda (string), playingTrackId, audioRef (useRef)',
               hijos: [
                 {
                   id: 'api-controls',
                   nombre: '<ApiControlPanel />',
                   tipo: 'Componente de Control',
-                  descripcion: 'Selector de ciudades y botones de refresco / prueba de error.',
-                  props: 'ciudad, onSelectCiudad, onReload, onSimulateError',
+                  descripcion: 'Selector de colecciones de discos/películas del equipo, buscador libre y botones de refresco / simulación de error.',
+                  props: 'coleccionActiva, inputBusqueda, onSelectColeccion, onSubmitBusqueda, onSimulateError',
                   estado: 'Ninguno',
                   hijos: []
                 },
@@ -218,10 +218,10 @@ const initialTreeData = {
                 },
                 {
                   id: 'api-cards',
-                  nombre: '<BreweryCard /> (x12)',
-                  tipo: 'Componente Reutilizable',
-                  descripcion: 'Cervecería artesanal con tipo, ubicación y link oficial.',
-                  props: 'brewery (objeto)',
+                  nombre: '<MediaTrackCard /> (x12)',
+                  tipo: 'Componente Multimedia',
+                  descripcion: 'Tarjeta de álbum/canción con portada de alta definición, metadatos y botón de reproducción de 30s controlado por useRef.',
+                  props: 'track (objeto), isPlaying (boolean), onToggleAudio (función)',
                   estado: 'Ninguno',
                   hijos: []
                 }

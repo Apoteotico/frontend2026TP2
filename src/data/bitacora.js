@@ -47,11 +47,11 @@ export const bitacoraEntries = [
   {
     id: 6,
     fecha: "2026-10-05",
-    titulo: "Consumo de API pública (Open Brewery DB) y estados asíncronos",
+    titulo: "Consumo de API pública (Apple iTunes Search API) y estados asíncronos",
     categoria: "api",
-    decision: "Conectar la aplicación a la API pública de cervecerías 'Open Brewery DB' para buscar cervecerías artesanales reales en tiempo real.",
-    dificultad: "Controlar adecuadamente el ciclo de vida asíncrono con `useEffect`, evitando memory leaks y manejando errores de red.",
-    resolucion: "Se implementó un hook con estados explícitos de `loading`, `error` y `data`, con botón para forzar reintento de conexión."
+    decision: "Conectar la aplicación a la API pública 'Apple iTunes Search' para consultar en tiempo real los discos favoritos del equipo, bandas sonoras de películas y cualquier artista, obteniendo portadas oficiales y preescuchas de 30 segundos sin requerir claves privadas.",
+    dificultad: "Controlar adecuadamente el ciclo de vida asíncrono con `useEffect` y la reproducción de audio, evitando pistas superpuestas y manejando errores de red.",
+    resolucion: "Se implementó un buscador y selector de colecciones con estados explícitos de `cargando`, `error` y `tracks`, botón para forzar reintento de conexión y un reproductor `<audio ref={audioRef}>` centralizado."
   },
   {
     id: 7,

@@ -49,7 +49,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 | **Florencia Lelis Guzmán** | [@fguzman3026](https://github.com/fguzman3026) | Maquetación responsive de la Sidebar, diseño de afiches y estados luminosos de cartelera. | [/perfil/florencia-guzman](/perfil/florencia-guzman) |
 | **Sonia Raquel Andrada** | [@Raqu28](https://github.com/Raqu28) | Lógica de filtrado en el catálogo, notas interactivas de álbumes y accesibilidad. | [/perfil/sonia-andrada](/perfil/sonia-andrada) |
 | **Eitel Hugo Belinzoni** | [@Apoteotico](https://github.com/Apoteotico) | Arquitectura del proyecto en Vite, configuración de React Router y estructuración del layout. | [/perfil/eitel-belinzoni](/perfil/eitel-belinzoni) |
-| **Esteban Acosta** | [@otra-tecla](https://github.com/otra-tecla) | Integración del consumo de la API de cervecerías, estados de carga/error y contador de donaciones. | [/perfil/esteban-acosta](/perfil/esteban-acosta) |
+| **Esteban Acosta** | [@otra-tecla](https://github.com/otra-tecla) | Integración del consumo de la API de discos y bandas sonoras (iTunes Search API), estados de carga/error y contador de donaciones. | [/perfil/esteban-acosta](/perfil/esteban-acosta) |
 
 ---
 
@@ -89,8 +89,9 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 * **Modal de detalle:** Cada registro permite abrir una vista modal para consultar la sinopsis maridada y la receta completa.
 
 ### 4. Consumo Asíncrono de API Pública (`/api`)
-* Conexión con **[Open Brewery DB](https://api.openbrewerydb.org/)** (API pública sin claves privadas).
-* Selector de capitales cerveceras (San Diego, Portland, Denver, Austin, Chicago).
+* Conexión en vivo con **[Apple iTunes Search API](https://performance-partners.apple.com/search-api)** (API pública gratuita sin claves privadas y con CORS habilitado).
+* Selector de colecciones curadas del equipo (*Bandas Sonoras de Películas*, *Selección Guillermo*, *Selección Florencia*, *Selección Sonia*, *Selección Eitel* y *Selección Esteban*) más buscador libre en tiempo real para cualquier artista, álbum o película.
+* Reproductor integrado con `useRef` para escuchar fragmentos de 30 segundos y visualizar portadas en alta resolución (`300x300`).
 * **Manejo de estados asíncronos:**
   - `cargando`: Spinner visual con mensaje amigable.
   - `error`: Cartel de error ante caídas de red o fallas HTTP.
@@ -132,11 +133,11 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
         │     │     ├── <FiltrosBar />
         │     │     ├── <CardMaridaje /> (x24 · PropTypes)
         │     │     └── <DetalleModal /> (PropTypes)
-        │     ├── <ApiConsumo />
+        │     ├── <ApiConsumo /> (Apple iTunes Search API)
         │     │     ├── <ApiControlPanel />
         │     │     ├── <LoadingSpinner />
         │     │     ├── <ErrorAlert />
-        │     │     └── <BreweryCard /> (x12)
+        │     │     └── <MediaTrackCard /> (x12 · Audio 30s)
         │     ├── <ArbolRender />
         │     │     └── <TreeNode /> (recursivo y colapsable)
         │     └── <Bitacora />
@@ -167,7 +168,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 | **Florencia Guzmán** | ChatGPT (Plan gratuito) | GPT-4o mini | Generación y redacción de la lista de películas favoritas y sugerencias de contraste accesible en CSS. | Se descartaron propuestas visuales genéricas para mantener la paleta institucional de *pITzza y birrAPI*. |
 | **Sonia Andrada** | v0 by Vercel | Claude 3.5 Sonnet | Exploración inicial de layouts tipo sidebar y tarjetas con filtros. | El código generado fue refactorizado a componentes limpios sin dependencias de Tailwind para usar CSS puro. |
 | **Eitel Belinzoni** | GitHub Copilot | GPT-4o | Autocompletado de tipos de birra y sinopsis del catálogo JSON local. | Se corrigieron las descripciones y se verificó que cada entrada tuviera relación directa con la propuesta del equipo. |
-| **Esteban Acosta** | Perplexity AI | Sonar Medium | Búsqueda de APIs públicas abiertas sin claves y documentación del endpoint de Open Brewery DB. | Se implementó el control de errores propio y la simulación para garantizar tolerancia a fallos de red. |
+| **Esteban Acosta** | Perplexity AI | Sonar Medium | Búsqueda de APIs públicas abiertas sin claves y documentación del endpoint de Apple iTunes Search API. | Se implementó el control de errores propio y la simulación para garantizar tolerancia a fallos de red. |
 
 ---
 

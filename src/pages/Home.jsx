@@ -58,7 +58,7 @@ export default function Home() {
               Explorar Catálogo (24 Maridajes)
             </Link>
             <Link to="/api" className="btn btn-ghost" style={{ color: 'var(--mozzarella)', borderColor: 'rgba(246, 241, 231, 0.3)' }}>
-              API Cervecerías
+              API Discos y Cine
             </Link>
           </div>
 
@@ -301,10 +301,10 @@ export default function Home() {
           </Link>
 
           <Link to="/api" className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <span style={{ fontSize: '1.6rem' }}>🍺</span>
-            <h3 style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>API Cervecerías en Vivo</h3>
+            <span style={{ fontSize: '1.6rem' }}>💿</span>
+            <h3 style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>API Discos y Bandas Sonoras</h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--suave)', marginTop: '0.3rem' }}>
-              Consumo asíncrono de Open Brewery DB con estados de carga, manejo de errores y reintentos.
+              Consumo asíncrono de Apple iTunes Search API con reproductor de 30s, estados de carga y manejo de errores.
             </p>
           </Link>
 
