@@ -44,6 +44,13 @@ export default function Layout() {
     } catch {}
   };
 
+  const cambiarTema = (nuevoTema) => {
+    setTema(nuevoTema);
+    try {
+      localStorage.setItem('pITzza_tema', nuevoTema);
+    } catch {}
+  };
+
   // Obtener el título dinámico según la ruta
   let currentTitle = ROUTE_TITLES[location.pathname];
   if (!currentTitle && location.pathname.startsWith('/perfil/')) {
@@ -79,10 +86,11 @@ export default function Layout() {
               type="button"
               onClick={toggleTema}
               className="topbar-theme-btn"
-              style={{ fontSize: '0.8rem', padding: '0.2rem 0.5rem' }}
-              aria-label="Alternar tema claro y oscuro"
+              style={{ fontSize: '0.85rem', padding: '0.25rem 0.55rem' }}
+              aria-label={`Cambiar a ${tema === 'oscuro' ? 'Modo Día' : 'Modo Noche'}`}
+              title={`Cambiar a ${tema === 'oscuro' ? 'Modo Día' : 'Modo Noche'}`}
             >
-              {tema === 'oscuro' ? '🌙' : '☀️'}
+              {tema === 'oscuro' ? '☀️' : '🌙'}
             </button>
             <button
               type="button"
@@ -106,15 +114,26 @@ export default function Layout() {
             </div>
 
             <div className="topbar-actions">
-              <button
-                type="button"
-                onClick={toggleTema}
-                className="topbar-theme-btn"
-                title="Cambiar iluminación (Semana M9 - PFA 9)"
-                aria-label={`Cambiar a ${tema === 'oscuro' ? 'Modo Día' : 'Modo Gala'}`}
-              >
-                {tema === 'oscuro' ? '🌙 Modo Gala' : '☀️ Modo Día'}
-              </button>
+              <div className="theme-toggle-pill" role="group" aria-label="Selector de iluminación">
+                <button
+                  type="button"
+                  className={`theme-pill-btn ${tema === 'claro' ? 'is-active' : ''}`}
+                  onClick={() => cambiarTema('claro')}
+                  aria-pressed={tema === 'claro'}
+                  title="Activar Modo Día (Iluminación clara)"
+                >
+                  ☀️ Día
+                </button>
+                <button
+                  type="button"
+                  className={`theme-pill-btn ${tema === 'oscuro' ? 'is-active' : ''}`}
+                  onClick={() => cambiarTema('oscuro')}
+                  aria-pressed={tema === 'oscuro'}
+                  title="Activar Modo Noche (Función de cine de gala)"
+                >
+                  🌙 Noche
+                </button>
+              </div>
               <span className="topbar-pill">⚡ Vite + React</span>
               <span className="topbar-pill">🎬 5 Integrantes</span>
               <a

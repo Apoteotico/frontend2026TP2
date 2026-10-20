@@ -614,39 +614,68 @@ code {
   color: #ffffff;
 }
 
-/* Selector de Tema (Semana M9 - PFA 9 A2) */
+/* Toggle de Tema Segmentado [ ☀️ Día | 🌙 Noche ] (Semana M9 - PFA 9 A2) */
+.theme-toggle-pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--mozzarella);
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.theme-pill-btn {
+  background: transparent;
+  border: none;
+  font-family: var(--fuente-codigo);
+  font-size: 0.73rem;
+  font-weight: 600;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--suave);
+  transition: all 0.18s ease;
+}
+
+.theme-pill-btn:hover {
+  color: var(--texto);
+}
+
+.theme-pill-btn.is-active {
+  background: var(--birra);
+  color: #12100e;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  font-weight: 700;
+}
+
 .topbar-theme-btn {
   background: var(--mozzarella);
   border: 1px solid var(--linea);
   color: var(--texto);
   font-family: var(--fuente-codigo);
-  font-size: 0.74rem;
-  font-weight: 600;
-  padding: 0.22rem 0.65rem;
   border-radius: 999px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  justify-content: center;
   transition: all 0.2s ease;
 }
 
 .topbar-theme-btn:hover {
-  background: var(--papel);
   border-color: var(--birra);
   color: var(--birra-oscura);
-  transform: translateY(-1px);
 }
 
-/* Modo Función de Gala / Oscuro (Semana M9) */
+/* Modo Función de Gala / Noche (Semana M9) */
 .app-layout.theme-oscuro {
   --crema: #1a1614;
   --papel: #211c19;
   --mozzarella: #29231f;
   --texto: #f6f1e7;
   --tinta: #ffffff;
-  --tinta-2: #f3ede4;
-  --tinta-3: #ded2c3;
+  --tinta-2: #1c1815;
+  --tinta-3: #2a2320;
   --suave: #baa997;
   --linea: rgba(232, 167, 43, 0.22);
   background-color: #110e0c;
@@ -661,8 +690,39 @@ code {
 }
 
 .app-layout.theme-oscuro .desktop-topbar {
-  background: rgba(20, 16, 14, 0.92);
+  background: rgba(20, 16, 14, 0.94);
   border-bottom-color: rgba(232, 167, 43, 0.2);
+}
+
+.app-layout.theme-oscuro .topbar-project-tag {
+  background: rgba(200, 69, 44, 0.22);
+  color: #fca5a5;
+}
+
+.app-layout.theme-oscuro .topbar-link {
+  background: rgba(43, 111, 143, 0.25);
+  color: #7dd3fc;
+  border-color: rgba(125, 211, 252, 0.4);
+}
+
+.app-layout.theme-oscuro .topbar-pill {
+  background: #251f1b;
+  border-color: rgba(232, 167, 43, 0.25);
+  color: #e5d7c5;
+}
+
+.app-layout.theme-oscuro .theme-toggle-pill {
+  background: #251f1b;
+  border-color: rgba(232, 167, 43, 0.3);
+}
+
+.app-layout.theme-oscuro .theme-pill-btn {
+  color: #baa997;
+}
+
+.app-layout.theme-oscuro .theme-pill-btn.is-active {
+  background: var(--birra);
+  color: #12100e;
 }
 
 .app-layout.theme-oscuro .topbar-current-page {
@@ -700,10 +760,64 @@ code {
   border-color: rgba(232, 167, 43, 0.3) !important;
 }
 
-.app-layout.theme-oscuro .topbar-theme-btn {
-  background: #251e1b;
-  border-color: rgba(232, 167, 43, 0.35);
+/* Pie de página institucional (Fijo y elegante en ambos modos) */
+.app-footer {
+  background: #14110f;
+  color: #f6f1e7;
+  border-top: 1px solid rgba(232, 167, 43, 0.25);
+  padding: 2rem 2.5rem;
+  margin-top: auto;
+  transition: background-color 0.25s ease;
+}
+
+.app-layout.theme-oscuro .app-footer {
+  background: #0d0b09;
+  border-top-color: rgba(232, 167, 43, 0.2);
+}
+
+.footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-brand {
+  font-family: var(--fuente-titulo);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.footer-brand span {
   color: var(--birra);
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+  color: rgba(246, 241, 231, 0.65);
+  margin-top: 0.25rem;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.footer-nav a {
+  color: var(--birra);
+  font-weight: 550;
+  transition: color 0.16s ease;
+}
+
+.footer-nav a:hover {
+  color: #ffffff;
 }
 
 .page-content {
