@@ -1,0 +1,115 @@
+===========================================================================
+  GUÍA RÁPIDA PARA EL EQUIPO — pITzza y birrAPI (TP2 React · Grupo 21)
+===========================================================================
+
+Este proyecto está hecho en React con Vite. A diferencia del TP1 (donde
+abríamos el archivo index.html con doble clic), los proyectos en React
+necesitan levantar un pequeño servidor local para funcionar.
+
+Acá tenés qué necesitás tener en la PC y los pasos exactos para probarlo.
+
+
+---------------------------------------------------------------------------
+1. ¿QUÉ NECESITÁS TENER INSTALADO EN TU PC?
+---------------------------------------------------------------------------
+
+Lo único obligatorio es tener instalado **Node.js** (versión 18 o superior).
+Node.js ya incluye automáticamente **npm** (el gestor de paquetes).
+
+¿Cómo saber si ya lo tenés instalado?
+1. Abrí una terminal (PowerShell, CMD o la terminal de Visual Studio Code).
+2. Escribí el siguiente comando y apretá Enter:
+   node -v
+
+- Si te responde algo como "v18.x.x", "v20.x.x" o "v22.x.x", ¡ya estás listo!
+- Si te dice que "no se reconoce el comando":
+  1. Entrá a https://nodejs.org/
+  2. Descargá la versión **LTS** (la recomendada para la mayoría).
+  3. Instalala con "Siguiente -> Siguiente -> Finalizar".
+  4. Cerrá y volvé a abrir la terminal (o Visual Studio Code).
+
+
+---------------------------------------------------------------------------
+2. PASOS PARA LEVANTAR Y PROBAR LA PÁGINA
+---------------------------------------------------------------------------
+
+PASO 1: Descomprimir el archivo ZIP
+- Extraé el contenido del archivo ZIP en cualquier carpeta de tu PC
+  (por ejemplo, en el Escritorio o en tu carpeta de la facultad).
+
+PASO 2: Abrir la carpeta en Visual Studio Code (o en la terminal)
+- Abrí Visual Studio Code.
+- Andá a "Archivo -> Abrir carpeta..." y seleccioná la carpeta
+  "TP2-React-Grupo21".
+- Abrí la terminal integrada de VS Code con el menú superior:
+  "Terminal -> Nueva terminal" (o con el atajo Ctrl + Ñ / Ctrl + `).
+
+PASO 3: Instalar las dependencias (SOLO LA PRIMERA VEZ)
+- En la terminal, asegurate de estar parado dentro de la carpeta
+  TP2-React-Grupo21 y ejecutá:
+
+  npm install
+
+  (Esto va a descargar React, React Router y Vite en una carpeta llamada
+  "node_modules". Tarda unos 15 a 30 segundos y se hace una sola vez).
+
+PASO 4: Iniciar el servidor de prueba
+- Cuando termine el paso anterior, ejecutá:
+
+  npm run dev
+
+- En la terminal te va a aparecer un mensaje como este:
+  ➜  Local:   http://localhost:5173/
+
+PASO 5: Ver la página en el navegador
+- Mantené presionada la tecla Ctrl y hacé clic sobre http://localhost:5173/
+  (o copiá y pegá esa dirección en Chrome / Edge / Firefox).
+
+
+---------------------------------------------------------------------------
+3. ¿CÓMO APAGARLO O VOLVER A ARRANCARLO OTRO DÍA?
+---------------------------------------------------------------------------
+
+- Para apagar el servidor: en la terminal donde está corriendo, apretá
+  Ctrl + C.
+- Para volver a abrirlo otro día: NO hace falta volver a correr "npm install".
+  Solamente abrís la terminal en la carpeta y ejecutás:
+  npm run dev
+
+
+---------------------------------------------------------------------------
+4. ¿QUÉ COSAS PUEDEN PROBAR EN LA PÁGINA?
+---------------------------------------------------------------------------
+
+1. Barra superior:
+   - Cambiá entre Modo Día (claro) y Modo Noche (oscuro). Queda guardado.
+
+2. Portada (Inicio):
+   - Probá el botón "Sortear mi noche" y después hacé clic en "Ver en
+     Catálogo con filtro directo".
+
+3. Perfiles de cada integrante (menú izquierdo):
+   - Entrá a cada uno de los 5 perfiles.
+   - En "Películas favoritas": hacé clic en el póster o en "Ver Tráiler
+     Oficial" para abrir el tráiler en pantalla modal.
+   - En "Discos favoritos": hacé clic en "Escuchar (30s)" para reproducir
+     un fragmento real de cada disco.
+   - Probá el botón interactivo propio de cada integrante al final del perfil.
+
+4. Catálogo de Maridajes (/catalogo):
+   - Están las 20 combinaciones armadas con nuestras 15 películas, nuestros
+     15 discos, nuestras pizzas, birras y proyectos del TP1.
+   - Probá filtrar por integrante, tipo de birra, dificultad o texto libre
+     (vas a ver que la dirección URL arriba cambia sola con los filtros).
+
+5. Discos y Cine (/api):
+   - Tiene 3 menús desplegables en cascada:
+     1) Elegís el integrante del equipo.
+     2) Elegís ver todos sus discos o uno en particular (trae las canciones
+        de ese álbum en vivo desde la API de Apple iTunes con audio de 30s).
+     3) O elegís una de sus 3 películas para escuchar la banda sonora.
+
+6. Árbol de Componentes (/arbol) y Bitácora (/bitacora):
+   - Pueden expandir/contraer los nodos del árbol de React y filtrar los
+     10 hitos de la bitácora.
+===========================================================================

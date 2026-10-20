@@ -17,7 +17,7 @@
 5. [Módulos Principales de la Aplicación](#-módulos-principales-de-la-aplicación)
    - [Portada interactiva](#1-portada-interactiva)
    - [Perfiles individuales en React](#2-perfiles-individuales-en-react)
-   - [Catálogo con 24 datos locales JSON](#3-catálogo-con-24-datos-locales-json)
+   - [Catálogo con 20 datos locales JSON](#3-catálogo-con-20-datos-locales-json)
    - [Consumo asíncrono de API Pública](#4-consumo-asíncrono-de-api-pública)
    - [Árbol de renderizado interactivo](#5-árbol-de-renderizado-interactivo)
    - [Bitácora de rodaje](#6-bitácora-de-rodaje)
@@ -99,7 +99,6 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
   - `cargando`: Spinner visual con mensaje amigable.
   - `error`: Cartel de error ante caídas de red o fallas HTTP.
   - `reintentar`: Botón interactivo para reintentar la solicitud o refrescar datos.
-  - Botón adicional para simular error de red y validar la tolerancia a fallos.
 
 ### 5. Árbol de Renderizado Interactivo (`/arbol`)
 * Representación gráfica y jerárquica de la arquitectura de componentes de la aplicación.
@@ -171,7 +170,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 | **Florencia Guzmán** | ChatGPT (Plan gratuito) | GPT-4o mini | Generación y redacción de la lista de películas favoritas y sugerencias de contraste accesible en CSS. | Se descartaron propuestas visuales genéricas para mantener la paleta institucional de *pITzza y birrAPI*. |
 | **Sonia Andrada** | v0 by Vercel | Claude 3.5 Sonnet | Exploración inicial de layouts tipo sidebar y tarjetas con filtros. | El código generado fue refactorizado a componentes limpios sin dependencias de Tailwind para usar CSS puro. |
 | **Eitel Belinzoni** | GitHub Copilot | GPT-4o | Autocompletado de tipos de birra y sinopsis del catálogo JSON local. | Se corrigieron las descripciones y se verificó que cada entrada tuviera relación directa con la propuesta del equipo. |
-| **Esteban Acosta** | Perplexity AI | Sonar Medium | Búsqueda de APIs públicas abiertas sin claves y documentación del endpoint de Apple iTunes Search API. | Se implementó el control de errores propio y la simulación para garantizar tolerancia a fallos de red. |
+| **Esteban Acosta** | Perplexity AI | Sonar Medium | Búsqueda de APIs públicas abiertas sin claves y documentación de los endpoints `/lookup` y `/search` de Apple iTunes API. | Se implementaron selectores en cascada por integrante y el control de estados asíncronos (carga, error y reintento). |
 
 ---
 
