@@ -1,37 +1,122 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 
+/**
+ * Colecciones conectadas exactamente con los 3 discos favoritos y las películas
+ * que cada integrante definió en su perfil (integrantes.js).
+ */
 const COLECCIONES_EQUIPO = [
   {
     id: 'soundtracks',
-    etiqueta: '🎬 Bandas Sonoras de Películas (Inception, Interstellar, Pulp Fiction)',
-    query: 'Hans Zimmer Interstellar Inception Soundtrack'
+    etiqueta: '🎬 Bandas Sonoras de Películas del Equipo (Pulp Fiction · Interstellar · Inception · El Padrino · Whiplash)',
+    descripcion: 'Bandas sonoras originales de las películas favoritas del grupo',
+    fuentes: [
+      { tipo: 'lookup', id: 1469583186, max: 3, nota: 'Película: Pulp Fiction (Guillermo)' },
+      { tipo: 'lookup', id: 1533983552, max: 2, nota: 'Película: Interstellar (Sonia)' },
+      { tipo: 'lookup', id: 380349905, max: 2, nota: 'Película: Inception (Florencia)' },
+      { tipo: 'lookup', id: 1440844661, max: 2, nota: 'Película: El Padrino (Esteban)' },
+      { tipo: 'lookup', id: 1571408218, max: 2, nota: 'Película: Whiplash (Sonia)' },
+      { tipo: 'lookup', id: 1291056782, max: 1, nota: 'Película: Blade Runner 2049 (Eitel)' }
+    ]
   },
   {
     id: 'guillermo',
-    etiqueta: '⚡ Selección Guillermo (Soda Stereo · AC/DC · Guns N Roses)',
-    query: 'Soda Stereo Cancion Animal'
+    etiqueta: '⚡ Discos de Guillermo Chacon (The Doors in Concert · Rolling Stones Circus · Abbey Road)',
+    descripcion: 'The Doors in Concert (1970) · The Rolling Stones Rock and Roll Circus (1968) · Abbey Road (1969)',
+    fuentes: [
+      { tipo: 'lookup', id: 213622982, max: 4, nota: 'Disco 1 de Guillermo: The Doors in Concert' },
+      { tipo: 'search', term: 'The Rolling Stones Sympathy for the Devil Jumpin Jack Flash You Cant Always Get What You Want', max: 4, artistFilter: 'Rolling Stones', nota: 'Disco 2 de Guillermo: Rock and Roll Circus' },
+      { tipo: 'lookup', id: 1474833332, max: 4, nota: 'Disco 3 de Guillermo: Abbey Road (The Beatles)' }
+    ]
   },
   {
     id: 'florencia',
-    etiqueta: '🎸 Selección Florencia (Gustavo Cerati · Tame Impala · Fleetwood Mac)',
-    query: 'Gustavo Cerati Bocanada'
+    etiqueta: '🎸 Discos de Florencia Guzmán (Currents · Bocanada · Rumours)',
+    descripcion: 'Currents (Tame Impala, 2015) · Bocanada (Gustavo Cerati, 1999) · Rumours (Fleetwood Mac, 1977)',
+    fuentes: [
+      { tipo: 'lookup', id: 1440838039, max: 4, nota: 'Disco 1 de Florencia: Currents (Tame Impala)' },
+      { tipo: 'lookup', id: 304792998, max: 4, nota: 'Disco 2 de Florencia: Bocanada (Gustavo Cerati)' },
+      { tipo: 'lookup', id: 651871544, max: 4, nota: 'Disco 3 de Florencia: Rumours (Fleetwood Mac)' }
+    ]
   },
   {
     id: 'sonia',
-    etiqueta: '🎹 Selección Sonia (Spinetta · Pink Floyd · Daft Punk)',
-    query: 'Pink Floyd Dark Side of the Moon'
+    etiqueta: '🎹 Discos de Sonia Andrada (The Dark Side of the Moon · Artaud · Random Access Memories)',
+    descripcion: 'The Dark Side of the Moon (Pink Floyd, 1973) · Artaud (Pescado Rabioso, 1973) · Random Access Memories (Daft Punk, 2013)',
+    fuentes: [
+      { tipo: 'lookup', id: 1665303755, max: 4, nota: 'Disco 1 de Sonia: The Dark Side of the Moon (Pink Floyd)' },
+      { tipo: 'lookup', id: 321645242, max: 4, nota: 'Disco 2 de Sonia: Artaud (Pescado Rabioso)' },
+      { tipo: 'lookup', id: 1673536063, max: 4, nota: 'Disco 3 de Sonia: Random Access Memories (Daft Punk)' }
+    ]
   },
   {
     id: 'eitel',
-    etiqueta: '🤘 Selección Eitel (Patricio Rey · La Renga · Metallica)',
-    query: 'Metallica Master of Puppets'
+    etiqueta: '🤘 Discos de Eitel Belinzoni (Ok Computer · Canción Animal · Ten)',
+    descripcion: 'Ok Computer (Radiohead, 1997) · Canción Animal (Soda Stereo, 1990) · Ten (Pearl Jam, 1991)',
+    fuentes: [
+      { tipo: 'lookup', id: 1097861387, max: 4, nota: 'Disco 1 de Eitel: Ok Computer (Radiohead)' },
+      { tipo: 'lookup', id: 321882757, max: 4, nota: 'Disco 2 de Eitel: Canción Animal (Soda Stereo)' },
+      { tipo: 'lookup', id: 425465247, max: 4, nota: 'Disco 3 de Eitel: Ten (Pearl Jam)' }
+    ]
   },
   {
     id: 'esteban',
-    etiqueta: '🎷 Selección Esteban (Charly García · Radiohead · Miles Davis)',
-    query: 'Charly Garcia Clics Modernos'
+    etiqueta: '🎷 Discos de Esteban Acosta (Abbey Road · Clics Modernos · Led Zeppelin IV)',
+    descripcion: 'Abbey Road (The Beatles, 1969) · Clics Modernos (Charly García, 1983) · Led Zeppelin IV (1971)',
+    fuentes: [
+      { tipo: 'lookup', id: 1474833332, max: 4, nota: 'Disco 1 de Esteban: Abbey Road (The Beatles)' },
+      { tipo: 'search', term: 'Charly Garcia Nos Siguen Pegando Abajo Los Dinosaurios', max: 4, artistFilter: 'Charly', nota: 'Disco 2 de Esteban: Clics Modernos (Charly García)' },
+      { tipo: 'lookup', id: 580708175, max: 4, nota: 'Disco 3 de Esteban: Led Zeppelin IV' }
+    ]
   }
 ];
+
+/**
+ * Mapa de películas conocidas para resolver directamente su álbum oficial de Soundtrack en iTunes
+ * cuando el usuario escribe el nombre de una película en el buscador.
+ */
+const PELICULAS_CONOCIDAS = {
+  'pulp fiction': { tipo: 'lookup', id: 1469583186, nombre: 'Pulp Fiction (Original Motion Picture Soundtrack)' },
+  'reservoir dogs': { tipo: 'lookup', id: 1440847276, nombre: 'Reservoir Dogs (Original Motion Picture Soundtrack)' },
+  'perros de la calle': { tipo: 'lookup', id: 1440847276, nombre: 'Reservoir Dogs (Original Motion Picture Soundtrack)' },
+  'kill bill': {
+    tipo: 'queries',
+    nombre: 'Kill Bill Vol. 1 & 2 (Soundtrack)',
+    terms: [
+      'Tomoyasu Hotei Battle Without Honor Or Humanity',
+      'Nancy Sinatra Bang Bang My Baby Shot Me Down',
+      'Santa Esmeralda Dont Let Me Be Misunderstood',
+      'Gheorghe Zamfir The Lonely Shepherd'
+    ]
+  },
+  'interstellar': { tipo: 'lookup', id: 1533983552, nombre: 'Interstellar (Original Motion Picture Soundtrack)' },
+  'interestelar': { tipo: 'lookup', id: 1533983552, nombre: 'Interstellar (Original Motion Picture Soundtrack)' },
+  'inception': { tipo: 'lookup', id: 380349905, nombre: 'Inception (Music from the Motion Picture)' },
+  'el origen': { tipo: 'lookup', id: 380349905, nombre: 'Inception (Music from the Motion Picture)' },
+  'whiplash': { tipo: 'lookup', id: 1571408218, nombre: 'Whiplash (Original Motion Picture Soundtrack)' },
+  'cinema paradiso': { tipo: 'lookup', id: 830673047, nombre: 'Cinema Paradiso (Original Motion Picture Soundtrack)' },
+  'blade runner': { tipo: 'lookup', id: 1291056782, nombre: 'Blade Runner 2049 (Original Motion Picture Soundtrack)' },
+  'blade runner 2049': { tipo: 'lookup', id: 1291056782, nombre: 'Blade Runner 2049 (Original Motion Picture Soundtrack)' },
+  'matrix': { tipo: 'lookup', id: 1443853659, nombre: 'The Matrix (Original Motion Picture Score)' },
+  'the matrix': { tipo: 'lookup', id: 1443853659, nombre: 'The Matrix (Original Motion Picture Score)' },
+  'el padrino': { tipo: 'lookup', id: 1440844661, nombre: 'The Godfather (Soundtrack from the Motion Picture)' },
+  'the godfather': { tipo: 'lookup', id: 1440844661, nombre: 'The Godfather (Soundtrack from the Motion Picture)' },
+  'padrino': { tipo: 'lookup', id: 1440844661, nombre: 'The Godfather (Soundtrack from the Motion Picture)' },
+  'el gran hotel budapest': { tipo: 'lookup', id: 1440789547, nombre: 'The Grand Budapest Hotel (Original Soundtrack)' },
+  'grand budapest hotel': { tipo: 'lookup', id: 1440789547, nombre: 'The Grand Budapest Hotel (Original Soundtrack)' },
+  'the grand budapest hotel': { tipo: 'lookup', id: 1440789547, nombre: 'The Grand Budapest Hotel (Original Soundtrack)' },
+  'amelie': { tipo: 'search', term: 'Yann Tiersen Amelie', nombre: 'Amélie (Yann Tiersen)' },
+  'amélie': { tipo: 'search', term: 'Yann Tiersen Amelie', nombre: 'Amélie (Yann Tiersen)' },
+  'fight club': { tipo: 'search', term: 'Pixies Where Is My Mind Dust Brothers Fight Club', nombre: 'Fight Club (Soundtrack)' },
+  'el club de la pelea': { tipo: 'search', term: 'Pixies Where Is My Mind', nombre: 'Fight Club (Soundtrack)' },
+  'goodfellas': { tipo: 'search', term: 'Derek and the Dominos Layla Tony Bennett Rags to Riches', nombre: 'Goodfellas (Soundtrack)' },
+  'buenos muchachos': { tipo: 'search', term: 'Derek and the Dominos Layla Tony Bennett Rags to Riches', nombre: 'Goodfellas (Soundtrack)' },
+  'nueve reinas': { tipo: 'search', term: 'Rita Pavone Il Ballo Del Mattone', nombre: 'Nueve Reinas (Tema clásico)' },
+  'gladiator': { tipo: 'lookup', id: 1440563157, nombre: 'Gladiator (Soundtrack from the Motion Picture)' },
+  'gladiador': { tipo: 'lookup', id: 1440563157, nombre: 'Gladiator (Soundtrack from the Motion Picture)' },
+  'star wars': { tipo: 'lookup', id: 1375814280, nombre: 'Star Wars (Original Motion Picture Score)' },
+  'back to the future': { tipo: 'lookup', id: 1440829748, nombre: 'Back to the Future (Original Motion Picture Soundtrack)' },
+  'volver al futuro': { tipo: 'lookup', id: 1440829748, nombre: 'Back to the Future (Original Motion Picture Soundtrack)' }
+};
 
 function formatDuration(ms) {
   if (!ms) return '0:30';
@@ -41,16 +126,30 @@ function formatDuration(ms) {
   return `${min}:${sec}`;
 }
 
+/**
+ * Obtiene las canciones de un álbum específico en iTunes a partir de su collectionId.
+ */
+async function fetchTracksByCollectionId(collectionId, maxTracks = 12, nota = '') {
+  const res = await fetch(`https://itunes.apple.com/lookup?id=${collectionId}&entity=song`);
+  if (!res.ok) {
+    throw new Error(`Error HTTP ${res.status} al consultar el álbum ${collectionId}`);
+  }
+  const data = await res.json();
+  const tracks = (data.results || []).filter((r) => r.wrapperType === 'track' && r.previewUrl);
+  return tracks.slice(0, maxTracks).map((t) => ({ ...t, _origenNota: nota }));
+}
+
 export default function ApiConsumo() {
   const [tracks, setTracks] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
-  const [coleccionActiva, setColeccionActiva] = useState(COLECCIONES_EQUIPO[0].id);
-  const [terminoBusqueda, setTerminoBusqueda] = useState(COLECCIONES_EQUIPO[0].query);
+  const [coleccionActiva, setColeccionActiva] = useState('guillermo');
+  const [modoBusqueda, setModoBusqueda] = useState('auto'); // 'auto' | 'soundtrack' | 'musica'
+  const [terminoBusqueda, setTerminoBusqueda] = useState('');
   const [inputBusqueda, setInputBusqueda] = useState('');
+  const [subtituloActivo, setSubtituloActivo] = useState('');
   const [recargaManual, setRecargaManual] = useState(0);
 
-  // Control de reproducción de previews de 30s mediante una única instancia de <audio>
   const [playingTrackId, setPlayingTrackId] = useState(null);
   const audioRef = useRef(null);
 
@@ -62,20 +161,107 @@ export default function ApiConsumo() {
     setPlayingTrackId(null);
   }, []);
 
-  const fetchMediaTracks = useCallback(async () => {
+  const cargarDatos = useCallback(async () => {
     detenerAudio();
     setCargando(true);
     setError(null);
 
     try {
-      const encoded = encodeURIComponent(terminoBusqueda.trim() || 'Rock Nacional Argentino');
-      const url = `https://itunes.apple.com/search?term=${encoded}&entity=song&limit=12`;
-      const response = await fetch(url);
+      // Caso 1: Colección predefinida del equipo (trae exactamente los 3 discos del integrante o soundtracks)
+      if (coleccionActiva !== 'custom') {
+        const col = COLECCIONES_EQUIPO.find((c) => c.id === coleccionActiva) || COLECCIONES_EQUIPO[0];
+        setSubtituloActivo(col.descripcion);
 
-      if (!response.ok) {
-        throw new Error(`Error en el servidor: HTTP ${response.status} - ${response.statusText}`);
+        const promesas = col.fuentes.map(async (fuente) => {
+          if (fuente.tipo === 'lookup') {
+            return fetchTracksByCollectionId(fuente.id, fuente.max, fuente.nota);
+          }
+          const url = `https://itunes.apple.com/search?term=${encodeURIComponent(fuente.term)}&entity=song&limit=15`;
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(`Error HTTP ${res.status}`);
+          const data = await res.json();
+          let lista = (data.results || []).filter((t) => t.previewUrl);
+          if (fuente.artistFilter) {
+            const filtrada = lista.filter((t) =>
+              t.artistName.toLowerCase().includes(fuente.artistFilter.toLowerCase())
+            );
+            if (filtrada.length > 0) lista = filtrada;
+          }
+          return lista.slice(0, fuente.max).map((t) => ({ ...t, _origenNota: fuente.nota }));
+        });
+
+        const grupos = await Promise.all(promesas);
+        setTracks(grupos.flat());
+        return;
       }
 
+      // Caso 2: Búsqueda personalizada ingresada por el usuario
+      const limpio = terminoBusqueda.trim().toLowerCase();
+
+      // 2a. Si coincide con una película conocida del catálogo/equipo, resolvemos su Soundtrack oficial
+      if (PELICULAS_CONOCIDAS[limpio]) {
+        const peli = PELICULAS_CONOCIDAS[limpio];
+        setSubtituloActivo(`Banda sonora oficial: ${peli.nombre}`);
+
+        if (peli.tipo === 'lookup') {
+          const resultado = await fetchTracksByCollectionId(peli.id, 12, peli.nombre);
+          setTracks(resultado);
+          return;
+        }
+        if (peli.tipo === 'queries') {
+          const promesas = peli.terms.map(async (q) => {
+            const r = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&entity=song&limit=3`);
+            const d = await r.json();
+            return (d.results || []).slice(0, 3).map((t) => ({ ...t, _origenNota: peli.nombre }));
+          });
+          const resList = await Promise.all(promesas);
+          setTracks(resList.flat());
+          return;
+        }
+        if (peli.tipo === 'search') {
+          const r = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(peli.term)}&entity=song&limit=12`);
+          const d = await r.json();
+          setTracks((d.results || []).map((t) => ({ ...t, _origenNota: peli.nombre })));
+          return;
+        }
+      }
+
+      // 2b. Si el usuario eligió buscar Soundtrack de Película (o modo automático intentando detectar soundtrack)
+      if (modoBusqueda === 'soundtrack' || modoBusqueda === 'auto') {
+        const albumSearchUrl = `https://itunes.apple.com/search?term=${encodeURIComponent(terminoBusqueda + ' Soundtrack')}&entity=album&limit=20`;
+        const albRes = await fetch(albumSearchUrl);
+        if (albRes.ok) {
+          const albData = await albRes.json();
+          const palabras = limpio.split(/\s+/).filter((w) => w.length > 2);
+          const albumOst = (albData.results || []).find((a) => {
+            const nombreAlb = (a.collectionName || '').toLowerCase();
+            const coincideTitulo = palabras.every((p) => nombreAlb.includes(p));
+            const esSoundtrack =
+              /soundtrack|motion picture|score|original|film|music from/i.test(a.collectionName || '') ||
+              /soundtrack/i.test(a.primaryGenreName || '');
+            return a.trackCount > 4 && coincideTitulo && esSoundtrack;
+          });
+
+          if (albumOst && (modoBusqueda === 'soundtrack' || albumOst.collectionName.toLowerCase().startsWith(limpio))) {
+            setSubtituloActivo(`Álbum de banda sonora: ${albumOst.collectionName}`);
+            const ostTracks = await fetchTracksByCollectionId(albumOst.collectionId, 12, albumOst.collectionName);
+            if (ostTracks.length > 0) {
+              setTracks(ostTracks);
+              return;
+            }
+          }
+        }
+      }
+
+      // 2c. Búsqueda de Disco o Artista (prioriza álbum completo si el término coincide con el nombre de un disco)
+      const queryFinal = modoBusqueda === 'soundtrack' ? `${terminoBusqueda} Soundtrack` : terminoBusqueda;
+      setSubtituloActivo(`Resultados en vivo para "${queryFinal}"`);
+
+      const songUrl = `https://itunes.apple.com/search?term=${encodeURIComponent(queryFinal)}&entity=song&limit=12`;
+      const response = await fetch(songUrl);
+      if (!response.ok) {
+        throw new Error(`Error en el servidor: HTTP ${response.status}`);
+      }
       const data = await response.json();
       setTracks(data.results || []);
     } catch (err) {
@@ -83,21 +269,17 @@ export default function ApiConsumo() {
     } finally {
       setCargando(false);
     }
-  }, [terminoBusqueda, recargaManual, detenerAudio]);
+  }, [coleccionActiva, terminoBusqueda, modoBusqueda, recargaManual, detenerAudio]);
 
   useEffect(() => {
-    fetchMediaTracks();
+    cargarDatos();
     return () => detenerAudio();
-  }, [fetchMediaTracks, detenerAudio]);
+  }, [cargarDatos, detenerAudio]);
 
   const handleSelectColeccion = (e) => {
     const id = e.target.value;
     setColeccionActiva(id);
-    const encontrada = COLECCIONES_EQUIPO.find((c) => c.id === id);
-    if (encontrada) {
-      setInputBusqueda('');
-      setTerminoBusqueda(encontrada.query);
-    }
+    setInputBusqueda('');
   };
 
   const handleSubmitBusqueda = (e) => {
@@ -123,7 +305,6 @@ export default function ApiConsumo() {
     }
   };
 
-  // Permite simular una caída de red para verificar la interfaz de contingencia y reintento
   const forzarErrorPrueba = () => {
     detenerAudio();
     setCargando(true);
@@ -143,10 +324,10 @@ export default function ApiConsumo() {
           textTransform: 'uppercase',
           letterSpacing: '0.1em'
         }}>
-          API Pública Externa · Apple iTunes Search API (REST JSON)
+          API Pública Externa · Apple iTunes Search & Lookup API (REST JSON)
         </span>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', margin: '0.2rem 0 0.8rem' }}>
-          Explorador en Vivo: Discos y Bandas Sonoras
+          Explorador en Vivo: Discos del Equipo y Bandas Sonoras
         </h1>
         <div style={{
           background: 'var(--crema)',
@@ -157,23 +338,23 @@ export default function ApiConsumo() {
           boxShadow: 'var(--sombra)'
         }}>
           <p style={{ fontSize: '0.95rem', color: 'var(--tinta-2)', lineHeight: 1.5 }}>
-            <strong>¿Qué información aporta esta API?</strong> Conecta en tiempo real con la API pública{' '}
+            <strong>¿Qué información aporta esta API?</strong> Conecta en tiempo real con los endpoints públicos{' '}
+            <code>/lookup</code> y <code>/search</code> de{' '}
             <a
               href="https://performance-partners.apple.com/search-api"
               target="_blank"
               rel="noopener noreferrer"
               style={{ fontWeight: 600 }}
             >
-              Apple iTunes Search
+              Apple iTunes API
             </a>{' '}
-            (gratuita y sin claves privadas) para consultar los discos favoritos del equipo, bandas sonoras de películas
-            y cualquier artista, obteniendo portadas en alta definición, metadatos del álbum y fragmentos de audio
-            reales de 30 segundos.
+            para traer los <strong>3 discos exactos de cada integrante del grupo</strong> (4 temas por álbum) y las{' '}
+            <strong>bandas sonoras oficiales de nuestras películas</strong> con sus portadas originales y fragmentos de
+            audio de 30 segundos.
           </p>
         </div>
       </div>
 
-      {/* PANEL DE CONTROL Y BUSCADOR EN VIVO */}
       <section style={{
         background: 'var(--papel)',
         border: '1px solid var(--linea)',
@@ -187,13 +368,13 @@ export default function ApiConsumo() {
       }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: '1rem',
           alignItems: 'end'
         }}>
           <div>
             <label htmlFor="select-coleccion" style={{ display: 'block', fontWeight: 600, fontSize: '0.88rem', color: 'var(--tinta-2)', marginBottom: '0.35rem' }}>
-              💿 Colecciones recomendadas por el equipo:
+              💿 Discos por Integrante / Bandas Sonoras del Equipo:
             </label>
             <select
               id="select-coleccion"
@@ -207,7 +388,7 @@ export default function ApiConsumo() {
                 border: '1px solid var(--linea)',
                 background: 'var(--crema)',
                 fontFamily: 'var(--fuente-texto)',
-                fontSize: '0.92rem',
+                fontSize: '0.9rem',
                 cursor: 'pointer'
               }}
             >
@@ -215,22 +396,22 @@ export default function ApiConsumo() {
                 <option key={c.id} value={c.id}>{c.etiqueta}</option>
               ))}
               {coleccionActiva === 'custom' && (
-                <option value="custom">🔎 Búsqueda personalizada: "{terminoBusqueda}"</option>
+                <option value="custom">🔎 Búsqueda libre: "{terminoBusqueda}"</option>
               )}
             </select>
           </div>
 
-          <form onSubmit={handleSubmitBusqueda} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-end' }}>
-            <div style={{ flex: 1 }}>
+          <form onSubmit={handleSubmitBusqueda} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 180px' }}>
               <label htmlFor="input-api-search" style={{ display: 'block', fontWeight: 600, fontSize: '0.88rem', color: 'var(--tinta-2)', marginBottom: '0.35rem' }}>
-                🔍 Buscar artista, disco o película en la API:
+                🔍 Buscar película (soundtrack), disco o banda:
               </label>
               <input
                 id="input-api-search"
                 type="text"
                 value={inputBusqueda}
                 onChange={(e) => setInputBusqueda(e.target.value)}
-                placeholder="Ej: Pulp Fiction, Ennio Morricone, Divididos..."
+                placeholder="Ej: Pulp Fiction, Kill Bill, El Padrino, Pink Floyd..."
                 style={{
                   width: '100%',
                   padding: '0.65rem 0.95rem',
@@ -238,10 +419,34 @@ export default function ApiConsumo() {
                   border: '1px solid var(--linea)',
                   background: 'var(--crema)',
                   fontFamily: 'var(--fuente-texto)',
-                  fontSize: '0.92rem'
+                  fontSize: '0.9rem'
                 }}
               />
             </div>
+
+            <div style={{ flex: '0 0 auto' }}>
+              <label htmlFor="select-modo-busqueda" style={{ display: 'block', fontWeight: 600, fontSize: '0.78rem', color: 'var(--suave)', marginBottom: '0.35rem' }}>
+                Tipo:
+              </label>
+              <select
+                id="select-modo-busqueda"
+                value={modoBusqueda}
+                onChange={(e) => setModoBusqueda(e.target.value)}
+                style={{
+                  padding: '0.65rem 0.65rem',
+                  borderRadius: 'var(--radio-sm)',
+                  border: '1px solid var(--linea)',
+                  background: 'var(--crema)',
+                  fontFamily: 'var(--fuente-texto)',
+                  fontSize: '0.86rem'
+                }}
+              >
+                <option value="auto">Automático</option>
+                <option value="soundtrack">🎬 Soundtrack Película</option>
+                <option value="musica">💿 Disco / Artista</option>
+              </select>
+            </div>
+
             <button
               type="submit"
               className="btn btn-birra btn-sm"
@@ -263,7 +468,7 @@ export default function ApiConsumo() {
           paddingTop: '0.85rem'
         }}>
           <span style={{ fontSize: '0.86rem', color: 'var(--suave)', fontFamily: 'var(--fuente-codigo)' }}>
-            Consulta activa: <strong style={{ color: 'var(--tinta)' }}>"{terminoBusqueda}"</strong>
+            Mostrando: <strong style={{ color: 'var(--tinta)' }}>{subtituloActivo}</strong>
           </span>
 
           <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
@@ -307,10 +512,10 @@ export default function ApiConsumo() {
             💿
           </div>
           <h3 style={{ fontSize: '1.35rem', color: 'var(--tinta)', marginBottom: '0.35rem' }}>
-            Consultando catálogo de Apple iTunes en tiempo real...
+            Consultando álbumes y bandas sonoras en Apple iTunes...
           </h3>
           <p style={{ color: 'var(--suave)', fontSize: '0.95rem' }}>
-            Descargando portadas y pistas de vista previa para <strong>"{terminoBusqueda}"</strong>.
+            Descargando portadas originales y pistas de audio de 30 segundos.
           </p>
           <style>{`
             @keyframes spin {
@@ -339,7 +544,7 @@ export default function ApiConsumo() {
           <button
             type="button"
             className="btn"
-            onClick={fetchMediaTracks}
+            onClick={cargarDatos}
             style={{ background: '#b91c1c' }}
           >
             🔁 Reintentar consulta a la API
@@ -350,7 +555,7 @@ export default function ApiConsumo() {
       {!cargando && !error && (
         <>
           <p style={{ fontSize: '0.9rem', color: 'var(--suave)', marginBottom: '1rem' }}>
-            Se encontraron <strong>{tracks.length}</strong> pistas y discos disponibles con vista previa de audio:
+            Se cargaron <strong>{tracks.length}</strong> pistas verificadas con vista previa de audio:
           </p>
 
           {tracks.length > 0 ? (
@@ -368,7 +573,7 @@ export default function ApiConsumo() {
 
                 return (
                   <article
-                    key={track.trackId}
+                    key={`${track.trackId}-${track.collectionId}`}
                     className="card"
                     style={{
                       display: 'flex',
@@ -379,6 +584,18 @@ export default function ApiConsumo() {
                     }}
                   >
                     <div>
+                      {track._origenNota && (
+                        <div style={{
+                          fontSize: '0.72rem',
+                          fontFamily: 'var(--fuente-codigo)',
+                          color: 'var(--codigo)',
+                          marginBottom: '0.55rem',
+                          fontWeight: 600
+                        }}>
+                          {track._origenNota}
+                        </div>
+                      )}
+
                       <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', marginBottom: '0.9rem' }}>
                         {highResCover && (
                           <div className={`album-cover-wrap ${isPlaying ? 'is-playing' : ''}`} style={{ width: '76px', height: '76px' }}>
@@ -404,7 +621,7 @@ export default function ApiConsumo() {
                           </div>
 
                           <h3 style={{
-                            fontSize: '1.1rem',
+                            fontSize: '1.08rem',
                             color: 'var(--tinta)',
                             marginBottom: '0.2rem',
                             lineHeight: 1.25
@@ -412,7 +629,7 @@ export default function ApiConsumo() {
                             {track.trackName}
                           </h3>
 
-                          <p style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--tomate-oscuro)' }}>
+                          <p style={{ fontSize: '0.86rem', fontWeight: 600, color: 'var(--tomate-oscuro)' }}>
                             {track.artistName}
                           </p>
                         </div>
@@ -472,7 +689,7 @@ export default function ApiConsumo() {
               textAlign: 'center',
               color: 'var(--suave)'
             }}>
-              No se encontraron discos o canciones para "{terminoBusqueda}". Probá con otro artista o película.
+              No se encontraron discos o bandas sonoras para "{terminoBusqueda}". Probá con otro título o artista.
             </div>
           )}
         </>
