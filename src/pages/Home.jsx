@@ -55,7 +55,7 @@ export default function Home() {
               Ver afiches del equipo
             </a>
             <Link to="/catalogo" className="btn btn-birra">
-              Explorar Catálogo (24 Maridajes)
+              Explorar Catálogo (20 Maridajes)
             </Link>
             <Link to="/api" className="btn btn-ghost" style={{ color: 'var(--mozzarella)', borderColor: 'rgba(246, 241, 231, 0.3)' }}>
               API Discos y Cine
@@ -122,25 +122,26 @@ export default function Home() {
             borderRadius: 'var(--radio-sm)',
             padding: '1.5rem',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
             gap: '1.25rem',
             animation: 'fadeIn 0.3s ease-in'
           }}>
             <div>
-              <span style={{ fontSize: '0.78rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--tomate)', textTransform: 'uppercase' }}>🎬 Película</span>
-              <p style={{ fontWeight: 700, fontSize: '1.1rem', color: 'var(--tinta)' }}>{nocheSorteada.pelicula}</p>
+              <span style={{ fontSize: '0.78rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--tomate)', textTransform: 'uppercase' }}>🎬 Película ({nocheSorteada.integrante.split(' ')[0]})</span>
+              <p style={{ fontWeight: 700, fontSize: '1.08rem', color: 'var(--tinta)' }}>{nocheSorteada.pelicula}</p>
               <p style={{ fontSize: '0.85rem', color: 'var(--suave)' }}>Dir. {nocheSorteada.director} ({nocheSorteada.anio})</p>
             </div>
             <div>
-              <span style={{ fontSize: '0.78rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--birra-oscura)', textTransform: 'uppercase' }}>🍕 Pizza Maridada</span>
+              <span style={{ fontSize: '0.78rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--codigo)', textTransform: 'uppercase' }}>💿 Disco del Equipo</span>
+              <p style={{ fontWeight: 600, color: 'var(--tinta)' }}>{nocheSorteada.disco}</p>
+            </div>
+            <div>
+              <span style={{ fontSize: '0.78rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--birra-oscura)', textTransform: 'uppercase' }}>🍕 Pizza y 🍺 Birra</span>
               <p style={{ fontWeight: 600, color: 'var(--tinta)' }}>{nocheSorteada.pizza}</p>
+              <p style={{ fontSize: '0.86rem', color: 'var(--suave)' }}>Con {nocheSorteada.birra}</p>
             </div>
             <div>
-              <span style={{ fontSize: '0.78rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--codigo)', textTransform: 'uppercase' }}>🍺 Cerveza Recomendada</span>
-              <p style={{ fontWeight: 600, color: 'var(--tinta)' }}>{nocheSorteada.birra}</p>
-            </div>
-            <div>
-              <span style={{ fontSize: '0.78rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--albahaca)', textTransform: 'uppercase' }}>💻 Reto de Código</span>
+              <span style={{ fontSize: '0.78rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--albahaca)', textTransform: 'uppercase' }}>💻 Proyecto de Código</span>
               <p style={{ fontWeight: 600, color: 'var(--tinta)' }}>{nocheSorteada.proyectoCodigo}</p>
               <span className="badge badge-albahaca" style={{ marginTop: '0.3rem' }}>{nocheSorteada.dificultad} · {nocheSorteada.tiempoEstimado}</span>
             </div>
@@ -156,7 +157,7 @@ export default function Home() {
               gap: '0.75rem'
             }}>
               <span style={{ fontSize: '0.82rem', color: 'var(--suave)', fontFamily: 'var(--fuente-codigo)' }}>
-                ⚡ Sorteo reactivo vinculado a React Router y Catálogo
+                ⚡ Propuesta de {nocheSorteada.integrante} · Películas, discos, pizzas y birras del equipo
               </span>
               <button
                 type="button"
@@ -294,9 +295,9 @@ export default function Home() {
         }}>
           <Link to="/catalogo" className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
             <span style={{ fontSize: '1.6rem' }}>🍕</span>
-            <h3 style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Catálogo Local (24 Ítems)</h3>
+            <h3 style={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>Catálogo Local (20 Ítems)</h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--suave)', marginTop: '0.3rem' }}>
-              Base de datos en JSON local con búsqueda en tiempo real, filtros por categoría y vistas detalladas.
+              Nuestras películas, discos, pizzas y birras del TP1 combinadas en JSON local con búsqueda y filtros.
             </p>
           </Link>
 

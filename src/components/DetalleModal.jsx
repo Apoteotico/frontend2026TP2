@@ -60,13 +60,16 @@ export default function DetalleModal({ item, onClose }) {
         </button>
 
         <span className="badge badge-codigo" style={{ marginBottom: '0.5rem' }}>
-          {item.genero} · {item.tipoBirra}
+          {item.integrante} · {item.genero}
         </span>
         <h2 id="modal-titulo" style={{ fontSize: '1.65rem', marginBottom: '0.4rem', color: 'var(--tinta)' }}>
           {item.titulo}
         </h2>
-        <p style={{ color: 'var(--suave)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
+        <p style={{ color: 'var(--suave)', fontSize: '0.95rem', marginBottom: '0.4rem' }}>
           🎬 <strong>{item.pelicula}</strong> ({item.anio}) · Dirección: {item.director}
+        </p>
+        <p style={{ color: 'var(--suave)', fontSize: '0.93rem', marginBottom: '1.5rem' }}>
+          💿 <strong>Disco del perfil:</strong> {item.disco}
         </p>
 
         <div style={{ marginBottom: '1.5rem' }}>
@@ -127,11 +130,13 @@ export default function DetalleModal({ item, onClose }) {
 DetalleModal.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    integrante: PropTypes.string.isRequired,
     titulo: PropTypes.string.isRequired,
     pelicula: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     anio: PropTypes.number.isRequired,
     genero: PropTypes.string.isRequired,
+    disco: PropTypes.string.isRequired,
     pizza: PropTypes.string.isRequired,
     birra: PropTypes.string.isRequired,
     tipoBirra: PropTypes.string.isRequired,

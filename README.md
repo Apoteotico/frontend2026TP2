@@ -81,9 +81,9 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
   - **Esteban:** Contador de birras artesanales donadas con mensajes de agradecimiento.
 * Paginación circular (`.btn-prev` y `.btn-next`) con cálculo dinámico del integrante anterior y siguiente.
 
-### 3. Catálogo con 24 Datos Locales JSON (`/catalogo`)
-* Archivo [`src/data/catalogo.json`](src/data/catalogo.json) con **24 registros completos** (superando el requisito de 20).
-* **Buscador y filtros sincronizados con la URL (`useSearchParams`):** La búsqueda por texto, estilo de birra y nivel de código se reflejan en tiempo real en los query params (`/catalogo?q=...&birra=...&dificultad=...`), permitiendo compartir o recargar enlaces con los filtros aplicados.
+### 3. Catálogo con 20 Datos Locales JSON (`/catalogo`)
+* Archivo [`src/data/catalogo.json`](src/data/catalogo.json) con **20 registros completos** armados exclusivamente con las 15 películas y 15 discos favoritos de los 5 integrantes del equipo, combinados con las 5 pizzas (`Muzzarella clásica`, `Napolitana`, `Fugazzeta`, `Calabresa`, `Rúcula y parmesano`), las 5 birras (`Golden suave`, `IPA cítrica`, `Red Ale`, `Ámbar tostada`, `Honey beer`) y los proyectos de código definidos en el TP1.
+* **Buscador y filtros sincronizados con la URL (`useSearchParams`):** La búsqueda por texto, integrante del equipo, estilo de birra y nivel de proyecto se reflejan en tiempo real en los query params (`/catalogo?q=...&integrante=...&birra=...&dificultad=...`), permitiendo compartir o recargar enlaces con los filtros aplicados.
 * **Componentes modulares con PropTypes:** Implementación de `<CardMaridaje />` y `<DetalleModal />` validados exhaustivamente mediante `prop-types` (`PropTypes.shape`, `PropTypes.string`, `PropTypes.number`, etc.).
 * Estado de "sin resultados" con botón para restablecer.
 * **Modal de detalle:** Cada registro permite abrir una vista modal para consultar la sinopsis maridada y la receta completa.
@@ -131,7 +131,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
         │     │     └── <PagerNavigation />
         │     ├── <Catalogo /> (con useSearchParams)
         │     │     ├── <FiltrosBar />
-        │     │     ├── <CardMaridaje /> (x24 · PropTypes)
+        │     │     ├── <CardMaridaje /> (x20 · PropTypes)
         │     │     └── <DetalleModal /> (PropTypes)
         │     ├── <ApiConsumo /> (Apple iTunes Search API)
         │     │     ├── <ApiControlPanel />

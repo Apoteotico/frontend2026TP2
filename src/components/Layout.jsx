@@ -6,7 +6,7 @@ import Footer from './Footer';
 // Títulos de ruta mostrados en el breadcrumb superior
 const ROUTE_TITLES = {
   '/': 'Portada del equipo · Función de gala',
-  '/catalogo': 'Catálogo de Maridajes · 24 Registros JSON',
+  '/catalogo': 'Catálogo de Maridajes · 20 Funciones del Equipo',
   '/api': 'API Pública · Discos y Bandas Sonoras en Vivo (Apple iTunes API)',
   '/arbol': 'Árbol de Componentes · Jerarquía de React',
   '/bitacora': 'Bitácora de Rodaje · 10 Decisiones de Arquitectura'

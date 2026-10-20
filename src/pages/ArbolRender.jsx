@@ -148,9 +148,9 @@ const initialTreeData = {
               id: 'page-catalogo',
               nombre: '<Catalogo /> (Ruta: /catalogo)',
               tipo: 'Página',
-              descripcion: 'Catálogo de 24 datos locales JSON con búsqueda y filtros.',
+              descripcion: 'Catálogo de 20 maridajes locales JSON armados con las películas, discos, pizzas y birras del equipo.',
               props: 'Ninguna',
-              estado: 'useSearchParams (q, birra, dificultad), modalItem (objeto|null)',
+              estado: 'useSearchParams (q, integrante, birra, dificultad), modalItem (objeto|null)',
               hijos: [
                 {
                   id: 'catalogo-filtros',
@@ -163,10 +163,10 @@ const initialTreeData = {
                 },
                 {
                   id: 'catalogo-cards',
-                  nombre: '<CardMaridaje /> (x24 · PropTypes)',
+                  nombre: '<CardMaridaje /> (x20 · PropTypes)',
                   tipo: 'Componente Modular Validado',
-                  descripcion: 'Tarjetas con película, pizza, birra y reto técnico validadas con PropTypes.shape.',
-                  props: 'item (shape 12 campos), onVerDetalle (func)',
+                  descripcion: 'Tarjetas con integrante, película, disco, pizza, birra y proyecto validadas con PropTypes.shape.',
+                  props: 'item (shape 14 campos), onVerDetalle (func)',
                   estado: 'Ninguno (presentacional)',
                   hijos: []
                 },

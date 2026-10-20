@@ -18,17 +18,21 @@ export default function CardMaridaje({ item, onVerDetalle }) {
       }}
     >
       <div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-          <span className="badge badge-codigo">{item.genero}</span>
-          <span className="badge badge-birra">{item.tipoBirra}</span>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', gap: '0.4rem', flexWrap: 'wrap' }}>
+          <span className="badge badge-codigo">{item.integrante}</span>
+          <span className="badge badge-birra">{item.birra}</span>
         </div>
 
-        <h3 style={{ fontSize: '1.25rem', color: 'var(--tinta)', marginBottom: '0.4rem' }}>
+        <h3 style={{ fontSize: '1.2rem', color: 'var(--tinta)', marginBottom: '0.4rem' }}>
           {item.titulo}
         </h3>
 
-        <div style={{ fontSize: '0.9rem', color: 'var(--suave)', marginBottom: '1rem' }}>
+        <div style={{ fontSize: '0.9rem', color: 'var(--suave)', marginBottom: '0.35rem' }}>
           🎬 <strong>{item.pelicula}</strong> ({item.anio}) · {item.director}
+        </div>
+
+        <div style={{ fontSize: '0.88rem', color: 'var(--suave)', marginBottom: '0.9rem' }}>
+          💿 <strong>Disco:</strong> {item.disco}
         </div>
 
         <div style={{
@@ -71,11 +75,13 @@ export default function CardMaridaje({ item, onVerDetalle }) {
 CardMaridaje.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    integrante: PropTypes.string.isRequired,
     titulo: PropTypes.string.isRequired,
     pelicula: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     anio: PropTypes.number.isRequired,
     genero: PropTypes.string.isRequired,
+    disco: PropTypes.string.isRequired,
     pizza: PropTypes.string.isRequired,
     birra: PropTypes.string.isRequired,
     tipoBirra: PropTypes.string.isRequired,

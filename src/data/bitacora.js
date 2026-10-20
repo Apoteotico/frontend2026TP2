@@ -38,11 +38,11 @@ export const bitacoraEntries = [
   {
     id: 5,
     fecha: "2026-10-02",
-    titulo: "Catálogo local de 24 maridajes y filtros en tiempo real",
+    titulo: "Catálogo local de 20 maridajes del equipo y filtros en tiempo real",
     categoria: "componentes",
-    decision: "Crear un archivo JSON local con 24 maridajes de cine, pizza, birra y código, agregando búsqueda en vivo y filtros por categoría.",
-    dificultad: "Sincronizar el input de texto y los selectores para que convivan sin reiniciar el estado de la búsqueda.",
-    resolucion: "Se implementó un estado combinado con `useMemo` / `useState` que filtra por coincidencia de texto y estilo de birra simultáneamente."
+    decision: "Crear un archivo JSON local con 20 maridajes armados exclusivamente con las 15 películas y 15 discos favoritos de los 5 integrantes, combinados con las 5 pizzas, las 5 birras y los 8 proyectos de código definidos en el TP1.",
+    dificultad: "Sincronizar el input de texto y los selectores por integrante, birra y dificultad para que convivan sin reiniciar el estado de la búsqueda.",
+    resolucion: "Se implementó un filtrado reactivo con `useMemo` que cruza simultáneamente texto libre, integrante del equipo, estilo de birra y nivel del proyecto."
   },
   {
     id: 6,

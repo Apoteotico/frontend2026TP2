@@ -65,7 +65,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
   const secciones = [
     { to: '/', label: 'Portada del equipo', badge: 'Home', icon: <ClapperIcon />, end: true },
-    { to: '/catalogo', label: 'Catálogo de Maridajes', badge: '24 ítems', icon: <PizzaIcon /> },
+    { to: '/catalogo', label: 'Catálogo de Maridajes', badge: '20 ítems', icon: <PizzaIcon /> },
     { to: '/api', label: 'API Discos y Cine', badge: 'iTunes API', icon: <BeerIcon /> },
     { to: '/arbol', label: 'Árbol de Componentes', badge: 'React', icon: <TreeIcon /> },
     { to: '/bitacora', label: 'Bitácora de Rodaje', badge: '10 hitos', icon: <LogIcon /> }
