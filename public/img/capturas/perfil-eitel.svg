@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-label="Captura de la frase de equipo en el perfil de Eitel">
+  <rect width="720" height="200" fill="#fff8ee"/>
+  <text x="32" y="48" font-family="Georgia, serif" font-size="24" fill="#1c1410">Eitel · frase de equipo</text>
+  <rect x="32" y="72" width="656" height="88" rx="8" fill="#f7f0e4"/>
+  <rect x="32" y="72" width="8" height="88" fill="#3d6b4f"/>
+  <text x="56" y="124" font-family="Georgia, serif" font-size="18" fill="#1c1410">La resiliencia se nota en el siguiente commit, no en el primero.</text>
+</svg>

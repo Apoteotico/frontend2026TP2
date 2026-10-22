@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" aria-label="Captura de la noche recomendada en la portada">
+  <rect width="720" height="280" fill="#fff8ee"/>
+  <rect x="24" y="24" width="672" height="232" rx="16" fill="#ffffff" stroke="#c4452d" stroke-dasharray="8 6"/>
+  <text x="48" y="72" font-family="Georgia, serif" font-size="28" fill="#1c1410">Noche recomendada</text>
+  <rect x="48" y="96" width="180" height="40" rx="20" fill="#c4452d"/>
+  <text x="138" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Armar mi noche</text>
+  <rect x="48" y="156" width="624" height="72" rx="12" fill="#f7f0e4"/>
+  <text x="64" y="186" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#9a3320">Noche recomendada</text>
+  <text x="64" y="210" font-family="Arial, sans-serif" font-size="15" fill="#2a211c">Peli: Intensamente. Pizza napolitana y una IPA c�trica.</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-label="Captura de pelicula resaltada en el perfil de Florencia">
+  <rect width="720" height="220" fill="#fff8ee"/>
+  <text x="32" y="48" font-family="Georgia, serif" font-size="24" fill="#1c1410">Florencia · elegir peli</text>
+  <rect x="32" y="72" width="200" height="64" rx="12" fill="#ffe7c2" stroke="#e0a106" stroke-width="3"/>
+  <text x="48" y="110" font-family="Arial, sans-serif" font-size="16" fill="#1c1410">Harry Potter</text>
+  <rect x="248" y="72" width="200" height="64" rx="12" fill="#f7f0e4"/>
+  <text x="264" y="110" font-family="Arial, sans-serif" font-size="16" fill="#1c1410">El rey León</text>
+  <rect x="464" y="72" width="200" height="64" rx="12" fill="#f7f0e4"/>
+  <text x="480" y="110" font-family="Arial, sans-serif" font-size="16" fill="#1c1410">Soy Leyenda</text>
+  <text x="32" y="180" font-family="Arial, sans-serif" font-size="14" fill="#7a6a58">Una tarjeta queda marcada al azar.</text>
+</svg>
