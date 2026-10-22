@@ -37,7 +37,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 
 ## 🚀 Enlace al Deploy
 * **Sitio publicado en Vercel:** [https://tp2-react-grupo21.vercel.app/](https://tp2-react-grupo21.vercel.app/) *(URL del deploy grupal)*
-* **Repositorio en GitHub:** [https://github.com/Apoteotico/TP2-React-Grupo21](https://github.com/Apoteotico/TP2-React-Grupo21)
+* **Repositorio en GitHub:** [https://github.com/Apoteotico/frontend2026TP2](https://github.com/Apoteotico/frontend2026TP2)
 
 ---
 
@@ -178,8 +178,8 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com/Apoteotico/TP2-React-Grupo21.git
-   cd TP2-React-Grupo21
+   git clone https://github.com/Apoteotico/frontend2026TP2.git
+   cd frontend2026TP2
    ```
 
 2. **Instalar dependencias:**

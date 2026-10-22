@@ -132,7 +132,7 @@ export default function Layout() {
               </div>
               <span className="topbar-pill">🎬 5 Integrantes</span>
               <a
-                href="https://github.com/Apoteotico/TP1-FrontEnd-Grupo21"
+                href="https://github.com/Apoteotico/frontend2026TP2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="topbar-link"

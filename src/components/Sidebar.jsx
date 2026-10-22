@@ -157,7 +157,7 @@ export default function Sidebar({ isOpen, onClose }) {
           <div className="footer-meta-row">
             <span>IFTS 29 · 2C 2026</span>
             <a
-              href="https://github.com/Apoteotico/TP1-FrontEnd-Grupo21"
+              href="https://github.com/Apoteotico/frontend2026TP2"
               target="_blank"
               rel="noopener noreferrer"
               className="github-pill"
