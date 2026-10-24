@@ -89,7 +89,7 @@ PASO 5: Ver la página en el navegador
      Catálogo con filtro directo".
 
 3. Perfiles de cada integrante (menú izquierdo):
-   - Entrá a cada uno de los 5 perfiles.
+   - Entrá a cada uno de los 4 perfiles.
    - En "Películas favoritas": hacé clic en el póster o en "Ver Tráiler
      Oficial" para abrir el tráiler en pantalla modal.
    - En "Discos favoritos": hacé clic en "Escuchar (30s)" para reproducir
@@ -97,8 +97,8 @@ PASO 5: Ver la página en el navegador
    - Probá el botón interactivo propio de cada integrante al final del perfil.
 
 4. Catálogo de Maridajes (/catalogo):
-   - Están las 20 combinaciones armadas con nuestras 15 películas, nuestros
-     15 discos, nuestras pizzas, birras y proyectos del TP1.
+   - Están las 20 combinaciones armadas con nuestras 12 películas, nuestros
+     12 discos, nuestras pizzas, birras y proyectos del TP1.
    - Probá filtrar por integrante, tipo de birra, dificultad o texto libre
      (vas a ver que la dirección URL arriba cambia sola con los filtros).
 

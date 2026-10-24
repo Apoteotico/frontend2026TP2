@@ -143,11 +143,6 @@ export default function Perfil() {
     });
   };
 
-  const [estebanBirras, setEstebanBirras] = useState(0);
-  const triggerEstebanAction = () => {
-    setEstebanBirras(prev => prev + 1);
-  };
-
   return (
     <div className="perfil-page" style={{ maxWidth: '960px', margin: '0 auto' }}>
       <article className="card" style={{ padding: 'clamp(1.5rem, 4vw, 2.75rem)', marginBottom: '2rem' }}>
@@ -443,27 +438,6 @@ export default function Perfil() {
               </button>
               <p style={{ fontSize: '0.9rem', color: 'var(--suave)', marginTop: '0.4rem' }}>
                 Reflexiones sobre perseverancia, código colaborativo y resolución de problemas.
-              </p>
-            </div>
-          )}
-
-          {miembro.slug === 'esteban-acosta' && (
-            <div>
-              <p style={{ fontWeight: 600, color: 'var(--tomate-oscuro)', marginBottom: '0.5rem' }}>
-                🍺 Birras donadas: <strong style={{
-                  background: 'var(--birra)',
-                  color: 'var(--tinta)',
-                  padding: '0.15rem 0.6rem',
-                  borderRadius: '0.4rem',
-                  fontFamily: 'var(--fuente-codigo)',
-                  fontSize: '1.1rem'
-                }}>{estebanBirras}</strong>
-              </p>
-              <button type="button" className="btn btn-birra" onClick={triggerEstebanAction}>
-                Donar una birra artesanal 🍺
-              </button>
-              <p style={{ fontSize: '0.9rem', color: 'var(--suave)', marginTop: '0.4rem' }}>
-                {estebanBirras === 0 ? "Tocá el botón para sumar una pinta a la mesa de Esteban." : `¡Ya van ${estebanBirras} birras donadas! 🙌`}
               </p>
             </div>
           )}

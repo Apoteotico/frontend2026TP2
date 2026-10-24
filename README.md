@@ -29,7 +29,7 @@
 ---
 
 ## 📖 Descripción del Proyecto
-Continuando con la identidad desarrollada en el TP1, **pITzza y birrAPI** es la productora de software de un equipo de cinco estudiantes que fusiona el amor por el cine de culto, la pizza casera, la cerveza artesanal y el desarrollo web. 
+Continuando con la identidad desarrollada en el TP1, **pITzza y birrAPI** es la productora de software de un equipo de cuatro estudiantes que fusiona el amor por el cine de culto, la pizza casera, la cerveza artesanal y el desarrollo web. 
 
 Esta entrega traslada el sitio estático a una **Single Page Application en React**, implementando componentes modulares, enrutamiento con React Router, una **Sidebar compartida** para la navegación, manejo de estado reactivo mediante hooks (`useState`, `useEffect`, `useMemo`, `useCallback`), catálogo local con búsqueda y filtrado dinámico, consumo en vivo de una API pública y un visualizador del árbol de renderizado.
 
@@ -49,12 +49,11 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 | **Florencia Lelis Guzmán** | [@fguzman3026](https://github.com/fguzman3026) | Maquetación responsive de la Sidebar, diseño de afiches y estados luminosos de cartelera. | [/perfil/florencia-guzman](/perfil/florencia-guzman) |
 | **Sonia Raquel Andrada** | [@Raqu28](https://github.com/Raqu28) | Lógica de filtrado en el catálogo, notas interactivas de álbumes y accesibilidad. | [/perfil/sonia-andrada](/perfil/sonia-andrada) |
 | **Eitel Hugo Belinzoni** | [@Apoteotico](https://github.com/Apoteotico) | Arquitectura del proyecto en Vite, configuración de React Router y estructuración del layout. | [/perfil/eitel-belinzoni](/perfil/eitel-belinzoni) |
-| **Esteban Acosta** | [@otra-tecla](https://github.com/otra-tecla) | Integración del consumo de la API de discos y bandas sonoras (iTunes Search API), estados de carga/error y contador de donaciones. | [/perfil/esteban-acosta](/perfil/esteban-acosta) |
 
 ---
 
 ## 🧭 Estructura de Navegación y Layout Integrado
-* **Sidebar compartida (`<Sidebar />`):** Menú lateral persistente con la marca visual del equipo, riel cromático de película, iconos vectoriales limpios, enlaces con estado activo (`NavLink`), badges técnicos y avatares de los 5 integrantes con indicador de perfil activo. Ancho calibrado a 290 px para evitar saltos de línea y scrollbars ultra-finos personalizados (4 px en tonos ámbar).
+* **Sidebar compartida (`<Sidebar />`):** Menú lateral persistente con la marca visual del equipo, riel cromático de película, iconos vectoriales limpios, enlaces con estado activo (`NavLink`), badges técnicos y avatares de los 4 integrantes con indicador de perfil activo. Ancho calibrado a 290 px para evitar saltos de línea y scrollbars ultra-finos personalizados (4 px en tonos ámbar).
 * **Barra superior de escritorio (`<DesktopTopBar />`):** Encabezado fijo en escritorio con efecto vidrio (`backdrop-filter: blur(12px)`) que conecta la barra lateral con el contenido principal mediante un *breadcrumb* dinámico en tiempo real y badges de estado técnico.
 * **Adaptabilidad a móvil:** En pantallas menores a 900 px, la sidebar se convierte en un panel desplegable (*off-canvas drawer*) controlado mediante un botón hamburguesa en la barra superior móvil (`<MobileHeader />`).
 * **Navegación sin depender de 'Atrás':** Cada pantalla cuenta con controles internos, enlaces contextuales y paginación circular para navegar libremente por la app sin recurrir a los controles del navegador.
@@ -71,18 +70,17 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 ### 2. Perfiles Individuales en React (`/perfil/:slug`)
 * Ruta parametrizada por `slug` que renderiza la identidad, ficha técnica (ciudad, edad, GitHub, PFO1), cuatro habilidades, tres películas y tres discos favoritos.
 * **Cartelera Multimedia Interactiva:**
-  - **Películas con Póster y Tráiler en Modal (`<TrailerModal />`):** Cada una de las 15 películas favoritas exhibe su póster oficial en miniatura armónica; al hacer clic en el póster o en el botón *"🎬 Ver Tráiler Oficial"*, se abre una ventana modal de cine (16:9) que reproduce el tráiler oficial embebido.
-  - **Discos con Portada y Reproductor de Audio (`useRef`):** Cada uno de los 15 álbumes muestra su portada oficial y permite reproducir/pausar un fragmento real de 30 segundos de su canción más icónica (vía Apple iTunes API CDN), controlado imperativamente con `useRef()` sobre un elemento `<audio>` nativo y deteniéndose automáticamente al abrir un tráiler o cambiar de perfil.
+  - **Películas con Póster y Tráiler en Modal (`<TrailerModal />`):** Cada una de las 12 películas favoritas exhibe su póster oficial en miniatura armónica; al hacer clic en el póster o en el botón *"🎬 Ver Tráiler Oficial"*, se abre una ventana modal de cine (16:9) que reproduce el tráiler oficial embebido.
+  - **Discos con Portada y Reproductor de Audio (`useRef`):** Cada uno de los 12 álbumes muestra su portada oficial y permite reproducir/pausar un fragmento real de 30 segundos de su canción más icónica (vía Apple iTunes API CDN), controlado imperativamente con `useRef()` sobre un elemento `<audio>` nativo y deteniéndose automáticamente al abrir un tráiler o cambiar de perfil.
 * **Interacción funcional por integrante con hooks:**
   - **Guillermo:** Contador interactivo de rondas servidas (`useState`), mensajes rotativos, partículas de emojis que brotan desde el botón (`getBoundingClientRect`) y lluvia animada en `dvh`.
   - **Florencia:** Sorteo y resaltado dinámico de películas con marco dorado.
   - **Sonia:** Acordeón interactivo que despliega notas y curiosidades de discos.
   - **Eitel:** Rotador dinámico de frases sobre trabajo colaborativo y resiliencia.
-  - **Esteban:** Contador de birras artesanales donadas con mensajes de agradecimiento.
 * Paginación circular (`.btn-prev` y `.btn-next`) con cálculo dinámico del integrante anterior y siguiente.
 
 ### 3. Catálogo con 20 Datos Locales JSON (`/catalogo`)
-* Archivo [`src/data/catalogo.json`](src/data/catalogo.json) con **20 registros completos** armados exclusivamente con las 15 películas y 15 discos favoritos de los 5 integrantes del equipo, combinados con las 5 pizzas (`Muzzarella clásica`, `Napolitana`, `Fugazzeta`, `Calabresa`, `Rúcula y parmesano`), las 5 birras (`Golden suave`, `IPA cítrica`, `Red Ale`, `Ámbar tostada`, `Honey beer`) y los proyectos de código definidos en el TP1.
+* Archivo [`src/data/catalogo.json`](src/data/catalogo.json) con **20 registros completos** armados exclusivamente con las 12 películas y 12 discos favoritos de los 4 integrantes del equipo, combinados con las 5 pizzas (`Muzzarella clásica`, `Napolitana`, `Fugazzeta`, `Calabresa`, `Rúcula y parmesano`), las 5 birras (`Golden suave`, `IPA cítrica`, `Red Ale`, `Ámbar tostada`, `Honey beer`) y los proyectos de código definidos en el TP1.
 * **Buscador y filtros sincronizados con la URL (`useSearchParams`):** La búsqueda por texto, integrante del equipo, estilo de birra y nivel de proyecto se reflejan en tiempo real en los query params (`/catalogo?q=...&integrante=...&birra=...&dificultad=...`), permitiendo compartir o recargar enlaces con los filtros aplicados.
 * **Componentes modulares con PropTypes:** Implementación de `<CardMaridaje />` y `<DetalleModal />` validados exhaustivamente mediante `prop-types` (`PropTypes.shape`, `PropTypes.string`, `PropTypes.number`, etc.).
 * Estado de "sin resultados" con botón para restablecer.
@@ -91,7 +89,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 ### 4. Consumo Asíncrono de API Pública (`/api`)
 * Conexión en vivo con **[Apple iTunes Search & Lookup API](https://performance-partners.apple.com/search-api)** (API pública gratuita sin claves privadas y con CORS habilitado).
 * **Selectores en cascada cerrados al equipo:**
-  1. **Integrante del equipo** (Florencia, Sonia, Eitel, Esteban o Guillermo).
+  1. **Integrante del equipo** (Florencia, Sonia, Eitel o Guillermo).
   2. **Discos del integrante** (*Todos sus discos (3)* o cualquiera de sus 3 álbumes favoritos para ver y escuchar su lista de temas).
   3. **Películas del integrante (Soundtrack)** (cualquiera de sus 3 películas favoritas para escuchar su banda sonora original).
 * Reproductor integrado con `useRef` para escuchar fragmentos de 30 segundos y visualizar portadas auténticas en alta resolución (`300x300`).
@@ -124,7 +122,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
         │     ├── <Home />
         │     │     ├── <HeroMarquesina />
         │     │     ├── <SorteadorNoche /> (con useNavigate a catálogo)
-        │     │     └── <MemberCard /> (x5)
+        │     │     └── <MemberCard /> (x4)
         │     ├── <Perfil /> (con useRef para audio de 30s)
         │     │     ├── <ProfileHead />
         │     │     ├── <FavoritosBoard /> (Pósters + Portadas + Audio)
@@ -170,7 +168,6 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 | **Florencia Guzmán** | ChatGPT (Plan gratuito) | GPT-4o mini | Generación y redacción de la lista de películas favoritas y sugerencias de contraste accesible en CSS. | Se descartaron propuestas visuales genéricas para mantener la paleta institucional de *pITzza y birrAPI*. |
 | **Sonia Andrada** | v0 by Vercel | Claude 3.5 Sonnet | Exploración inicial de layouts tipo sidebar y tarjetas con filtros. | El código generado fue refactorizado a componentes limpios sin dependencias de Tailwind para usar CSS puro. |
 | **Eitel Belinzoni** | GitHub Copilot | GPT-4o | Autocompletado de tipos de birra y sinopsis del catálogo JSON local. | Se corrigieron las descripciones y se verificó que cada entrada tuviera relación directa con la propuesta del equipo. |
-| **Esteban Acosta** | Perplexity AI | Sonar Medium | Búsqueda de APIs públicas abiertas sin claves y documentación de los endpoints `/lookup` y `/search` de Apple iTunes API. | Se implementaron selectores en cascada por integrante y el control de estados asíncronos (carga, error y reintento). |
 
 ---
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { integrantes } from '../data/integrantes';
 
 /**
- * Configuración de consulta en iTunes para cada uno de los 15 discos y 15 películas del equipo.
+ * Configuración de consulta en iTunes para cada uno de los 12 discos y 12 películas del equipo.
  * Garantiza que cada opción de los menús en cascada consulte únicamente el álbum o banda sonora correspondiente.
  */
 const DISCOS_CONFIG = {
@@ -18,17 +18,10 @@ const DISCOS_CONFIG = {
   'Ok Computer': { tipo: 'lookup', id: 1097861387 },
   'Canción Animal': { tipo: 'lookup', id: 321882757 },
   'Ten': { tipo: 'lookup', id: 425465247 },
-  // Esteban
-  'Abbey Road': { tipo: 'lookup', id: 1474833332 },
-  'Clics Modernos': {
-    tipo: 'search',
-    term: 'Charly Garcia Nos Siguen Pegando Abajo Los Dinosaurios No Soy Un Extraño',
-    artistFilter: 'Charly'
-  },
-  'Led Zeppelin IV': { tipo: 'lookup', id: 580708175 },
   // Guillermo
   'The Doors in Concert': { tipo: 'lookup', id: 213622982 },
-  'The Rolling Stones Rock and Roll Circus': { tipo: 'lookup', id: 1460293808 }
+  'The Rolling Stones Rock and Roll Circus': { tipo: 'lookup', id: 1460293808 },
+  'Abbey Road': { tipo: 'lookup', id: 1474833332 }
 };
 
 const PELICULAS_CONFIG = {
@@ -51,25 +44,6 @@ const PELICULAS_CONFIG = {
     ]
   },
   'Blade Runner 2049': { tipo: 'lookup', id: 1291056782 },
-  // Esteban
-  'El Padrino': { tipo: 'lookup', id: 1440844661 },
-  'Nueve Reinas': {
-    tipo: 'queries',
-    terms: [
-      'Rita Pavone Il Ballo Del Mattone',
-      'Astor Piazzolla Libertango',
-      'Gotan Project Santa Maria'
-    ]
-  },
-  'Goodfellas': {
-    tipo: 'queries',
-    terms: [
-      'Derek and the Dominos Layla',
-      'Tony Bennett Rags to Riches',
-      'Cream Sunshine of Your Love',
-      'The Crystals Then He Kissed Me'
-    ]
-  },
   // Guillermo
   'Reservoir Dogs': { tipo: 'lookup', id: 1440847276 },
   'Pulp Fiction': { tipo: 'lookup', id: 1469583186 },

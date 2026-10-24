@@ -5,7 +5,7 @@ export const bitacoraEntries = [
     titulo: "Kickoff y definición de la identidad 'pITzza y birrAPI'",
     categoria: "arquitectura",
     decision: "Adoptar una identidad de grupo que combine el cine de culto, la pizzería clásica, la cervecería artesanal y el desarrollo web / API.",
-    dificultad: "Elegir un concepto que representara la personalidad de los 5 integrantes sin dispersar la temática técnica.",
+    dificultad: "Elegir un concepto que representara la personalidad de los 4 integrantes sin dispersar la temática técnica.",
     resolucion: "Se creó la paleta con tonos tomate (#c8452c), birra (#e8a72b), tinta (#12100e) y crema (#fdf8f0), con tipografías Fraunces y Outfit."
   },
   {
@@ -13,7 +13,7 @@ export const bitacoraEntries = [
     fecha: "2026-09-17",
     titulo: "Estructuración de perfiles y navegación sin botón atrás",
     categoria: "ux",
-    decision: "Implementar un recorrido circular entre los 5 integrantes con botones 'Anterior' y 'Siguiente' en cada tarjeta de perfil.",
+    decision: "Implementar un recorrido circular entre los 4 integrantes con botones 'Anterior' y 'Siguiente' en cada tarjeta de perfil.",
     dificultad: "Lograr que ningún usuario dependiera del botón Atrás del navegador para recorrer la totalidad del sitio.",
     resolucion: "Se maquetó una botonera compartida de paginación que enlaza Portada, Anterior, Siguiente y Bitácora en cada pantalla."
   },
@@ -40,7 +40,7 @@ export const bitacoraEntries = [
     fecha: "2026-10-02",
     titulo: "Catálogo local de 20 maridajes del equipo y filtros en tiempo real",
     categoria: "componentes",
-    decision: "Crear un archivo JSON local con 20 maridajes armados exclusivamente con las 15 películas y 15 discos favoritos de los 5 integrantes, combinados con las 5 pizzas, las 5 birras y los 8 proyectos de código definidos en el TP1.",
+    decision: "Crear un archivo JSON local con 20 maridajes armados exclusivamente con las 12 películas y 12 discos favoritos de los 4 integrantes, combinados con las 5 pizzas, las 5 birras y los 8 proyectos de código definidos en el TP1.",
     dificultad: "Sincronizar el input de texto y los selectores por integrante, birra y dificultad para que convivan sin reiniciar el estado de la búsqueda.",
     resolucion: "Se implementó un filtrado reactivo con `useMemo` que cruza simultáneamente texto libre, integrante del equipo, estilo de birra y nivel del proyecto."
   },
@@ -69,7 +69,7 @@ export const bitacoraEntries = [
     categoria: "ux",
     decision: "Rediseñar integralmente la Sidebar y el Layout maestro, incorporando una barra superior de escritorio (DesktopTopBar) con efecto vidrio (backdrop-filter: blur) y breadcrumb dinámico en tiempo real.",
     dificultad: "La barra lateral oscura flotaba desconectada frente al lienzo claro, con un scrollbar nativo gris antiestético, salto de línea en el logo y los integrantes inferiores cortados en pantallas estándar de laptop (768px-900px).",
-    resolucion: "Se calibró el ancho a 290px, se ajustaron espaciados verticales para alojar los 5 integrantes sin desbordes, se estilizó un scrollbar ultra-fino de 4px en tonos ámbar, y se creó la clase .home-hero-marquee para dialogar armónicamente con la barra lateral."
+    resolucion: "Se calibró el ancho a 290px, se ajustaron espaciados verticales para alojar los 4 integrantes sin desbordes, se estilizó un scrollbar ultra-fino de 4px en tonos ámbar, y se creó la clase .home-hero-marquee para dialogar armónicamente con la barra lateral."
   },
   {
     id: 9,
@@ -85,7 +85,7 @@ export const bitacoraEntries = [
     fecha: "2026-10-15",
     titulo: "Cartelera Multimedia Interactiva: Tráilers en Modal y Audio Previews con useRef()",
     categoria: "react",
-    decision: "Enriquecer las 15 películas y 15 discos favoritos de los integrantes con recursos multimedia de uso libre: pósters oficiales con apertura de tráiler en ventana modal (<TrailerModal />) y portadas de álbumes con reproducción de fragmentos musicales de 30 segundos controlados mediante el hook useRef().",
+    decision: "Enriquecer las 12 películas y 12 discos favoritos de los integrantes con recursos multimedia de uso libre: pósters oficiales con apertura de tráiler en ventana modal (<TrailerModal />) y portadas de álbumes con reproducción de fragmentos musicales de 30 segundos controlados mediante el hook useRef().",
     dificultad: "Garantizar que la reproducción de un disco o la apertura de un tráiler detenga automáticamente cualquier pista previa sin provocar fugas de audio al navegar entre perfiles.",
     resolucion: "Se centralizó una única etiqueta <audio ref={audioRef}> imperativa en Perfil.jsx sincronizada con un efecto de limpieza al cambiar el parámetro :slug y al abrir el modal de video."
   }

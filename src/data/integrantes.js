@@ -190,69 +190,6 @@ export const integrantes = [
   },
   {
     id: 4,
-    slug: "esteban-acosta",
-    nombre: "Esteban Acosta",
-    ciudad: "Rosario",
-    edad: "52 años",
-    github: "otra-tecla",
-    githubUrl: "https://github.com/otra-tecla",
-    pfo1Url: "https://portafolio-dun-two-32.vercel.app/",
-    avatar: "/img/esteban-acosta.webp",
-    habilidades: ["Comunicación de equipo", "HTML & CSS avanzado", "JavaScript reactivo", "Optimización web"],
-    peliculas: [
-      {
-        titulo: "El Padrino",
-        director: "Francis Ford Coppola",
-        anio: 1972,
-        poster: "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
-        youtubeId: "UaVTIH8mujA"
-      },
-      {
-        titulo: "Nueve Reinas",
-        director: "Fabián Bielinsky",
-        anio: 2000,
-        poster: "https://upload.wikimedia.org/wikipedia/en/d/db/9reinasposter.jpg",
-        youtubeId: "shsx2FdqLHM"
-      },
-      {
-        titulo: "Goodfellas",
-        director: "Martin Scorsese",
-        anio: 1990,
-        poster: "https://upload.wikimedia.org/wikipedia/en/7/7b/Goodfellas.jpg",
-        youtubeId: "2ilzidi_J8Q"
-      }
-    ],
-    discos: [
-      {
-        titulo: "Abbey Road",
-        artista: "The Beatles",
-        anio: 1969,
-        cancion: "Come Together",
-        portada: "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/df/db/61/dfdb615d-47f8-06e9-9533-b96daccc029f/18UMGIM31076.rgb.jpg/300x300bb.jpg",
-        previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/26/65/7c/26657c20-9fec-56d6-55ff-61a76996f19b/mzaf_6128091568231335556.plus.aac.p.m4a"
-      },
-      {
-        titulo: "Clics Modernos",
-        artista: "Charly García",
-        anio: 1983,
-        cancion: "Nos Siguen Pegando Abajo",
-        portada: "https://upload.wikimedia.org/wikipedia/en/7/73/Clics_modernos.jpg",
-        previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ec/12/f9/ec12f98d-e7bd-6e85-bfe6-06244a4e6414/mzaf_5619965905438394947.plus.aac.p.m4a"
-      },
-      {
-        titulo: "Led Zeppelin IV",
-        artista: "Led Zeppelin",
-        anio: 1971,
-        cancion: "Stairway to Heaven",
-        portada: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5c/15/9b/5c159b27-95ca-b9a7-84e3-28e795fffd39/dj.kvkrpptq.jpg/300x300bb.jpg",
-        previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a2/e9/c8/a2e9c8fb-e282-9e9d-b5f9-d44fadb07e1e/mzaf_13939222705716798166.plus.aac.p.m4a"
-      }
-    ],
-    rol: "Integración & Calidad de Código",
-    frase: "Una birra bien fría compartida resuelve cualquier conflicto de merge."
-  },
-  {
-    id: 5,
     slug: "guillermo-chacon",
     nombre: "Guillermo Alberto Chacon",
     ciudad: "Ciudad Autónoma de Buenos Aires",
