@@ -228,24 +228,24 @@ export default function Bitacora() {
                   animation: 'fadeIn 0.2s ease-in'
                 }}>
                   <div style={{ display: 'grid', gridTemplateColumns: 'minmax(90px, auto) 1fr', gap: '0.75rem' }}>
-                    <strong style={{ color: 'var(--codigo)', fontSize: '0.9rem', textTransform: 'uppercase', fontFamily: 'var(--fuente-codigo)' }}>
+                    <strong style={{ color: 'var(--acento-codigo)', fontSize: '0.9rem', textTransform: 'uppercase', fontFamily: 'var(--fuente-codigo)' }}>
                       Decisión:
                     </strong>
-                    <p style={{ fontSize: '0.93rem', color: 'var(--tinta-2)' }}>{entry.decision}</p>
+                    <p style={{ fontSize: '0.93rem', color: 'var(--texto-fuerte)' }}>{entry.decision}</p>
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: 'minmax(90px, auto) 1fr', gap: '0.75rem' }}>
                     <strong style={{ color: 'var(--tomate)', fontSize: '0.9rem', textTransform: 'uppercase', fontFamily: 'var(--fuente-codigo)' }}>
                       Dificultad:
                     </strong>
-                    <p style={{ fontSize: '0.93rem', color: 'var(--tinta-2)' }}>{entry.dificultad}</p>
+                    <p style={{ fontSize: '0.93rem', color: 'var(--texto-fuerte)' }}>{entry.dificultad}</p>
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: 'minmax(90px, auto) 1fr', gap: '0.75rem' }}>
                     <strong style={{ color: 'var(--albahaca)', fontSize: '0.9rem', textTransform: 'uppercase', fontFamily: 'var(--fuente-codigo)' }}>
                       Resolución:
                     </strong>
-                    <p style={{ fontSize: '0.93rem', color: 'var(--tinta-2)' }}>{entry.resolucion}</p>
+                    <p style={{ fontSize: '0.93rem', color: 'var(--texto-fuerte)' }}>{entry.resolucion}</p>
                   </div>
                 </div>
               )}

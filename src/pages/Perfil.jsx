@@ -205,7 +205,7 @@ export default function Perfil() {
               "{miembro.frase}"
             </p>
 
-            <h4 style={{ fontSize: '0.9rem', textTransform: 'uppercase', color: 'var(--tinta-3)', marginBottom: '0.5rem', fontFamily: 'var(--fuente-codigo)' }}>
+            <h4 style={{ fontSize: '0.9rem', textTransform: 'uppercase', color: 'var(--texto-fuerte)', marginBottom: '0.5rem', fontFamily: 'var(--fuente-codigo)' }}>
               Habilidades destacadas:
             </h4>
             <div className="chip-row">
@@ -355,7 +355,7 @@ export default function Perfil() {
                         paddingTop: '0.5rem',
                         borderTop: '1px dashed rgba(43, 111, 143, 0.4)',
                         fontSize: '0.84rem',
-                        color: 'var(--codigo)'
+                        color: 'var(--acento-codigo)'
                       }}>
                         💡 <em>{notasDiscosSonia[index]}</em>
                       </div>
@@ -376,10 +376,10 @@ export default function Perfil() {
         }}>
           {miembro.slug === 'guillermo-chacon' && (
             <div>
-              <p style={{ fontWeight: 600, color: 'var(--tomate-oscuro)', marginBottom: '0.5rem' }}>
+              <p style={{ fontWeight: 600, color: 'var(--acento)', marginBottom: '0.5rem' }}>
                 🍕🍻 Rondas de pizza y birra invitadas: <strong style={{
                   background: 'var(--birra)',
-                  color: 'var(--tinta)',
+                  color: 'var(--sobre-birra)',
                   padding: '0.15rem 0.6rem',
                   borderRadius: '0.4rem',
                   fontFamily: 'var(--fuente-codigo)',
@@ -426,7 +426,7 @@ export default function Perfil() {
             <div>
               <blockquote style={{
                 fontStyle: 'italic',
-                color: 'var(--tinta-2)',
+                color: 'var(--texto-fuerte)',
                 fontWeight: 600,
                 fontSize: '1.05rem',
                 marginBottom: '0.85rem'

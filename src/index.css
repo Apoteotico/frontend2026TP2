@@ -22,6 +22,12 @@
   --linea: #e9dfcd;
   --linea-oscura: rgba(232, 167, 43, 0.25);
 
+  /* Colores de texto: se redefinen en Modo Noche para mantener el contraste */
+  --texto-fuerte: #1c1815;
+  --acento: #9b3320;
+  --acento-codigo: #2b6f8f;
+  --sobre-birra: #12100e;
+
   /* Medidas y diseño */
   --sidebar-w: 290px;
   --radio: 1rem;
@@ -92,7 +98,7 @@ h1, h2, h3, h4, h5 {
 }
 
 a {
-  color: var(--tomate-oscuro);
+  color: var(--acento);
   text-decoration: none;
   transition: color 0.18s ease;
 }
@@ -352,7 +358,7 @@ code {
 
 .sidebar-link.is-active .sidebar-link-badge {
   background: var(--birra);
-  color: var(--tinta);
+  color: var(--sobre-birra);
   font-weight: 700;
 }
 
@@ -678,6 +684,9 @@ code {
   --tinta-3: #2a2320;
   --suave: #baa997;
   --linea: rgba(232, 167, 43, 0.22);
+  --texto-fuerte: #ece2d3;
+  --acento: #f4927a;
+  --acento-codigo: #7cc4e4;
   background-color: #110e0c;
   color: #f6f1e7;
 }
@@ -949,13 +958,13 @@ code {
 
 .btn-birra {
   background: var(--birra);
-  color: var(--tinta);
+  color: var(--sobre-birra);
   font-weight: 700;
 }
 
 .btn-birra:hover {
   background: var(--birra-oscura);
-  color: var(--tinta);
+  color: var(--sobre-birra);
 }
 
 .btn-ghost {
@@ -974,7 +983,7 @@ code {
 .btn-prev {
   background: rgba(43, 111, 143, 0.09);
   border: 1px solid rgba(43, 111, 143, 0.45);
-  color: var(--codigo);
+  color: var(--acento-codigo);
   font-weight: 600;
   box-shadow: none;
 }
@@ -988,13 +997,13 @@ code {
 .btn-next {
   background: var(--birra);
   border: 1px solid var(--birra);
-  color: var(--tinta);
+  color: var(--sobre-birra);
   font-weight: 700;
 }
 
 .btn-next:hover {
   background: var(--birra-oscura);
-  color: var(--tinta);
+  color: var(--sobre-birra);
 }
 
 .btn-sm {

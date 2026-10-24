@@ -34,7 +34,7 @@ export default function Home() {
           </span>
           <h1 style={{
             fontSize: 'clamp(2.3rem, 5.5vw, 3.8rem)',
-            color: 'var(--mozzarella)',
+            color: '#f6f1e7',
             marginBottom: '1rem',
             lineHeight: 1.1
           }}>
@@ -57,7 +57,7 @@ export default function Home() {
             <Link to="/catalogo" className="btn btn-birra">
               Explorar Catálogo
             </Link>
-            <Link to="/api" className="btn btn-ghost" style={{ color: 'var(--mozzarella)', borderColor: 'rgba(246, 241, 231, 0.3)' }}>
+            <Link to="/api" className="btn btn-ghost" style={{ color: '#f6f1e7', borderColor: 'rgba(246, 241, 231, 0.3)' }}>
               Discos y Bandas Sonoras
             </Link>
           </div>
@@ -132,7 +132,7 @@ export default function Home() {
               <p style={{ fontSize: '0.85rem', color: 'var(--suave)' }}>Dir. {nocheSorteada.director} ({nocheSorteada.anio})</p>
             </div>
             <div>
-              <span style={{ fontSize: '0.78rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--codigo)', textTransform: 'uppercase' }}>💿 Disco del Equipo</span>
+              <span style={{ fontSize: '0.78rem', fontFamily: 'var(--fuente-codigo)', color: 'var(--acento-codigo)', textTransform: 'uppercase' }}>💿 Disco del Equipo</span>
               <p style={{ fontWeight: 600, color: 'var(--tinta)' }}>{nocheSorteada.disco}</p>
             </div>
             <div>
@@ -248,7 +248,7 @@ export default function Home() {
 
               <div style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', flex: 1, gap: '0.6rem' }}>
                 <h3 style={{ fontSize: '1.2rem', color: 'var(--tinta)' }}>{miembro.nombre}</h3>
-                <p style={{ fontSize: '0.85rem', color: 'var(--tomate-oscuro)', fontWeight: 600 }}>{miembro.rol}</p>
+                <p style={{ fontSize: '0.85rem', color: 'var(--acento)', fontWeight: 600 }}>{miembro.rol}</p>
                 <p style={{ fontSize: '0.82rem', color: 'var(--suave)', fontStyle: 'italic', flex: 1 }}>
                   "{miembro.frase}"
                 </p>

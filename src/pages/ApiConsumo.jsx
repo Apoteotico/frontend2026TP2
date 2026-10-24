@@ -268,7 +268,7 @@ export default function ApiConsumo() {
           alignItems: 'end'
         }}>
           <div>
-            <label htmlFor="select-integrante" style={{ display: 'block', fontWeight: 600, fontSize: '0.88rem', color: 'var(--tinta-2)', marginBottom: '0.35rem' }}>
+            <label htmlFor="select-integrante" style={{ display: 'block', fontWeight: 600, fontSize: '0.88rem', color: 'var(--texto-fuerte)', marginBottom: '0.35rem' }}>
               1. Integrante del equipo:
             </label>
             <select
@@ -294,7 +294,7 @@ export default function ApiConsumo() {
           </div>
 
           <div>
-            <label htmlFor="select-disco" style={{ display: 'block', fontWeight: 600, fontSize: '0.88rem', color: 'var(--tinta-2)', marginBottom: '0.35rem' }}>
+            <label htmlFor="select-disco" style={{ display: 'block', fontWeight: 600, fontSize: '0.88rem', color: 'var(--texto-fuerte)', marginBottom: '0.35rem' }}>
               2. Discos de {miembroActual.nombre.split(' ')[0]}:
             </label>
             <select
@@ -324,7 +324,7 @@ export default function ApiConsumo() {
           </div>
 
           <div>
-            <label htmlFor="select-pelicula" style={{ display: 'block', fontWeight: 600, fontSize: '0.88rem', color: 'var(--tinta-2)', marginBottom: '0.35rem' }}>
+            <label htmlFor="select-pelicula" style={{ display: 'block', fontWeight: 600, fontSize: '0.88rem', color: 'var(--texto-fuerte)', marginBottom: '0.35rem' }}>
               3. Películas de {miembroActual.nombre.split(' ')[0]} (Soundtrack):
             </label>
             <select
@@ -422,7 +422,7 @@ export default function ApiConsumo() {
           boxShadow: 'var(--sombra)'
         }}>
           <p style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>❌⚠️</p>
-          <h3 style={{ fontSize: '1.35rem', marginBottom: '0.5rem' }}>Ocurrió un error en la consulta</h3>
+          <h3 style={{ fontSize: '1.35rem', marginBottom: '0.5rem', color: 'inherit' }}>Ocurrió un error en la consulta</h3>
           <p style={{ maxWidth: '580px', margin: '0 auto 1.5rem', fontSize: '0.95rem', color: '#7f1d1d' }}>
             {error}
           </p>
@@ -467,7 +467,7 @@ export default function ApiConsumo() {
                     <div style={{
                       fontSize: '0.72rem',
                       fontFamily: 'var(--fuente-codigo)',
-                      color: 'var(--codigo)',
+                      color: 'var(--acento-codigo)',
                       marginBottom: '0.55rem',
                       fontWeight: 600
                     }}>
@@ -509,7 +509,7 @@ export default function ApiConsumo() {
                         {track.trackName}
                       </h3>
 
-                      <p style={{ fontSize: '0.86rem', fontWeight: 600, color: 'var(--tomate-oscuro)' }}>
+                      <p style={{ fontSize: '0.86rem', fontWeight: 600, color: 'var(--acento)' }}>
                         {track.artistName}
                       </p>
                     </div>
