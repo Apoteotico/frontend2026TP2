@@ -80,7 +80,7 @@ const initialTreeData = {
                 },
                 {
                   id: 'home-cards',
-                  nombre: '<MemberCard /> (x5)',
+                  nombre: '<MemberCard /> (x4)',
                   tipo: 'Componente Reutilizable',
                   descripcion: 'Afiche de cada integrante con foto, rol, habilidades y enlace.',
                   props: 'miembro (objeto)',
@@ -128,7 +128,7 @@ const initialTreeData = {
                   id: 'perfil-interaccion',
                   nombre: '<InteraccionIndividual />',
                   tipo: 'Componente con Estado',
-                  descripcion: 'Función interactiva propia: lluvia pizza/birra (Guille), highlight (Flor), acordéon (Sonia), frases (Eitel), donaciones (Esteban).',
+                  descripcion: 'Función interactiva propia: lluvia pizza/birra (Guille), highlight (Flor), acordéon (Sonia), frases (Eitel).',
                   props: 'slug, onTrigger',
                   estado: 'guilleRondas, emojis, etc.',
                   hijos: []

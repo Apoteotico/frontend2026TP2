@@ -130,7 +130,7 @@ export default function Layout() {
                   🌙 Noche
                 </button>
               </div>
-              <span className="topbar-pill">🎬 5 Integrantes</span>
+              <span className="topbar-pill">🎬 4 Integrantes</span>
               <a
                 href="https://github.com/Apoteotico/frontend2026TP2"
                 target="_blank"

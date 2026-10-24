@@ -154,57 +154,6 @@
   },
   {
     "id": 10,
-    "integrante": "Esteban Acosta",
-    "titulo": "Función Esteban #1 · Clásico de Clásicos & Abbey Road",
-    "pelicula": "El Padrino",
-    "director": "Francis Ford Coppola",
-    "anio": 1972,
-    "genero": "Crimen / Drama",
-    "disco": "Abbey Road — The Beatles (1969)",
-    "pizza": "Muzzarella clásica",
-    "birra": "Red Ale",
-    "tipoBirra": "Red Ale",
-    "proyectoCodigo": "Filtro de integrantes por habilidad",
-    "dificultad": "Intermedio",
-    "tiempoEstimado": "JavaScript + DOM",
-    "sinopsisMaridaje": "Dos obras maestras indiscutidas: El Padrino de Coppola y Abbey Road de The Beatles, con muzzarella clásica y una Red Ale."
-  },
-  {
-    "id": 11,
-    "integrante": "Esteban Acosta",
-    "titulo": "Función Esteban #2 · Buenos Aires & Clics Modernos",
-    "pelicula": "Nueve Reinas",
-    "director": "Fabián Bielinsky",
-    "anio": 2000,
-    "genero": "Crimen / Suspenso",
-    "disco": "Clics Modernos — Charly García (1983)",
-    "pizza": "Fugazzeta",
-    "birra": "Golden suave",
-    "tipoBirra": "Golden suave",
-    "proyectoCodigo": "Formulario de pedido con validación",
-    "dificultad": "Avanzado",
-    "tiempoEstimado": "HTML + JavaScript",
-    "sinopsisMaridaje": "ADN 100% argentino: los giros de Nueve Reinas y el ritmo inconfundible de Clics Modernos con fugazzeta y una Golden suave."
-  },
-  {
-    "id": 12,
-    "integrante": "Esteban Acosta",
-    "titulo": "Función Esteban #3 · Scorsese & Led Zeppelin",
-    "pelicula": "Goodfellas",
-    "director": "Martin Scorsese",
-    "anio": 1990,
-    "genero": "Crimen / Culto",
-    "disco": "Led Zeppelin IV — Led Zeppelin (1971)",
-    "pizza": "Calabresa",
-    "birra": "Ámbar tostada",
-    "tipoBirra": "Ámbar tostada",
-    "proyectoCodigo": "Buscador de películas sobre un array",
-    "dificultad": "Principiante",
-    "tiempoEstimado": "JavaScript",
-    "sinopsisMaridaje": "El montaje vertiginoso de Goodfellas y la épica de Led Zeppelin IV acompañados por pizza calabresa y una Ámbar tostada."
-  },
-  {
-    "id": 13,
     "integrante": "Guillermo Chacon",
     "titulo": "Función Guillermo #1 · Tarantino & The Doors Live",
     "pelicula": "Reservoir Dogs",
@@ -221,7 +170,7 @@
     "sinopsisMaridaje": "El debut explosivo de Tarantino junto al hipnotismo en vivo de The Doors, maridados con pizza calabresa y una IPA cítrica."
   },
   {
-    "id": 14,
+    "id": 11,
     "integrante": "Guillermo Chacon",
     "titulo": "Función Guillermo #2 · Pulp Fiction & Rolling Stones Circus",
     "pelicula": "Pulp Fiction",
@@ -238,7 +187,7 @@
     "sinopsisMaridaje": "Diálogos inolvidables de Pulp Fiction y el legendario show de The Rolling Stones con una grande de muzzarella clásica y Golden suave."
   },
   {
-    "id": 15,
+    "id": 12,
     "integrante": "Guillermo Chacon",
     "titulo": "Función Guillermo #3 · Kill Bill & Abbey Road",
     "pelicula": "Kill Bill Vol. 1 & 2",
@@ -255,7 +204,7 @@
     "sinopsisMaridaje": "La estética cinematográfica de Kill Bill combinada con la perfección melódica de Abbey Road, pizza de rúcula y parmesano y Honey beer."
   },
   {
-    "id": 16,
+    "id": 13,
     "integrante": "Florencia Guzmán",
     "titulo": "Trasnoche Florencia · Inception & Bocanada",
     "pelicula": "Inception",
@@ -272,7 +221,7 @@
     "sinopsisMaridaje": "Segunda combinación del perfil de Florencia: climas nocturnos de Cerati para acompañar los sueños compartidos de Inception con fugazzeta y Ámbar tostada."
   },
   {
-    "id": 17,
+    "id": 14,
     "integrante": "Sonia Andrada",
     "titulo": "Trasnoche Sonia · Whiplash & The Dark Side of the Moon",
     "pelicula": "Whiplash",
@@ -289,7 +238,7 @@
     "sinopsisMaridaje": "Segunda combinación del perfil de Sonia: la obsesión musical de Whiplash junto a los compases de Time de Pink Floyd, rúcula y parmesano e IPA cítrica."
   },
   {
-    "id": 18,
+    "id": 15,
     "integrante": "Eitel Belinzoni",
     "titulo": "Trasnoche Eitel · Matrix & Canción Animal",
     "pelicula": "Matrix",
@@ -306,24 +255,7 @@
     "sinopsisMaridaje": "Segunda combinación del perfil de Eitel: ciencia ficción de culto con la potencia de Soda Stereo, muzzarella clásica y Honey beer."
   },
   {
-    "id": 19,
-    "integrante": "Esteban Acosta",
-    "titulo": "Trasnoche Esteban · El Padrino & Led Zeppelin IV",
-    "pelicula": "El Padrino",
-    "director": "Francis Ford Coppola",
-    "anio": 1972,
-    "genero": "Crimen / Drama",
-    "disco": "Led Zeppelin IV — Led Zeppelin (1971)",
-    "pizza": "Napolitana",
-    "birra": "Ámbar tostada",
-    "tipoBirra": "Ámbar tostada",
-    "proyectoCodigo": "Cartelera de pizzas con CSS Grid",
-    "dificultad": "Intermedio",
-    "tiempoEstimado": "HTML + CSS",
-    "sinopsisMaridaje": "Segunda combinación del perfil de Esteban: dos clásicos de los años 70 acompañados de pizza napolitana y cerveza Ámbar tostada."
-  },
-  {
-    "id": 20,
+    "id": 16,
     "integrante": "Guillermo Chacon",
     "titulo": "Trasnoche Guillermo · Pulp Fiction & The Doors in Concert",
     "pelicula": "Pulp Fiction",
@@ -338,5 +270,73 @@
     "dificultad": "Intermedio",
     "tiempoEstimado": "JavaScript + DOM",
     "sinopsisMaridaje": "Segunda combinación del perfil de Guillermo: cine de Tarantino y rock psicodélico en vivo de The Doors con fugazzeta y Red Ale."
+  },
+  {
+    "id": 17,
+    "integrante": "Florencia Guzmán",
+    "titulo": "Matiné Florencia · Montmartre & Rumours",
+    "pelicula": "Amélie",
+    "director": "Jean-Pierre Jeunet",
+    "anio": 2001,
+    "genero": "Comedia / Romance",
+    "disco": "Rumours — Fleetwood Mac (1977)",
+    "pizza": "Calabresa",
+    "birra": "Red Ale",
+    "tipoBirra": "Red Ale",
+    "proyectoCodigo": "Contador de visitas con localStorage",
+    "dificultad": "Principiante",
+    "tiempoEstimado": "JavaScript + DOM",
+    "sinopsisMaridaje": "Tercera combinación del perfil de Florencia: la ternura de Amélie con las armonías de Fleetwood Mac, una calabresa y una Red Ale para la tarde."
+  },
+  {
+    "id": 18,
+    "integrante": "Sonia Andrada",
+    "titulo": "Matiné Sonia · Celuloide & Daft Punk",
+    "pelicula": "Cinema Paradiso",
+    "director": "Giuseppe Tornatore",
+    "anio": 1988,
+    "genero": "Drama / Cine",
+    "disco": "Random Access Memories — Daft Punk (2013)",
+    "pizza": "Muzzarella clásica",
+    "birra": "Honey beer",
+    "tipoBirra": "Honey beer",
+    "proyectoCodigo": "Cartelera de pizzas con CSS Grid",
+    "dificultad": "Intermedio",
+    "tiempoEstimado": "HTML + CSS",
+    "sinopsisMaridaje": "Tercera combinación del perfil de Sonia: la nostalgia del cine de pueblo con el groove analógico de Daft Punk, muzzarella clásica y Honey beer."
+  },
+  {
+    "id": 19,
+    "integrante": "Eitel Belinzoni",
+    "titulo": "Matiné Eitel · Club Nocturno & Pearl Jam",
+    "pelicula": "Fight Club",
+    "director": "David Fincher",
+    "anio": 1999,
+    "genero": "Drama / Culto",
+    "disco": "Ten — Pearl Jam (1991)",
+    "pizza": "Rúcula y parmesano",
+    "birra": "Golden suave",
+    "tipoBirra": "Golden suave",
+    "proyectoCodigo": "Cuenta regresiva para el estreno",
+    "dificultad": "Avanzado",
+    "tiempoEstimado": "JavaScript + Date",
+    "sinopsisMaridaje": "Tercera combinación del perfil de Eitel: el caos de Fincher con el grunge de Pearl Jam, rúcula y parmesano y una Golden suave para bajar un cambio."
+  },
+  {
+    "id": 20,
+    "integrante": "Guillermo Chacon",
+    "titulo": "Matiné Guillermo · Perros de la Calle & Abbey Road",
+    "pelicula": "Reservoir Dogs",
+    "director": "Quentin Tarantino",
+    "anio": 1992,
+    "genero": "Crimen / Culto",
+    "disco": "Abbey Road — The Beatles (1969)",
+    "pizza": "Napolitana",
+    "birra": "Honey beer",
+    "tipoBirra": "Honey beer",
+    "proyectoCodigo": "Formulario de pedido con validación",
+    "dificultad": "Intermedio",
+    "tiempoEstimado": "HTML + JavaScript",
+    "sinopsisMaridaje": "Tercera combinación del perfil de Guillermo: los trajes negros de Tarantino con el cruce de Abbey Road, napolitana y Honey beer."
   }
 ]

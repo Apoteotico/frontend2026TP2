@@ -46,7 +46,7 @@ export default function Home() {
             marginBottom: '1.75rem',
             maxWidth: '680px'
           }}>
-            Cinco personas, una productora: cocinamos código, servimos birra artesanal
+            Cuatro personas, una productora: cocinamos código, servimos birra artesanal
             y maridamos nuestras películas y discos favoritos con desafíos de desarrollo.
           </p>
 
@@ -187,7 +187,7 @@ export default function Home() {
           <span style={{ fontFamily: 'var(--fuente-codigo)', fontSize: '0.78rem', color: 'var(--tomate)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
             Equipo de Rodaje
           </span>
-          <h2>Los cinco afiches del equipo</h2>
+          <h2>Los cuatro afiches del equipo</h2>
           <p style={{ color: 'var(--suave)', fontSize: '0.95rem', marginTop: '0.2rem' }}>
             Conocé el perfil de cada integrante, sus películas, sus discos y su espacio interactivo.
           </p>
