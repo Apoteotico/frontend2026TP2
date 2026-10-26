@@ -3,7 +3,7 @@
 [![React](https://img.shields.io/badge/React-18%2F19-61dafb?logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-6.x-646cff?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![React Router](https://img.shields.io/badge/React_Router-v6-ca4245?logo=react-router&logoColor=white)](https://reactrouter.com/)
-[![Deploy en Vercel](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)](https://tp2-react-grupo21.vercel.app/)
+[![Deploy en Vercel](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)](https://pitzzaybirrapi.vercel.app/)
 
 > Aplicación Single Page (SPA) desarrollada en **React** para el **Trabajo Práctico Grupal 2** de *Desarrollo de Sistemas Web Front End* (IFTS 29 · 2do Cuatrimestre 2026).
 
