@@ -127,7 +127,7 @@ export default function Catalogo() {
           alignItems: 'end'
         }}>
           <div>
-            <label htmlFor="input-busqueda" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--tinta-2)' }}>
+            <label htmlFor="input-busqueda" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--texto-fuerte)' }}>
               🔍 Buscar película, disco, pizza o integrante:
             </label>
             <input
@@ -149,7 +149,7 @@ export default function Catalogo() {
           </div>
 
           <div>
-            <label htmlFor="filtro-integrante" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--tinta-2)' }}>
+            <label htmlFor="filtro-integrante" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--texto-fuerte)' }}>
               🎬 Integrante del Equipo:
             </label>
             <select
@@ -175,7 +175,7 @@ export default function Catalogo() {
           </div>
 
           <div>
-            <label htmlFor="filtro-birra" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--tinta-2)' }}>
+            <label htmlFor="filtro-birra" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--texto-fuerte)' }}>
               🍺 Birra de la Casa:
             </label>
             <select
@@ -201,7 +201,7 @@ export default function Catalogo() {
           </div>
 
           <div>
-            <label htmlFor="filtro-dificultad" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--tinta-2)' }}>
+            <label htmlFor="filtro-dificultad" style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--texto-fuerte)' }}>
               💻 Nivel del Proyecto:
             </label>
             <select
@@ -238,7 +238,7 @@ export default function Catalogo() {
           <span style={{ fontSize: '0.9rem', color: 'var(--suave)' }}>
             Mostrando <strong>{itemsFiltrados.length}</strong> de <strong>{catalogoData.length}</strong> registros del equipo
             {hayFiltrosActivos && (
-              <span style={{ marginLeft: '0.5rem', fontFamily: 'var(--fuente-codigo)', fontSize: '0.8rem', color: 'var(--codigo)' }}>
+              <span style={{ marginLeft: '0.5rem', fontFamily: 'var(--fuente-codigo)', fontSize: '0.8rem', color: 'var(--acento-codigo)' }}>
                 (Filtros activos en URL)
               </span>
             )}

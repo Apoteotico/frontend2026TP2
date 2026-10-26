@@ -73,7 +73,7 @@ export default function DetalleModal({ item, onClose }) {
         </p>
 
         <div style={{ marginBottom: '1.5rem' }}>
-          <h4 style={{ fontSize: '1rem', color: 'var(--tinta-2)', marginBottom: '0.4rem' }}>Sinopsis del Maridaje</h4>
+          <h4 style={{ fontSize: '1rem', color: 'var(--texto-fuerte)', marginBottom: '0.4rem' }}>Sinopsis del Maridaje</h4>
           <p style={{ fontSize: '0.92rem', color: 'var(--texto)', lineHeight: 1.6, fontStyle: 'italic' }}>
             "{item.sinopsisMaridaje}"
           </p>
@@ -89,7 +89,7 @@ export default function DetalleModal({ item, onClose }) {
           marginBottom: '1.5rem'
         }}>
           <div>
-            <h4 style={{ fontSize: '0.9rem', color: 'var(--tomate-oscuro)' }}>🍕 Pizza Recomendada</h4>
+            <h4 style={{ fontSize: '0.9rem', color: 'var(--acento)' }}>🍕 Pizza Recomendada</h4>
             <p style={{ fontWeight: 600, fontSize: '0.95rem', marginTop: '0.2rem' }}>{item.pizza}</p>
           </div>
           <div>
@@ -105,7 +105,7 @@ export default function DetalleModal({ item, onClose }) {
           background: 'var(--mozzarella)'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
-            <h4 style={{ fontSize: '0.95rem', color: 'var(--codigo)' }}>💻 Reto de Código para la Semana</h4>
+            <h4 style={{ fontSize: '0.95rem', color: 'var(--acento-codigo)' }}>💻 Reto de Código para la Semana</h4>
             <span className="badge badge-albahaca">{item.dificultad} · {item.tiempoEstimado}</span>
           </div>
           <p style={{ fontSize: '0.92rem', color: 'var(--texto)' }}>
