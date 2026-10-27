@@ -36,7 +36,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 ---
 
 ## 🚀 Enlace al Deploy
-* **Sitio publicado en Vercel:** [https://tp2-react-grupo21.vercel.app/](https://tp2-react-grupo21.vercel.app/) *(URL del deploy grupal)*
+* **Sitio publicado en Vercel:** [https://pitzzaybirrapi.vercel.app/](https://pitzzaybirrapi.vercel.app/) *(URL del deploy grupal)*
 * **Repositorio en GitHub:** [https://github.com/Apoteotico/frontend2026TP2](https://github.com/Apoteotico/frontend2026TP2)
 
 ---
