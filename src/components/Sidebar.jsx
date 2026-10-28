@@ -115,7 +115,7 @@ export default function Sidebar({ isOpen, onClose }) {
         <div className="sidebar-group" style={{ marginTop: '0.75rem' }}>
           <span className="sidebar-group-title">
             <span>Elenco · Integrantes</span>
-            <span className="sidebar-group-counter">05</span>
+            <span className="sidebar-group-counter">04</span>
           </span>
 
           <div className="sidebar-cast-list">

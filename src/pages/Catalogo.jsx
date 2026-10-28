@@ -168,7 +168,7 @@ export default function Catalogo() {
             >
               {integrantesUnicos.map((nombre) => (
                 <option key={nombre} value={nombre}>
-                  {nombre === 'todos' ? 'Todos los integrantes (5)' : nombre}
+                  {nombre === 'todos' ? 'Todos los integrantes (4)' : nombre}
                 </option>
               ))}
             </select>
