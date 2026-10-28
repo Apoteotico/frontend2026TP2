@@ -3,6 +3,27 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { integrantes } from '../data/integrantes';
 import TrailerModal from '../components/TrailerModal';
 
+const frasesGuillermo = [
+  "¡Marchando una grande de muzzarella y dos birras bien frías! 🍕🍺",
+  "¡Segunda vuelta! La mesa del equipo agradece 🙌",
+  "¡Pinta IPA y fainá recién horneada en camino! 🍻🍕",
+  "¡Cine, pizza, birra y código para todo el grupo! 🎬🍕",
+  "¡Ronda servida con honores de la casa! 🍕🍻"
+];
+
+const notasDiscosSonia = {
+  0: "Grabado en Abbey Road con un prisma legendario. La transición entre 'Time' y 'The Great Gig in the Sky' es pura alquimia sonora.",
+  1: "Obra cumbre de Spinetta, grabada casi en solitario a pesar del crédito de Pescado Rabioso. 'Cantata de puentes amarillos' es poesía pura.",
+  2: "Homenaje a la música disco de fines de los 70 y principios de los 80, grabado con sintetizadores analógicos y músicos en vivo en París y Los Ángeles."
+};
+
+const frasesEitel = [
+  "El equipo avanza cuando nadie se queda solo con el problema.",
+  "Probar, equivocarse y documentar también es trabajo en equipo.",
+  "La resiliencia se nota en el siguiente commit, no en el primero.",
+  "Un buen refactor deja el código mejor de lo que lo encontramos."
+];
+
 export default function Perfil() {
   const { slug } = useParams();
   const currentIndex = integrantes.findIndex((m) => m.slug === slug);
@@ -11,6 +32,15 @@ export default function Perfil() {
   const [playingAlbumIdx, setPlayingAlbumIdx] = useState(null);
   // Se utiliza una única referencia de <audio> para evitar múltiples pistas superpuestas
   const audioRef = useRef(null);
+
+  // Estados de interacción propios de cada perfil (declarados en el tope respetando Rules of Hooks)
+  const [guilleRondas, setGuilleRondas] = useState(0);
+  const [guilleMensaje, setGuilleMensaje] = useState("Llená la pantalla de pizza y birra.");
+  const [guillePopEmojis, setGuillePopEmojis] = useState([]);
+  const [guilleLluviaEmojis, setGuilleLluviaEmojis] = useState([]);
+  const [florenciaSelectedMovie, setFlorenciaSelectedMovie] = useState(null);
+  const [soniaActiveAlbum, setSoniaActiveAlbum] = useState(null);
+  const [eitelFrase, setEitelFrase] = useState(frasesEitel[0]);
 
   // Limpia modales abiertos y detiene la reproducción activa al navegar a otro perfil
   useEffect(() => {
@@ -54,20 +84,6 @@ export default function Perfil() {
     }
   };
 
-  // Estados de interacción propios de cada perfil
-  const [guilleRondas, setGuilleRondas] = useState(0);
-  const [guilleMensaje, setGuilleMensaje] = useState("Llená la pantalla de pizza y birra.");
-  const [guillePopEmojis, setGuillePopEmojis] = useState([]);
-  const [guilleLluviaEmojis, setGuilleLluviaEmojis] = useState([]);
-
-  const frasesGuillermo = [
-    "¡Marchando una grande de muzzarella y dos birras bien frías! 🍕🍺",
-    "¡Segunda vuelta! La mesa del equipo agradece 🙌",
-    "¡Pinta IPA y fainá recién horneada en camino! 🍻🍕",
-    "¡Cine, pizza, birra y código para todo el grupo! 🎬🍕",
-    "¡Ronda servida con honores de la casa! 🍕🍻"
-  ];
-
   const triggerGuillermoAction = (e) => {
     setGuilleRondas(prev => prev + 1);
     setGuilleMensaje(frasesGuillermo[Math.floor(Math.random() * frasesGuillermo.length)]);
@@ -110,29 +126,15 @@ export default function Perfil() {
     setTimeout(() => setGuilleLluviaEmojis([]), 2500);
   };
 
-  const [florenciaSelectedMovie, setFlorenciaSelectedMovie] = useState(null);
   const triggerFlorenciaAction = () => {
     const randomIndex = Math.floor(Math.random() * miembro.peliculas.length);
     setFlorenciaSelectedMovie(randomIndex);
   };
 
-  const [soniaActiveAlbum, setSoniaActiveAlbum] = useState(null);
-  const notasDiscosSonia = {
-    0: "Grabado en Abbey Road con un prisma legendario. La transición entre 'Time' y 'The Great Gig in the Sky' es pura alquimia sonora.",
-    1: "Obra cumbre de Spinetta, grabada casi en solitario a pesar del crédito de Pescado Rabioso. 'Cantata de puentes amarillos' es poesía pura.",
-    2: "Homenaje a la música disco de fines de los 70 y principios de los 80, grabado con sintetizadores analógicos y músicos en vivo en París y Los Ángeles."
-  };
   const triggerSoniaAction = () => {
     setSoniaActiveAlbum(prev => (prev === null ? 0 : (prev + 1) % 3));
   };
 
-  const frasesEitel = [
-    "El equipo avanza cuando nadie se queda solo con el problema.",
-    "Probar, equivocarse y documentar también es trabajo en equipo.",
-    "La resiliencia se nota en el siguiente commit, no en el primero.",
-    "Un buen refactor deja el código mejor de lo que lo encontramos."
-  ];
-  const [eitelFrase, setEitelFrase] = useState(frasesEitel[0]);
   const triggerEitelAction = () => {
     setEitelFrase(prev => {
       let siguiente = frasesEitel[Math.floor(Math.random() * frasesEitel.length)];

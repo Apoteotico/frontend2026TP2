@@ -4,7 +4,7 @@ import { bitacoraEntries } from '../data/bitacora';
 export default function Bitacora() {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todas');
   const [busquedaTexto, setBusquedaTexto] = useState('');
-  const [entriesAbiertas, setEntriesAbiertas] = useState(new Set([7, 6, 5, 4]));
+  const [entriesAbiertas, setEntriesAbiertas] = useState(new Set([11, 10, 9, 6, 5, 4]));
 
   const categorias = useMemo(() => {
     const cats = new Set(bitacoraEntries.map(e => e.categoria));

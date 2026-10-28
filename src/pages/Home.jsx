@@ -17,74 +17,71 @@ export default function Home() {
     }, 450);
   };
 
+  const pilaresHero = [
+    { icon: '/img/icono-cine.svg', titulo: 'Cartelera de Cine' },
+    { icon: '/img/icono-pizza.svg', titulo: 'Pizza Artesanal' },
+    { icon: '/img/icono-birra.svg', titulo: 'Birra de Autor' },
+    { icon: '/img/icono-codigo.svg', titulo: 'Proyectos de Código' }
+  ];
+
   return (
     <div className="home-page">
       <section className="home-hero-marquee">
-        <div style={{ maxWidth: '820px', position: 'relative', zIndex: 1 }}>
-          <span style={{
-            fontFamily: 'var(--fuente-codigo)',
-            color: 'var(--birra)',
-            fontSize: '0.82rem',
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            display: 'inline-block',
-            marginBottom: '0.5rem'
-          }}>
-            Grupo 21 · Cine, Música, Pizza y Código
-          </span>
-          <h1 style={{
-            fontSize: 'clamp(2.3rem, 5.5vw, 3.8rem)',
-            color: '#f6f1e7',
-            marginBottom: '1rem',
-            lineHeight: 1.1
-          }}>
-            pIT<span style={{ color: 'var(--birra)' }}>zza</span> y birrAPI
-          </h1>
-          <p style={{
-            fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
-            color: 'rgba(246, 241, 231, 0.88)',
-            marginBottom: '1.75rem',
-            maxWidth: '680px'
-          }}>
-            Cuatro personas, una productora: cocinamos código, servimos birra artesanal
-            y maridamos nuestras películas y discos favoritos con desafíos de desarrollo.
-          </p>
+        <div className="hero-film-rail" aria-hidden="true" />
+        <div className="home-hero-grid">
+          <div className="home-hero-copy">
+            <span style={{
+              fontFamily: 'var(--fuente-codigo)',
+              color: 'var(--acento)',
+              fontSize: '0.8rem',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              display: 'inline-block',
+              marginBottom: '0.5rem',
+              fontWeight: 600
+            }}>
+              Grupo 21 · Cine, Música, Pizza y Código
+            </span>
+            <h1 style={{
+              fontSize: 'clamp(2.3rem, 5vw, 3.6rem)',
+              color: 'var(--tinta)',
+              marginBottom: '0.9rem',
+              lineHeight: 1.08
+            }}>
+              p<span style={{ color: 'var(--tomate)' }}>IT</span>zza y birr<span style={{ color: 'var(--tomate)' }}>API</span>
+            </h1>
+            <p style={{
+              fontSize: 'clamp(1rem, 1.8vw, 1.15rem)',
+              color: 'var(--texto)',
+              marginBottom: '1.6rem',
+              maxWidth: '580px'
+            }}>
+              Cuatro personas, una productora: cocinamos código, servimos birra artesanal
+              y maridamos nuestras películas y discos favoritos con desafíos de desarrollo.
+            </p>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: '2.5rem' }}>
-            <a href="#integrantes-section" className="btn">
-              Ver afiches del equipo
-            </a>
-            <Link to="/catalogo" className="btn btn-birra">
-              Explorar Catálogo
-            </Link>
-            <Link to="/api" className="btn btn-ghost" style={{ color: '#f6f1e7', borderColor: 'rgba(246, 241, 231, 0.3)' }}>
-              Discos y Bandas Sonoras
-            </Link>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+              <a href="#integrantes-section" className="btn">
+                Ver afiches del equipo
+              </a>
+              <Link to="/catalogo" className="btn btn-birra">
+                Explorar Catálogo
+              </Link>
+              <Link to="/api" className="btn btn-ghost">
+                Discos y Bandas Sonoras
+              </Link>
+            </div>
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-            gap: '1rem',
-            borderTop: '1px solid rgba(246, 241, 231, 0.15)',
-            paddingTop: '1.5rem'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <img src="/img/icono-cine.svg" alt="" width="26" height="26" />
-              <span style={{ fontSize: '0.9rem', color: 'rgba(246, 241, 231, 0.8)' }}>Cartelera de Cine</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <img src="/img/icono-pizza.svg" alt="" width="26" height="26" />
-              <span style={{ fontSize: '0.9rem', color: 'rgba(246, 241, 231, 0.8)' }}>Pizza Artesanal</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <img src="/img/icono-birra.svg" alt="" width="26" height="26" />
-              <span style={{ fontSize: '0.9rem', color: 'rgba(246, 241, 231, 0.8)' }}>Birra de Autor</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <img src="/img/icono-codigo.svg" alt="" width="26" height="26" />
-              <span style={{ fontSize: '0.9rem', color: 'rgba(246, 241, 231, 0.8)' }}>Proyectos de Código</span>
-            </div>
+          <div className="home-hero-pillars" aria-label="Pilares del proyecto">
+            {pilaresHero.map((pilar, idx) => (
+              <div key={idx} className="hero-pillar-card">
+                <div className="hero-pillar-icon">
+                  <img src={pilar.icon} alt="" width="26" height="26" />
+                </div>
+                <strong className="hero-pillar-title">{pilar.titulo}</strong>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -170,7 +167,8 @@ export default function Home() {
           </div>
         ) : (
           <div style={{
-            background: 'var(--mozzarella)',
+            background: 'var(--crema)',
+            border: '1px solid var(--linea)',
             borderRadius: 'var(--radio-sm)',
             padding: '1.25rem',
             textAlign: 'center',
@@ -276,17 +274,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{
-        background: 'var(--crema)',
-        border: '1px solid var(--linea)',
-        borderRadius: 'var(--radio)',
-        padding: '2rem',
-        boxShadow: 'var(--sombra)'
-      }}>
-        <h2>Recorrido del sitio</h2>
-        <p style={{ color: 'var(--suave)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
-          Accedé directamente a las secciones principales:
-        </p>
+      <section>
+        <div style={{ marginBottom: '1.5rem' }}>
+          <span style={{ fontFamily: 'var(--fuente-codigo)', fontSize: '0.78rem', color: 'var(--tomate)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+            Navegación Rápida
+          </span>
+          <h2>Recorrido del sitio</h2>
+          <p style={{ color: 'var(--suave)', fontSize: '0.95rem', marginTop: '0.2rem' }}>
+            Accedé directamente a las secciones principales:
+          </p>
+        </div>
 
         <div style={{
           display: 'grid',

@@ -79,7 +79,7 @@ export default function Sidebar({ isOpen, onClose }) {
             <img src="/img/icono-pizza.svg" alt="" width="36" height="36" />
           </div>
           <div className="sidebar-brand-text">
-            <span className="sidebar-brand-title">pIT<span>zza</span> y birrAPI</span>
+            <span className="sidebar-brand-title">p<span>IT</span>zza y birr<span>API</span></span>
             <span className="sidebar-brand-sub">Cine · Pizza · Birra · Dev</span>
           </div>
         </NavLink>

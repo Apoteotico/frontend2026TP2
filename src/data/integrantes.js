@@ -192,7 +192,7 @@ export const integrantes = [
     id: 4,
     slug: "guillermo-chacon",
     nombre: "Guillermo Alberto Chacon",
-    ciudad: "Ciudad Autónoma de Buenos Aires",
+    ciudad: "CABA",
     edad: "47 años",
     github: "GuiLeCha",
     githubUrl: "https://github.com/GuiLeCha",

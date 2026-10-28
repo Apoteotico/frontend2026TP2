@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="footer-inner">
         <div>
           <p className="footer-brand">
-            pIT<span>zza</span> y birrAPI
+            p<span>IT</span>zza y birr<span>API</span>
           </p>
           <p className="footer-tagline">
             Grupo 21 · Cine, música, pizza artesanal, birra y proyectos de código.

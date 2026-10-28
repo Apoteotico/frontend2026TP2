@@ -269,7 +269,7 @@ function TreeNode({ node, level, expandedNodes, toggleNode }) {
   return (
     <div style={{ marginLeft: level > 0 ? '1.5rem' : 0, marginTop: '0.6rem' }}>
       <div style={{
-        background: 'var(--papel)',
+        background: 'var(--crema)',
         border: '1px solid var(--linea)',
         borderRadius: 'var(--radio-sm)',
         padding: '0.85rem 1.15rem',
@@ -278,7 +278,6 @@ function TreeNode({ node, level, expandedNodes, toggleNode }) {
         alignItems: 'center',
         justifyContent: 'space-between',
         gap: '0.75rem',
-        boxShadow: level === 0 ? 'var(--sombra)' : 'none',
         borderLeft: `4px solid ${
           node.tipo.includes('Raíz') ? 'var(--tomate)' :
           node.tipo.includes('Layout') ? 'var(--birra)' :
@@ -292,7 +291,7 @@ function TreeNode({ node, level, expandedNodes, toggleNode }) {
               type="button"
               onClick={() => toggleNode(node.id)}
               style={{
-                background: 'var(--crema)',
+                background: 'var(--papel)',
                 border: '1px solid var(--linea)',
                 borderRadius: '0.3rem',
                 width: '1.7rem',
@@ -417,11 +416,12 @@ export default function ArbolRender() {
         alignItems: 'center',
         flexWrap: 'wrap',
         gap: '1rem',
-        background: 'var(--crema)',
+        background: 'var(--papel)',
         border: '1px solid var(--linea)',
         borderRadius: 'var(--radio)',
         padding: '1rem 1.5rem',
-        marginBottom: '2rem'
+        marginBottom: '2rem',
+        boxShadow: 'var(--sombra)'
       }}>
         <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
           <span style={{ fontSize: '0.88rem', fontWeight: 600 }}>Controles del Árbol:</span>
@@ -443,7 +443,7 @@ export default function ArbolRender() {
 
       {/* RENDERIZADO DEL ÁRBOL */}
       <div style={{
-        background: 'var(--crema)',
+        background: 'var(--papel)',
         border: '1px solid var(--linea)',
         borderRadius: 'var(--radio)',
         padding: '1.5rem',

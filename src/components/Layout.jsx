@@ -76,7 +76,7 @@ export default function Layout() {
         <header className="mobile-header">
           <Link to="/" className="mobile-brand">
             <img src="/img/icono-pizza.svg" alt="" width="32" height="32" />
-            <span>pIT<strong>zza</strong> y birrAPI</span>
+            <div>p<span>IT</span>zza y birr<span>API</span></div>
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <button
@@ -104,7 +104,7 @@ export default function Layout() {
         <div className="desktop-topbar" aria-label="Información de sección">
           <div className="topbar-inner">
             <div className="topbar-breadcrumb">
-              <span className="topbar-project-tag">pITzza y birrAPI</span>
+              <span className="topbar-project-tag">p<span>IT</span>zza y birr<span>API</span></span>
               <span className="topbar-sep">/</span>
               <span className="topbar-current-page">{currentTitle || 'Sección'}</span>
             </div>

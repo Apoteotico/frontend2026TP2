@@ -88,5 +88,14 @@ export const bitacoraEntries = [
     decision: "Enriquecer las 12 películas y 12 discos favoritos de los integrantes con recursos multimedia de uso libre: pósters oficiales con apertura de tráiler en ventana modal (<TrailerModal />) y portadas de álbumes con reproducción de fragmentos musicales de 30 segundos controlados mediante el hook useRef().",
     dificultad: "Garantizar que la reproducción de un disco o la apertura de un tráiler detenga automáticamente cualquier pista previa sin provocar fugas de audio al navegar entre perfiles.",
     resolucion: "Se centralizó una única etiqueta <audio ref={audioRef}> imperativa en Perfil.jsx sincronizada con un efecto de limpieza al cambiar el parámetro :slug y al abrir el modal de video."
+  },
+  {
+    id: 11,
+    fecha: "2026-10-28",
+    titulo: "Unificación cromática de Modo Día/Noche y corrección de cabecera en móviles",
+    categoria: "ux",
+    decision: "Unificar las superficies estructurales (Sidebar, Topbar, Lienzo y Footer) bajo un sistema de variables CSS para que respondan de forma pareja al cambio entre Modo Día y Modo Noche, y rediseñar el Hero de portada en dos columnas equilibradas resaltando las siglas tecnológicas 'IT' y 'API'.",
+    dificultad: "En Modo Día la barra lateral, el pie de página y el banner principal conservaban fondos oscuros fijos que rompían la armonía visual; además, al probar en un celular real se detectó que la barra superior de escritorio no se ocultaba en pantallas menores a 900px y se superponía con el encabezado móvil.",
+    resolucion: "Se migraron los colores fijos de Sidebar, Footer y Hero a variables reactivas según el tema activo, y se añadió `display: none` para `.desktop-topbar` en el breakpoint móvil (`<= 900px`)."
   }
 ];

@@ -53,7 +53,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 ---
 
 ## 🧭 Estructura de Navegación y Layout Integrado
-* **Sidebar compartida (`<Sidebar />`):** Menú lateral persistente con la marca visual del equipo, riel cromático de película, iconos vectoriales limpios, enlaces con estado activo (`NavLink`), badges técnicos y avatares de los 4 integrantes con indicador de perfil activo. Ancho calibrado a 290 px para evitar saltos de línea y scrollbars ultra-finos personalizados (4 px en tonos ámbar).
+* **Sidebar compartida (`<Sidebar />`) y sistema de tema unificado:** Menú lateral persistente con la marca visual del equipo (`pITzza y birrAPI` resaltando las siglas tecnológicas `IT` y `API`), riel cromático de película, iconos vectoriales limpios, enlaces con estado activo (`NavLink`), badges técnicos y avatares de los 4 integrantes con indicador de perfil activo. Tanto la Sidebar como la Topbar, el Hero de portada y el Footer responden de manera uniforme al cambio entre **Modo Día** (`#fdf8f0` / `#ffffff`) y **Modo Noche** (`#14110f` / `#1c1715`).
 * **Barra superior de escritorio (`<DesktopTopBar />`):** Encabezado fijo en escritorio con efecto vidrio (`backdrop-filter: blur(12px)`) que conecta la barra lateral con el contenido principal mediante un *breadcrumb* dinámico en tiempo real y badges de estado técnico.
 * **Adaptabilidad a móvil:** En pantallas menores a 900 px, la sidebar se convierte en un panel desplegable (*off-canvas drawer*) controlado mediante un botón hamburguesa en la barra superior móvil (`<MobileHeader />`).
 * **Navegación sin depender de 'Atrás':** Cada pantalla cuenta con controles internos, enlaces contextuales y paginación circular para navegar libremente por la app sin recurrir a los controles del navegador.
@@ -104,7 +104,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
 * **Interactividad:** Permite **expandir y contraer nodos** de forma individual o masiva ("Expandir todo" / "Contraer todo"), detallando las `props` recibidas y el `estado` administrado por cada componente.
 
 ### 6. Bitácora de Rodaje (`/bitacora`)
-* **10 entradas detalladas** que registran el proceso de trabajo del equipo desde el inicio hasta el TP2, incluyendo las decisiones de arquitectura, modularización en React, integración estética del layout, manejo avanzado de rutas y PropTypes, y la cartelera multimedia con tráilers en modal y reproductor de audio controlado con `useRef`.
+* **11 entradas detalladas** que registran el proceso de trabajo del equipo desde el inicio hasta el TP2, incluyendo las decisiones de arquitectura, modularización en React, integración estética del layout, manejo avanzado de rutas y PropTypes, cartelera multimedia con tráilers en modal y reproductor de audio controlado con `useRef`, y la unificación cromática de Modo Día/Noche junto al ajuste responsive de cabeceras en dispositivos móviles.
 * Filtro en tiempo real por categoría (*arquitectura, react, componentes, api, responsive, ux*).
 * Acordeones interactivos para desplegar y contraer la decisión, dificultad y resolución de cada hito.
 
@@ -142,7 +142,7 @@ Esta entrega traslada el sitio estático a una **Single Page Application en Reac
         │     │     └── <TreeNode /> (recursivo y colapsable)
         │     └── <Bitacora />
         │           ├── <CategoryFilter />
-        │           └── <LogCard /> (acordeón x10)
+        │           └── <LogCard /> (acordeón x11)
         └── <Footer />
 ```
 
